@@ -8,6 +8,7 @@ import conexao.Conexao;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.sql.*;
+import javax.swing.JFrame;
 
 public class login extends javax.swing.JFrame {
 
@@ -15,7 +16,8 @@ public class login extends javax.swing.JFrame {
     
     public login() {
         initComponents();
-        setLocationRelativeTo(null);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //setLocationRelativeTo(null);
         conexaoUsu = new Conexao();
         conexaoUsu.conecta();
     }
@@ -32,6 +34,7 @@ public class login extends javax.swing.JFrame {
         btnLogar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setSize(new java.awt.Dimension(500, 500));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -103,7 +106,7 @@ public class login extends javax.swing.JFrame {
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
-        pack();
+        setBounds(0, 0, 513, 353);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
