@@ -9,7 +9,7 @@ import controle.agendamento.*;
 import controle.cliente.*;
 import controle.profissional.*;
 
-/**
+/**.
  *
  * @author Tiago e Diogo
  */
