@@ -4,13 +4,12 @@
  */
 package view;
 
-import java.util.Date;
 import java.time.Duration;
-
 import model.Servico;
 import model.Cliente;
 import model.Profissional;
 import model.Pagamento;
+import model.Agendamento;
 
 /**
  *
@@ -40,67 +39,39 @@ public class Teste {
         
         
         // Criando um objeto Cliente com valores genéricos no construtor
-        Cliente cliente = new Cliente(0, "Cliente Padrão", "000.000.000-00", "email@exemplo.com", new Date(), "senha123", "0000-0000");
+        Cliente cliente = new Cliente("16/02/2008", "123", 0, "Tiago", "439.830.508.40", "tiagopimentel.tp@gmail.com", "11 98064-1561");
 
         // Exibindo valores genéricos do construtor
         System.out.println("Valores do cliente criados com o construtor:");
-        System.out.println("Código do Cliente: " + cliente.getCod_cliente());
-        System.out.println("Nome do Cliente: " + cliente.getNome_cliente());
-        System.out.println("CPF do Cliente: " + cliente.getCpf_cliente());
-        System.out.println("Email do Cliente: " + cliente.getEmail_cliente());
+        System.out.println("Código do Cliente: " + cliente.getCod());
+        System.out.println("Nome do Cliente: " + cliente.getNome());
+        System.out.println("CPF do Cliente: " + cliente.getCpf());
+        System.out.println("Email do Cliente: " + cliente.getEmail());
         System.out.println("Data de Nascimento do Cliente: " + cliente.getData_nasc());
         System.out.println("Senha do Cliente: " + cliente.getSenha_cliente());
-        System.out.println("Telefone do Cliente: " + cliente.getTelefone_cliente());
-
-        // Personalizando os valores usando os setters
-        cliente.setCod_cliente(1);
-        cliente.setNome_cliente("Maria Oliveira");
-        cliente.setCpf_cliente("123.456.789-00");
-        cliente.setEmail_cliente("maria.oliveira@exemplo.com");
-        cliente.setData_nasc(new Date(90, 6, 15)); // Exemplo de data de nascimento: 15/07/1990
-        cliente.setSenha_cliente("novaSenha456");
-        cliente.setTelefone_cliente("(11) 98765-4321");
+        System.out.println("Telefone do Cliente: " + cliente.getTelefone());
 
         // Exibindo os valores personalizados
         System.out.println("\nValores personalizados do cliente:");
-        System.out.println("Código do Cliente: " + cliente.getCod_cliente());
-        System.out.println("Nome do Cliente: " + cliente.getNome_cliente());
-        System.out.println("CPF do Cliente: " + cliente.getCpf_cliente());
-        System.out.println("Email do Cliente: " + cliente.getEmail_cliente());
+        System.out.println("Código do Cliente: " + cliente.getCod());
+        System.out.println("Nome do Cliente: " + cliente.getNome());
+        System.out.println("CPF do Cliente: " + cliente.getCpf());
+        System.out.println("Email do Cliente: " + cliente.getEmail());
         System.out.println("Data de Nascimento do Cliente: " + cliente.getData_nasc());
         System.out.println("Senha do Cliente: " + cliente.getSenha_cliente());
-        System.out.println("Telefone do Cliente: " + cliente.getTelefone_cliente());
+        System.out.println("Telefone do Cliente: " + cliente.getTelefone());
         
         
-        Profissional profissional = new Profissional(0, "Profissional Padrão", "000.000.000-00", "00.000.000-0", "0000-0000", "email@exemplo.com", "Descrição padrão");
-
-        // Exibindo valores genéricos do construtor
-        System.out.println("Valores do profissional criados com o construtor:");
-        System.out.println("Código do Profissional: " + profissional.getCod_profissional());
-        System.out.println("Nome do Profissional: " + profissional.getNome_profissional());
-        System.out.println("CPF do Profissional: " + profissional.getCpf_profissional());
-        System.out.println("RG do Profissional: " + profissional.getRg_profissional());
-        System.out.println("Telefone do Profissional: " + profissional.getTelefone_profissional());
-        System.out.println("Email do Profissional: " + profissional.getEmail_profissional());
-        System.out.println("Descrição do Profissional: " + profissional.getDesc_profissional());
-
-        // Personalizando os valores usando os setters
-        profissional.setCod_profissional(1);
-        profissional.setNome_profissional("João da Silva");
-        profissional.setCpf_profissional("123.456.789-00");
-        profissional.setRg_profissional("12.345.678-9");
-        profissional.setTelefone_profissional("(11) 98765-4321");
-        profissional.setEmail_profissional("joao.silva@exemplo.com");
-        profissional.setDesc_profissional("Especialista em cortes masculinos");
-
+        Profissional profissional = new Profissional("123456789", "Descrição", 0, "Ericson", "1234567891011", "dahfhasdkhfksdhf@gmail.com", "11 96545-9862");
+        
         // Exibindo os valores personalizados
         System.out.println("\nValores personalizados do profissional:");
-        System.out.println("Código do Profissional: " + profissional.getCod_profissional());
-        System.out.println("Nome do Profissional: " + profissional.getNome_profissional());
-        System.out.println("CPF do Profissional: " + profissional.getCpf_profissional());
+        System.out.println("Código do Profissional: " + profissional.getCod());
+        System.out.println("Nome do Profissional: " + profissional.getNome());
+        System.out.println("CPF do Profissional: " + profissional.getCpf());
         System.out.println("RG do Profissional: " + profissional.getRg_profissional());
-        System.out.println("Telefone do Profissional: " + profissional.getTelefone_profissional());
-        System.out.println("Email do Profissional: " + profissional.getEmail_profissional());
+        System.out.println("Telefone do Profissional: " + profissional.getTelefone());
+        System.out.println("Email do Profissional: " + profissional.getEmail());
         System.out.println("Descrição do Profissional: " + profissional.getDesc_profissional());
         
         
@@ -120,5 +91,16 @@ public class Teste {
         System.out.println("\nValores personalizados do pagamento:");
         System.out.println("Código do Pagamento: " + pagamento.getCod_pagamento());
         System.out.println("Tipo de Pagamento: " + pagamento.getTipo_pagamento());
+        
+        Agendamento teste_agendamento = new Agendamento(0, cliente, profissional, pagamento, 0, "12:30", "15/10/2024");
+        
+        // Imprimindo os valores do agendamento diretamente
+        System.out.println("Código do Agendamento: " + teste_agendamento.getCod_agendamento());
+        System.out.println("Cliente: " + teste_agendamento.getCliente().getNome()); // Exibindo o nome do cliente
+        System.out.println("Profissional: " + teste_agendamento.getProfissional().getNome()); // Exibindo o nome do profissional
+        System.out.println("Código do Serviço: " + teste_agendamento.getCod_servico());
+        System.out.println("Horário do Agendamento: " + teste_agendamento.getHorario_agendamento());
+        System.out.println("Data do Agendamento: " + teste_agendamento.getData_agendamento());
+        System.out.println("Tipo de pagamento: " + teste_agendamento.getPagamento().getTipo_pagamento());
     }
 }

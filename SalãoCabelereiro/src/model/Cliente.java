@@ -4,70 +4,58 @@
  */
 package model;
 
-import java.util.Date;
 
-/**
- *
- * @author Tiago e Diogo
- */
-// Modelagem de dados do cliente
-public class Cliente {
-    private int cod_cliente;
-    private String nome_cliente;
-    private String cpf_cliente;
-    private String email_cliente;
-    private Date data_nasc;
-    private String senha_cliente;
-    private String telefone_cliente;
+import java.time.LocalDate;
 
-    public Cliente(int cod_cliente, String nome_cliente, String cpf_cliente, String email_cliente, Date data_nasc, String senha_cliente, String telefone_cliente) {
-        this.cod_cliente = cod_cliente;
-        this.nome_cliente = nome_cliente;
-        this.cpf_cliente = cpf_cliente;
-        this.email_cliente = email_cliente;
-        this.data_nasc = data_nasc;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+public class Cliente extends Pessoa {
+    private LocalDate data_nasc;
+    private String senha_cliente; 
+
+    // Construtor com tratamento de exceção para a data
+    public Cliente(String data_nasc, String senha_cliente, int cod, String nome, String cpf, String email, String telefone) {
+        super(cod, nome, cpf, email, telefone); // Chamando o construtor da classe Pessoa
+
+        try {
+            // Definindo o formato esperado da data (dd/MM/yyyy)
+            DateTimeFormatter formatado = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            // Convertendo a string data_nasc para LocalDate
+            this.data_nasc = LocalDate.parse(data_nasc, formatado);
+
+            System.out.println("Data convertida com sucesso: " + this.data_nasc);
+        } catch (DateTimeParseException ex) {
+            // Caso a data esteja no formato errado, captura a exceção e exibe uma mensagem de erro
+            System.out.println("Erro: Data no formato inválido. Use o formato dd/MM/yyyy.");
+        }
+
+        // Atribuindo o valor à variável senha_cliente
         this.senha_cliente = senha_cliente;
-        this.telefone_cliente = telefone_cliente;
     }
 
-    public int getCod_cliente() {
-        return cod_cliente;
-    }
+    // Getters e Setters
 
-    public void setCod_cliente(int cod_cliente) {
-        this.cod_cliente = cod_cliente;
-    }
-
-    public String getNome_cliente() {
-        return nome_cliente;
-    }
-
-    public void setNome_cliente(String nome_cliente) {
-        this.nome_cliente = nome_cliente;
-    }
-
-    public String getCpf_cliente() {
-        return cpf_cliente;
-    }
-
-    public void setCpf_cliente(String cpf_cliente) {
-        this.cpf_cliente = cpf_cliente;
-    }
-
-    public String getEmail_cliente() {
-        return email_cliente;
-    }
-
-    public void setEmail_cliente(String email_cliente) {
-        this.email_cliente = email_cliente;
-    }
-
-    public Date getData_nasc() {
+    public LocalDate getData_nasc() {
         return data_nasc;
     }
 
-    public void setData_nasc(Date data_nasc) {
-        this.data_nasc = data_nasc;
+    public void setData_nasc(String data_nasc) {
+        try {
+            // Definindo o formato esperado da data (dd/MM/yyyy)
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            // Convertendo a string para LocalDate
+            this.data_nasc = LocalDate.parse(data_nasc, formatter);
+
+            System.out.println("Data convertida com sucesso: " + this.data_nasc);
+        } catch (DateTimeParseException ex) {
+            // Caso a data esteja no formato errado, captura a exceção e exibe uma mensagem de erro
+            System.out.println("Erro: Data no formato inválido. Use o formato dd/MM/yyyy.");
+        }
     }
 
     public String getSenha_cliente() {
@@ -77,13 +65,5 @@ public class Cliente {
     public void setSenha_cliente(String senha_cliente) {
         this.senha_cliente = senha_cliente;
     }
-
-    public String getTelefone_cliente() {
-        return telefone_cliente;
-    }
-
-    public void setTelefone_cliente(String telefone_cliente) {
-        this.telefone_cliente = telefone_cliente;
-    }  
     
 }
