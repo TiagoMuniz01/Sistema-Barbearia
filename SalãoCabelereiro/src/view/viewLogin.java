@@ -40,7 +40,9 @@ public class viewLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lbllogin.setBackground(new java.awt.Color(255, 255, 255));
         lbllogin.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
+        lbllogin.setForeground(new java.awt.Color(204, 204, 204));
         lbllogin.setText("Login");
         getContentPane().add(lbllogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
 
@@ -56,6 +58,7 @@ public class viewLogin extends javax.swing.JFrame {
 
         lblusuario.setBackground(new java.awt.Color(153, 153, 153));
         lblusuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblusuario.setForeground(new java.awt.Color(204, 204, 204));
         lblusuario.setText("Usuario");
         getContentPane().add(lblusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
 
@@ -66,11 +69,13 @@ public class viewLogin extends javax.swing.JFrame {
 
         lblsenha.setBackground(new java.awt.Color(187, 187, 187));
         lblsenha.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblsenha.setForeground(new java.awt.Color(204, 204, 204));
         lblsenha.setText("Senha");
         getContentPane().add(lblsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
 
         btentrar.setBackground(new java.awt.Color(44, 148, 82));
         btentrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btentrar.setForeground(new java.awt.Color(204, 204, 204));
         btentrar.setText("Entrar");
         btentrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btentrar.addActionListener(new java.awt.event.ActionListener() {

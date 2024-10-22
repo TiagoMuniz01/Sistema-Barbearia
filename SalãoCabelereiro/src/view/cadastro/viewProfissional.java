@@ -26,21 +26,187 @@ public class viewProfissional extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jtextid = new javax.swing.JTextField();
+        lblid = new javax.swing.JLabel();
+        jtextnome = new javax.swing.JTextField();
+        lblnome = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textareaobs = new javax.swing.JTextArea();
+        lblobservacao = new javax.swing.JLabel();
+        textnascimento = new javax.swing.JTextField();
+        lblnascimento = new javax.swing.JLabel();
+        jtextcpf = new javax.swing.JTextField();
+        lblcpf = new javax.swing.JLabel();
+        jtexttelefone = new javax.swing.JTextField();
+        lbltelefone = new javax.swing.JLabel();
+        jtextemail = new javax.swing.JTextField();
+        lblemail = new javax.swing.JLabel();
+        lblclientes = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablecliente = new javax.swing.JTable();
+        btnagendar = new javax.swing.JButton();
+        lblpainel = new javax.swing.JLabel();
+        lblfundo = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(17, 17, 17));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jtextid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextidActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtextid, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 40, -1));
+
+        lblid.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblid.setText("Id");
+        jPanel1.add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
+
+        jtextnome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextnomeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtextnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 192, -1));
+
+        lblnome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblnome.setText("Nome");
+        jPanel1.add(lblnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+
+        textareaobs.setColumns(20);
+        textareaobs.setRows(5);
+        jScrollPane1.setViewportView(textareaobs);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 230, 130));
+
+        lblobservacao.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblobservacao.setText("Observações:");
+        jPanel1.add(lblobservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, -1));
+
+        textnascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textnascimentoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(textnascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 190, -1));
+
+        lblnascimento.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblnascimento.setText("Nascimento");
+        jPanel1.add(lblnascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
+
+        jtextcpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextcpfActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtextcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 192, -1));
+
+        lblcpf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblcpf.setText("CPF");
+        jPanel1.add(lblcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
+
+        jtexttelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtexttelefoneActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtexttelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 192, -1));
+
+        lbltelefone.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbltelefone.setText("Telefone");
+        jPanel1.add(lbltelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
+
+        jtextemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextemailActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtextemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 192, -1));
+
+        lblemail.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblemail.setText("Email");
+        jPanel1.add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
+
+        lblclientes.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
+        lblclientes.setText("Profissionais");
+        jPanel1.add(lblclientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
+
+        tablecliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Id", "Nome", "CPF", "Email", "Teefone", "Nascimento"
+            }
+        ));
+        jScrollPane2.setViewportView(tablecliente);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 670, 120));
+
+        btnagendar.setBackground(new java.awt.Color(44, 148, 82));
+        btnagendar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnagendar.setText("Cadastrar");
+        btnagendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnagendarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnagendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 230, 30));
+
+        lblpainel.setIcon(new javax.swing.ImageIcon("C:\\Users\\jocimar\\Downloads\\Rectangle 37.png")); // NOI18N
+        lblpainel.setText("jLabel2");
+        jPanel1.add(lblpainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 730, 390));
+
+        lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
+        jPanel1.add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 790, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtextidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextidActionPerformed
+
+    private void jtexttelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtexttelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtexttelefoneActionPerformed
+
+    private void btnagendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagendarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnagendarActionPerformed
+
+    private void jtextnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextnomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextnomeActionPerformed
+
+    private void jtextcpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextcpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextcpfActionPerformed
+
+    private void jtextemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextemailActionPerformed
+
+    private void textnascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textnascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textnascimentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +244,27 @@ public class viewProfissional extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnagendar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jtextcpf;
+    private javax.swing.JTextField jtextemail;
+    private javax.swing.JTextField jtextid;
+    private javax.swing.JTextField jtextnome;
+    private javax.swing.JTextField jtexttelefone;
+    private javax.swing.JLabel lblclientes;
+    private javax.swing.JLabel lblcpf;
+    private javax.swing.JLabel lblemail;
+    private javax.swing.JLabel lblfundo;
+    private javax.swing.JLabel lblid;
+    private javax.swing.JLabel lblnascimento;
+    private javax.swing.JLabel lblnome;
+    private javax.swing.JLabel lblobservacao;
+    private javax.swing.JLabel lblpainel;
+    private javax.swing.JLabel lbltelefone;
+    private javax.swing.JTable tablecliente;
+    private javax.swing.JTextArea textareaobs;
+    private javax.swing.JTextField textnascimento;
     // End of variables declaration//GEN-END:variables
 }

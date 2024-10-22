@@ -26,70 +26,51 @@ public class viewHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        lblfundo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenucadastro = new javax.swing.JMenu();
-        jMenuitemcliente = new javax.swing.JMenuItem();
-        jMenuitemservico = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jmenucadastro = new javax.swing.JMenu();
+        jitemprofissional = new javax.swing.JMenuItem();
+        jitemcliente = new javax.swing.JMenuItem();
+        jitemserviço = new javax.swing.JMenuItem();
+        jitemagendamento = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(17, 17, 17));
         setForeground(new java.awt.Color(51, 51, 51));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(17, 17, 17));
-        jPanel1.setForeground(new java.awt.Color(17, 17, 17));
+        lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
+        getContentPane().add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 730, 560));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
-        );
+        jmenucadastro.setText("Cadastro");
 
-        jMenucadastro.setText("Cadastro");
-
-        jMenuitemcliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/icons/adicionar-usuario.png"))); // NOI18N
-        jMenuitemcliente.setText("Cliente");
-        jMenuitemcliente.addActionListener(new java.awt.event.ActionListener() {
+        jitemprofissional.setText("Profissional");
+        jitemprofissional.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuitemclienteActionPerformed(evt);
+                jitemprofissionalActionPerformed(evt);
             }
         });
-        jMenucadastro.add(jMenuitemcliente);
+        jmenucadastro.add(jitemprofissional);
 
-        jMenuitemservico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/icons/tesoura.png"))); // NOI18N
-        jMenuitemservico.setText("Serviço");
-        jMenucadastro.add(jMenuitemservico);
+        jitemcliente.setText("Cliente");
+        jmenucadastro.add(jitemcliente);
 
-        jMenuBar1.add(jMenucadastro);
+        jitemserviço.setText("Serviço");
+        jmenucadastro.add(jitemserviço);
 
-        jMenu2.setText("Operação");
-        jMenuBar1.add(jMenu2);
+        jitemagendamento.setText("Agendamento");
+        jmenucadastro.add(jitemagendamento);
+
+        jMenuBar1.add(jmenucadastro);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuitemclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuitemclienteActionPerformed
+    private void jitemprofissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jitemprofissionalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuitemclienteActionPerformed
+    }//GEN-LAST:event_jitemprofissionalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,11 +108,12 @@ public class viewHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenucadastro;
-    private javax.swing.JMenuItem jMenuitemcliente;
-    private javax.swing.JMenuItem jMenuitemservico;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem jitemagendamento;
+    private javax.swing.JMenuItem jitemcliente;
+    private javax.swing.JMenuItem jitemprofissional;
+    private javax.swing.JMenuItem jitemserviço;
+    private javax.swing.JMenu jmenucadastro;
+    private javax.swing.JLabel lblfundo;
     // End of variables declaration//GEN-END:variables
 }

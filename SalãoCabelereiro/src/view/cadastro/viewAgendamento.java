@@ -43,7 +43,7 @@ public class viewAgendamento extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         textareaobs = new javax.swing.JTextArea();
         btnagendar = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        lblagendamento = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableagendamento = new javax.swing.JTable();
 
@@ -108,7 +108,7 @@ public class viewAgendamento extends javax.swing.JFrame {
         });
         jpanelfundo.add(jtexthora, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 305, 192, -1));
 
-        jcomboservico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Corte (Cabelo)", "Pintar Cabelo", "Pentead (Cabelo)", "Luzes (Cabelo)", "Hidratação (Cabelo)", "Aparar (Barba)", "Barba Completa (Barba)", "Barbaterapia (Barba)", "Aparar (Sombrancelha)" }));
+        jcomboservico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Corte (Cabelo)", "Pintar Cabelo", "Penteado (Cabelo)", "Luzes (Cabelo)", "Hidratação (Cabelo)", "Aparar (Barba)", "Barba Completa (Barba)", "Barbaterapia (Barba)", "Aparar (Sombrancelha)" }));
         jcomboservico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcomboservicoActionPerformed(evt);
@@ -135,9 +135,9 @@ public class viewAgendamento extends javax.swing.JFrame {
         btnagendar.setText("Agendar");
         jpanelfundo.add(btnagendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, 230, 30));
 
-        jLabel8.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
-        jLabel8.setText("Agendamento");
-        jpanelfundo.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, -1, -1));
+        lblagendamento.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
+        lblagendamento.setText("Agendamento");
+        jpanelfundo.add(lblagendamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, -1, -1));
 
         tableagendamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -220,7 +220,6 @@ public class viewAgendamento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnagendar;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox<String> jcomboservico;
@@ -230,6 +229,7 @@ public class viewAgendamento extends javax.swing.JFrame {
     private javax.swing.JTextField jtextid;
     private javax.swing.JTextField jtextnome;
     private javax.swing.JTextField jtextvalor;
+    private javax.swing.JLabel lblagendamento;
     private javax.swing.JLabel lbldata;
     private javax.swing.JLabel lblhora;
     private javax.swing.JLabel lblid;
