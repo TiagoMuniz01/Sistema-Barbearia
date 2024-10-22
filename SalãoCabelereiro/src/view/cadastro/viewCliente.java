@@ -26,21 +26,163 @@ public class viewCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jtextid = new javax.swing.JTextField();
+        lblid = new javax.swing.JLabel();
+        textnascimento = new javax.swing.JTextField();
+        lblnome = new javax.swing.JLabel();
+        lblobservacao = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textareaobs = new javax.swing.JTextArea();
+        btnagendar = new javax.swing.JButton();
+        lblclientes = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablecliente = new javax.swing.JTable();
+        lblnascimento = new javax.swing.JLabel();
+        jtextnome = new javax.swing.JTextField();
+        jtextcpf = new javax.swing.JTextField();
+        lblcpf = new javax.swing.JLabel();
+        lbltelefone = new javax.swing.JLabel();
+        jtexttelefone = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(17, 17, 17));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jtextid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextidActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtextid, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 40, -1));
+
+        lblid.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblid.setText("Id");
+        jPanel1.add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, -1, -1));
+
+        textnascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textnascimentoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(textnascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 192, -1));
+
+        lblnome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblnome.setText("Nome");
+        jPanel1.add(lblnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 165, -1, -1));
+
+        lblobservacao.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblobservacao.setText("Observações:");
+        jPanel1.add(lblobservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
+
+        textareaobs.setColumns(20);
+        textareaobs.setRows(5);
+        jScrollPane1.setViewportView(textareaobs);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, 230, 130));
+
+        btnagendar.setBackground(new java.awt.Color(44, 148, 82));
+        btnagendar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnagendar.setText("Cadastrar");
+        btnagendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnagendarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnagendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, 230, 30));
+
+        lblclientes.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
+        lblclientes.setText("Clientes");
+        jPanel1.add(lblclientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, -1, -1));
+
+        tablecliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Id", "Nome", "CPF", "Telefone", "Nascimento"
+            }
+        ));
+        jScrollPane2.setViewportView(tablecliente);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 670, 120));
+
+        lblnascimento.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblnascimento.setText("Nascimento");
+        jPanel1.add(lblnascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
+
+        jtextnome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextnomeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtextnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 165, 192, -1));
+
+        jtextcpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextcpfActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtextcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 192, -1));
+
+        lblcpf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblcpf.setText("CPF");
+        jPanel1.add(lblcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, -1));
+
+        lbltelefone.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbltelefone.setText("Telefone");
+        jPanel1.add(lbltelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 235, -1, -1));
+
+        jtexttelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtexttelefoneActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtexttelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 235, 192, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 798, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtextidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextidActionPerformed
+
+    private void textnascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textnascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textnascimentoActionPerformed
+
+    private void jtextnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextnomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextnomeActionPerformed
+
+    private void jtextcpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextcpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextcpfActionPerformed
+
+    private void jtexttelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtexttelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtexttelefoneActionPerformed
+
+    private void btnagendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagendarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnagendarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +220,23 @@ public class viewCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnagendar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jtextcpf;
+    private javax.swing.JTextField jtextid;
+    private javax.swing.JTextField jtextnome;
+    private javax.swing.JTextField jtexttelefone;
+    private javax.swing.JLabel lblclientes;
+    private javax.swing.JLabel lblcpf;
+    private javax.swing.JLabel lblid;
+    private javax.swing.JLabel lblnascimento;
+    private javax.swing.JLabel lblnome;
+    private javax.swing.JLabel lblobservacao;
+    private javax.swing.JLabel lbltelefone;
+    private javax.swing.JTable tablecliente;
+    private javax.swing.JTextArea textareaobs;
+    private javax.swing.JTextField textnascimento;
     // End of variables declaration//GEN-END:variables
 }

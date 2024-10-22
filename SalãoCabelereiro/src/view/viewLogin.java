@@ -4,6 +4,7 @@
  */
 package view;
 
+
 /**
  *
  * @author Tiago e Diogo
@@ -26,25 +27,74 @@ public class viewLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        lbllogin = new javax.swing.JLabel();
+        lbllogo = new javax.swing.JLabel();
+        jtextusuario = new javax.swing.JTextField();
+        lblusuario = new javax.swing.JLabel();
+        lblbarbeleon = new javax.swing.JLabel();
+        lblsenha = new javax.swing.JLabel();
+        btentrar = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        lblfundo = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbllogin.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
+        lbllogin.setText("Login");
+        getContentPane().add(lbllogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
+
+        lbllogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\jocimar\\Downloads\\LOGO SVG BARBELEON.png")); // NOI18N
+        getContentPane().add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 310, 280));
+
+        jtextusuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextusuarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jtextusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 210, 20));
+
+        lblusuario.setBackground(new java.awt.Color(153, 153, 153));
+        lblusuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblusuario.setText("Usuario");
+        getContentPane().add(lblusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
+
+        lblbarbeleon.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        lblbarbeleon.setForeground(new java.awt.Color(44, 148, 82));
+        lblbarbeleon.setText("BARBELEON");
+        getContentPane().add(lblbarbeleon, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, -1, -1));
+
+        lblsenha.setBackground(new java.awt.Color(187, 187, 187));
+        lblsenha.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblsenha.setText("Senha");
+        getContentPane().add(lblsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
+
+        btentrar.setBackground(new java.awt.Color(44, 148, 82));
+        btentrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btentrar.setText("Entrar");
+        btentrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btentrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btentrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btentrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 90, 30));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 210, -1));
+
+        lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
+        getContentPane().add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 788, 553));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jtextusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextusuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextusuarioActionPerformed
+
+    private void btentrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btentrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btentrarActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -78,5 +128,14 @@ public class viewLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btentrar;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTextField jtextusuario;
+    private javax.swing.JLabel lblbarbeleon;
+    private javax.swing.JLabel lblfundo;
+    private javax.swing.JLabel lbllogin;
+    private javax.swing.JLabel lbllogo;
+    private javax.swing.JLabel lblsenha;
+    private javax.swing.JLabel lblusuario;
     // End of variables declaration//GEN-END:variables
 }
