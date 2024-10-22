@@ -14,7 +14,7 @@ package conexao;
 public class Conexao {
        
     final private String driver = "com.mysql.jdbc.Driver"; //Definição do driver MySQL para acesso aos dados
-    final private String url = "jdbc:mysql://localhost/clientes"; //Acesso ao banco de dados do servidor
+    final private String url = "jdbc:mysql://localhost/db_barbearia_barbeleon"; //Acesso ao banco de dados do servidor
     final private String usuario = "root"; // Usuário do MySQL - usbwebserver
     final private String senha = ""; // Senha do MySQL - usbwebserver
     private Connection conexao; // Variável que armazenará a conexão aberta
