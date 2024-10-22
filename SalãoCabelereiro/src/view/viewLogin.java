@@ -16,6 +16,7 @@ public class viewLogin extends javax.swing.JFrame {
      */
     public viewLogin() {
         initComponents();
+        
     }
 
     /**
@@ -33,7 +34,7 @@ public class viewLogin extends javax.swing.JFrame {
         lblusuario = new javax.swing.JLabel();
         lblbarbeleon = new javax.swing.JLabel();
         lblsenha = new javax.swing.JLabel();
-        btentrar = new javax.swing.JButton();
+        btnentrar = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
         lblfundo = new javax.swing.JLabel();
 
@@ -73,17 +74,17 @@ public class viewLogin extends javax.swing.JFrame {
         lblsenha.setText("Senha");
         getContentPane().add(lblsenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
 
-        btentrar.setBackground(new java.awt.Color(44, 148, 82));
-        btentrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btentrar.setForeground(new java.awt.Color(204, 204, 204));
-        btentrar.setText("Entrar");
-        btentrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btentrar.addActionListener(new java.awt.event.ActionListener() {
+        btnentrar.setBackground(new java.awt.Color(44, 148, 82));
+        btnentrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnentrar.setForeground(new java.awt.Color(204, 204, 204));
+        btnentrar.setText("Entrar");
+        btnentrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnentrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btentrarActionPerformed(evt);
+                btnentrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btentrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 90, 30));
+        getContentPane().add(btnentrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 90, 30));
         getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 210, -1));
 
         lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
@@ -96,9 +97,9 @@ public class viewLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtextusuarioActionPerformed
 
-    private void btentrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btentrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btentrarActionPerformed
+    private void btnentrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnentrarActionPerformed
+
+    }//GEN-LAST:event_btnentrarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -133,7 +134,7 @@ public class viewLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btentrar;
+    private javax.swing.JButton btnentrar;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jtextusuario;
     private javax.swing.JLabel lblbarbeleon;

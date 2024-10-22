@@ -53,6 +53,11 @@ public class viewHome extends javax.swing.JFrame {
         jmenucadastro.add(jitemprofissional);
 
         jitemcliente.setText("Cliente");
+        jitemcliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jitemclienteActionPerformed(evt);
+            }
+        });
         jmenucadastro.add(jitemcliente);
 
         jitemserviço.setText("Serviço");
@@ -71,6 +76,10 @@ public class viewHome extends javax.swing.JFrame {
     private void jitemprofissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jitemprofissionalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jitemprofissionalActionPerformed
+
+    private void jitemclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jitemclienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jitemclienteActionPerformed
 
     /**
      * @param args the command line arguments
