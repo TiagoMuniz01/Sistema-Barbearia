@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.sql.*;
+
 /**
  *
  * @author Tiago e Diogo
@@ -12,6 +14,7 @@ public class Profissional extends Pessoa{
   
     private String rg_profissional;
     private String desc_profissional;
+    private 
 
     public Profissional(String rg_profissional, String desc_profissional, int cod, String nome, String cpf, String email, String telefone) {
         super(cod, nome, cpf, email, telefone);
@@ -35,5 +38,7 @@ public class Profissional extends Pessoa{
         this.desc_profissional = desc_profissional;
     }
     
-    
+    public String inserir(){
+        return s;
+    } 
 }
