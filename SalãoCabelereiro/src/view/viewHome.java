@@ -4,6 +4,11 @@
  */
 package view;
 
+import view.cadastro.viewAgendamento;
+import view.cadastro.viewCliente;
+import view.cadastro.viewProfissional;
+import view.cadastro.viewServico;
+
 /**
  *
  * @author Tiago e Diogo
@@ -26,6 +31,7 @@ public class viewHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         lblfundo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmenucadastro = new javax.swing.JMenu();
@@ -39,11 +45,21 @@ public class viewHome extends javax.swing.JFrame {
         setForeground(new java.awt.Color(51, 51, 51));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/logo.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 330, 270));
+
         lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
         getContentPane().add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 730, 560));
 
+        jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
+        jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jmenucadastro.setBackground(new java.awt.Color(51, 51, 51));
+        jmenucadastro.setForeground(new java.awt.Color(44, 148, 82));
         jmenucadastro.setText("Cadastro");
 
+        jitemprofissional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/icons/profissional.png"))); // NOI18N
         jitemprofissional.setText("Profissional");
         jitemprofissional.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,6 +68,7 @@ public class viewHome extends javax.swing.JFrame {
         });
         jmenucadastro.add(jitemprofissional);
 
+        jitemcliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/icons/adicionar-usuario.png"))); // NOI18N
         jitemcliente.setText("Cliente");
         jitemcliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,10 +77,22 @@ public class viewHome extends javax.swing.JFrame {
         });
         jmenucadastro.add(jitemcliente);
 
+        jitemserviço.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/icons/tesoura.png"))); // NOI18N
         jitemserviço.setText("Serviço");
+        jitemserviço.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jitemserviçoActionPerformed(evt);
+            }
+        });
         jmenucadastro.add(jitemserviço);
 
+        jitemagendamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/icons/calendario.png"))); // NOI18N
         jitemagendamento.setText("Agendamento");
+        jitemagendamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jitemagendamentoActionPerformed(evt);
+            }
+        });
         jmenucadastro.add(jitemagendamento);
 
         jMenuBar1.add(jmenucadastro);
@@ -74,12 +103,24 @@ public class viewHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jitemprofissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jitemprofissionalActionPerformed
-        // TODO add your handling code here:
+        viewProfissional tela = new viewProfissional();
+        tela.setVisible(true);
     }//GEN-LAST:event_jitemprofissionalActionPerformed
 
     private void jitemclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jitemclienteActionPerformed
-        // TODO add your handling code here:
+         viewCliente tela = new viewCliente();
+         tela.setVisible(true);
     }//GEN-LAST:event_jitemclienteActionPerformed
+
+    private void jitemserviçoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jitemserviçoActionPerformed
+        viewServico tela = new viewServico();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jitemserviçoActionPerformed
+
+    private void jitemagendamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jitemagendamentoActionPerformed
+        viewAgendamento tela = new viewAgendamento();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jitemagendamentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,6 +158,7 @@ public class viewHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jitemagendamento;
     private javax.swing.JMenuItem jitemcliente;

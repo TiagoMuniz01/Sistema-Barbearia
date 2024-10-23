@@ -27,30 +27,35 @@ public class viewCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jtextid = new javax.swing.JTextField();
         lblid = new javax.swing.JLabel();
+        jtextid = new javax.swing.JTextField();
+        lblnascimento = new javax.swing.JLabel();
         textnascimento = new javax.swing.JTextField();
         lblnome = new javax.swing.JLabel();
+        jtextnome = new javax.swing.JTextField();
         lblobservacao = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textareaobs = new javax.swing.JTextArea();
-        btnagendar = new javax.swing.JButton();
-        lblclientes = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablecliente = new javax.swing.JTable();
-        lblnascimento = new javax.swing.JLabel();
-        jtextnome = new javax.swing.JTextField();
-        jtextcpf = new javax.swing.JTextField();
         lblcpf = new javax.swing.JLabel();
+        jtextcpf = new javax.swing.JTextField();
         lbltelefone = new javax.swing.JLabel();
         jtexttelefone = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablecliente = new javax.swing.JTable();
+        lblclientes = new javax.swing.JLabel();
+        btnagendar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblfundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(17, 17, 17));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblid.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblid.setForeground(new java.awt.Color(204, 204, 204));
+        lblid.setText("Id");
+        jPanel1.add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
 
         jtextid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,9 +64,10 @@ public class viewCliente extends javax.swing.JFrame {
         });
         jPanel1.add(jtextid, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 40, -1));
 
-        lblid.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblid.setText("Id");
-        jPanel1.add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
+        lblnascimento.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblnascimento.setForeground(new java.awt.Color(204, 204, 204));
+        lblnascimento.setText("Nascimento");
+        jPanel1.add(lblnascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, -1, -1));
 
         textnascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,33 +77,53 @@ public class viewCliente extends javax.swing.JFrame {
         jPanel1.add(textnascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 192, -1));
 
         lblnome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblnome.setForeground(new java.awt.Color(204, 204, 204));
         lblnome.setText("Nome");
         jPanel1.add(lblnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
 
+        jtextnome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextnomeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtextnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 192, -1));
+
         lblobservacao.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblobservacao.setForeground(new java.awt.Color(204, 204, 204));
         lblobservacao.setText("Observações:");
-        jPanel1.add(lblobservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, -1));
+        jPanel1.add(lblobservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, -1, -1));
 
         textareaobs.setColumns(20);
         textareaobs.setRows(5);
         jScrollPane1.setViewportView(textareaobs);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 230, 130));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 230, 130));
 
-        btnagendar.setBackground(new java.awt.Color(44, 148, 82));
-        btnagendar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnagendar.setText("Cadastrar");
-        btnagendar.addActionListener(new java.awt.event.ActionListener() {
+        lblcpf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblcpf.setForeground(new java.awt.Color(204, 204, 204));
+        lblcpf.setText("CPF");
+        jPanel1.add(lblcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
+
+        jtextcpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnagendarActionPerformed(evt);
+                jtextcpfActionPerformed(evt);
             }
         });
-        jPanel1.add(btnagendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 230, 30));
+        jPanel1.add(jtextcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 192, -1));
 
-        lblclientes.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
-        lblclientes.setText("Clientes");
-        jPanel1.add(lblclientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
+        lbltelefone.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbltelefone.setForeground(new java.awt.Color(204, 204, 204));
+        lbltelefone.setText("Telefone");
+        jPanel1.add(lbltelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, -1));
 
+        jtexttelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtexttelefoneActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtexttelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 192, -1));
+
+        tablecliente.setForeground(new java.awt.Color(204, 204, 204));
         tablecliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -111,46 +137,29 @@ public class viewCliente extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablecliente);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 670, 120));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 670, 120));
 
-        lblnascimento.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblnascimento.setText("Nascimento");
-        jPanel1.add(lblnascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+        lblclientes.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
+        lblclientes.setForeground(new java.awt.Color(204, 204, 204));
+        lblclientes.setText("Clientes");
+        jPanel1.add(lblclientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
 
-        jtextnome.addActionListener(new java.awt.event.ActionListener() {
+        btnagendar.setBackground(new java.awt.Color(44, 148, 82));
+        btnagendar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnagendar.setForeground(new java.awt.Color(255, 255, 255));
+        btnagendar.setText("Cadastrar");
+        btnagendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextnomeActionPerformed(evt);
+                btnagendarActionPerformed(evt);
             }
         });
-        jPanel1.add(jtextnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 192, -1));
+        jPanel1.add(btnagendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 230, 30));
 
-        jtextcpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextcpfActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jtextcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 192, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/Painel.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 710, 360));
 
-        lblcpf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblcpf.setText("CPF");
-        jPanel1.add(lblcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
-
-        lbltelefone.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbltelefone.setText("Telefone");
-        jPanel1.add(lbltelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, -1));
-
-        jtexttelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtexttelefoneActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jtexttelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 192, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/Painel.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 730, 380));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 790, 520));
+        lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
+        jPanel1.add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 790, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -229,7 +238,6 @@ public class viewCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnagendar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -240,6 +248,7 @@ public class viewCliente extends javax.swing.JFrame {
     private javax.swing.JTextField jtexttelefone;
     private javax.swing.JLabel lblclientes;
     private javax.swing.JLabel lblcpf;
+    private javax.swing.JLabel lblfundo;
     private javax.swing.JLabel lblid;
     private javax.swing.JLabel lblnascimento;
     private javax.swing.JLabel lblnome;

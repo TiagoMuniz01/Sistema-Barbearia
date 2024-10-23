@@ -47,7 +47,7 @@
     <Component class="javax.swing.JLabel" name="lbllogo">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor" preCode="&#xa;">
-          <Image iconType="2" name="C:\Users\jocimar\Downloads\LOGO SVG BARBELEON.png"/>
+          <Image iconType="3" name="/view/imgBarb/imagens/logo.png"/>
         </Property>
       </Properties>
       <Constraints>

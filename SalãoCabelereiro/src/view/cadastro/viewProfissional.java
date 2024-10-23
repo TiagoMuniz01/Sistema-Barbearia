@@ -62,6 +62,7 @@ public class viewProfissional extends javax.swing.JFrame {
         jPanel1.add(jtextid, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 40, -1));
 
         lblid.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblid.setForeground(new java.awt.Color(204, 204, 204));
         lblid.setText("Id");
         jPanel1.add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
 
@@ -73,6 +74,7 @@ public class viewProfissional extends javax.swing.JFrame {
         jPanel1.add(jtextnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 192, -1));
 
         lblnome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblnome.setForeground(new java.awt.Color(204, 204, 204));
         lblnome.setText("Nome");
         jPanel1.add(lblnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
 
@@ -83,6 +85,7 @@ public class viewProfissional extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 230, 130));
 
         lblobservacao.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblobservacao.setForeground(new java.awt.Color(204, 204, 204));
         lblobservacao.setText("Observações:");
         jPanel1.add(lblobservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, -1));
 
@@ -94,6 +97,7 @@ public class viewProfissional extends javax.swing.JFrame {
         jPanel1.add(textnascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 190, -1));
 
         lblnascimento.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblnascimento.setForeground(new java.awt.Color(204, 204, 204));
         lblnascimento.setText("Nascimento");
         jPanel1.add(lblnascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
 
@@ -105,6 +109,7 @@ public class viewProfissional extends javax.swing.JFrame {
         jPanel1.add(jtextcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 192, -1));
 
         lblcpf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblcpf.setForeground(new java.awt.Color(204, 204, 204));
         lblcpf.setText("CPF");
         jPanel1.add(lblcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
 
@@ -116,6 +121,7 @@ public class viewProfissional extends javax.swing.JFrame {
         jPanel1.add(jtexttelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 192, -1));
 
         lbltelefone.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbltelefone.setForeground(new java.awt.Color(204, 204, 204));
         lbltelefone.setText("Telefone");
         jPanel1.add(lbltelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
 
@@ -127,10 +133,12 @@ public class viewProfissional extends javax.swing.JFrame {
         jPanel1.add(jtextemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 192, -1));
 
         lblemail.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblemail.setForeground(new java.awt.Color(204, 204, 204));
         lblemail.setText("Email");
         jPanel1.add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
 
         lblclientes.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
+        lblclientes.setForeground(new java.awt.Color(204, 204, 204));
         lblclientes.setText("Profissionais");
         jPanel1.add(lblclientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
 
@@ -151,6 +159,7 @@ public class viewProfissional extends javax.swing.JFrame {
 
         btnagendar.setBackground(new java.awt.Color(44, 148, 82));
         btnagendar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnagendar.setForeground(new java.awt.Color(255, 255, 255));
         btnagendar.setText("Cadastrar");
         btnagendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,8 +168,7 @@ public class viewProfissional extends javax.swing.JFrame {
         });
         jPanel1.add(btnagendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 230, 30));
 
-        lblpainel.setIcon(new javax.swing.ImageIcon("C:\\Users\\jocimar\\Downloads\\Rectangle 37.png")); // NOI18N
-        lblpainel.setText("jLabel2");
+        lblpainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/Painel.png"))); // NOI18N
         jPanel1.add(lblpainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 730, 390));
 
         lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N

@@ -47,7 +47,7 @@ public class viewLogin extends javax.swing.JFrame {
         lbllogin.setText("Login");
         getContentPane().add(lbllogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
 
-        lbllogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\jocimar\\Downloads\\LOGO SVG BARBELEON.png")); // NOI18N
+        lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/logo.png"))); // NOI18N
         getContentPane().add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 310, 280));
 
         jtextusuario.addActionListener(new java.awt.event.ActionListener() {
