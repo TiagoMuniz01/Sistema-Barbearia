@@ -4,56 +4,64 @@
  */
 package conexao;
 
-/**
- *
- * @author jocimar
- */
-    import javax.swing.JOptionPane;
-    import java.sql.*; // Importando classe sql para execução de comandos SQL no ambiente JAVA
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.ResultSet;
 
 public class Conexao {
-       
-    final private String driver = "com.mysql.jdbc.Driver"; //Definição do driver MySQL para acesso aos dados
-    final private String url = "jdbc:mysql://localhost/db_barbearia_barbeleon"; //Acesso ao banco de dados do servidor
-    final private String usuario = "root"; // Usuário do MySQL - usbwebserver
-    final private String senha = ""; // Senha do MySQL - usbwebserver
-    private Connection conexao; // Variável que armazenará a conexão aberta
-    public Statement statement; // Variável  para execução dos comandos SQL dentro do ambiente JAVA
+
+    final private String driver = "com.mysql.cj.jdbc.Driver"; // Atualizado para o driver mais recente do MySQL
+    final private String url = "jdbc:mysql://localhost/db_barbearia_barbeleon"; // URL de conexão com o banco de dados
+    final private String usuario = "root"; // Usuário do MySQL
+    final private String senha = ""; // Senha do MySQL
+    public Connection conexao; // Variável que armazenará a conexão aberta
+    public Statement statement; // Variável para execução dos comandos SQL no ambiente JAVA
     public ResultSet resultset; // Variável que armazenará o resultado da execução de um comando SQL
     
+    public Connection getConexao() {
+        return this.conexao;
+    }
+
+    // Método para estabelecer a conexão com o banco de dados
     public boolean conecta() {
         boolean result = true;
-        try{
-            Class.forName(driver);
-            conexao = DriverManager.getConnection(url, usuario, senha); //Comando para a conexão
-            JOptionPane.showMessageDialog(null, "Conexão estabelecida", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
-        }catch(ClassNotFoundException Driver){
-            JOptionPane.showMessageDialog(null, "Driver não localizado"+Driver,"Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        try {
+            Class.forName(driver); // Carrega o driver JDBC
+            conexao = DriverManager.getConnection(url, usuario, senha); // Estabelece a conexão
+            System.out.println("Conexão estabelecida com sucesso.");
+        } catch (ClassNotFoundException Driver) {
+            System.out.println("Driver não localizado: " + Driver.getMessage());
             result = false;
-        }catch(SQLException Fonte){
-            JOptionPane.showMessageDialog(null, "Fonte de dados não localizada"+Fonte,"Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException Fonte) {
+            System.out.println("Erro na fonte de dados: " + Fonte.getMessage());
             result = false;
         }
-        
         return result;
     }
-    
+
+    // Método para fechar a conexão com o banco de dados
     public void desconecta() {
         try {
-            conexao.close();
-            JOptionPane.showMessageDialog(null, "Conexão com o banco fechada", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
-        }catch(SQLException fecha){
-            
+            if (conexao != null && !conexao.isClosed()) {
+                conexao.close();
+                System.out.println("Conexão com o banco fechada.");
+            }
+        } catch (SQLException fecha) {
+            System.out.println("Erro ao fechar a conexão: " + fecha.getMessage());
         }
     }
-    
-    public void executaSQL(String sql){
-        try{
+
+    // Método para executar comandos SQL
+    public void executaSQL(String sql) {
+        try {
             statement = conexao.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             resultset = statement.executeQuery(sql);
-        }catch (SQLException excecao){
-            JOptionPane.showMessageDialog(null, "Erro no comando SQL! \n Erro: "+excecao,"Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println("Comando SQL executado com sucesso.");
+        } catch (SQLException excecao) {
+            System.out.println("Erro no comando SQL: " + excecao.getMessage());
         }
     }
-    
 }
+
