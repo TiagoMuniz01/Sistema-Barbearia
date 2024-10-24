@@ -1,3 +1,5 @@
+package model;
+
 import conexao.Conexao;
 import java.sql.*;
 import java.util.ArrayList;
