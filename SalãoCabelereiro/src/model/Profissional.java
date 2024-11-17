@@ -5,38 +5,26 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Profissional {
+public class Profissional extends Pessoa {
     // Atributos
-    private int id; // Supondo que ID é um campo gerado pelo banco de dados
-    private String nome;
     private String especialidade;
-    private String telefone;
-    private String celular;
     private String endereco;
     private final Conexao conexao;
 
-    // Construtor
+    // Construtores
     public Profissional() {
-        this.conexao = new Conexao(); // Instancia a classe de conexão
+        // Construtor vazio para permitir a criação de objetos sem inicialização imediata
+        this.conexao = new Conexao();
     }
 
-    // Getters e Setters
-    public int getId() {
-        return id;
+    public Profissional(int cod, String nome, String cpf, String email, String telefone, String especialidade, String endereco) {
+        super(cod, nome, cpf, email, telefone);
+        this.especialidade = especialidade;
+        this.endereco = endereco;
+        this.conexao = new Conexao();
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
+    // Métodos Getters e Setters
     public String getEspecialidade() {
         return especialidade;
     }
@@ -53,14 +41,6 @@ public class Profissional {
         this.telefone = telefone;
     }
 
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
     public String getEndereco() {
         return endereco;
     }
@@ -71,7 +51,7 @@ public class Profissional {
 
     // Método para inserir um profissional
     public boolean inserir() {
-        String sql = "INSERT INTO profissional (nome, especialidade, telefone, celular, endereco) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO profissional (nome, especialidade, telefone, endereco) VALUES (?, ?, ?, ?)";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -80,11 +60,10 @@ public class Profissional {
 
         try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
             // Define os valores para a inserção
-            stmt.setString(1, this.nome);
+            stmt.setString(1, this.getNome());
             stmt.setString(2, this.especialidade);
             stmt.setString(3, this.telefone);
-            stmt.setString(4, this.celular);
-            stmt.setString(5, this.endereco);
+            stmt.setString(4, this.endereco);
 
             int rowsInserted = stmt.executeUpdate(); // Executa a inserção
             return rowsInserted > 0; // Retorna true se alguma linha foi inserida
@@ -112,11 +91,10 @@ public class Profissional {
             while (resultSet.next()) {
                 // Criação do objeto Profissional a partir do resultado da consulta
                 Profissional profissional = new Profissional();
-                profissional.setId(resultSet.getInt("id"));
+                profissional.setCod(resultSet.getInt("código"));
                 profissional.setNome(resultSet.getString("nome"));
                 profissional.setEspecialidade(resultSet.getString("especialidade"));
                 profissional.setTelefone(resultSet.getString("telefone"));
-                profissional.setCelular(resultSet.getString("celular"));
                 profissional.setEndereco(resultSet.getString("endereco"));
                 profissionais.add(profissional); // Adiciona o profissional à lista
             }
@@ -131,7 +109,7 @@ public class Profissional {
 
     // Método para atualizar um profissional
     public boolean atualizar() {
-        String sql = "UPDATE profissional SET nome=?, especialidade=?, telefone=?, celular=?, endereco=? WHERE id=?";
+        String sql = "UPDATE profissional SET nome=?, especialidade=?, telefone=?, endereco=? WHERE id=?";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -140,12 +118,11 @@ public class Profissional {
 
         try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
             // Define os valores para a atualização
-            stmt.setString(1, this.nome);
+            stmt.setString(1, this.getNome());
             stmt.setString(2, this.especialidade);
             stmt.setString(3, this.telefone);
-            stmt.setString(4, this.celular);
-            stmt.setString(5, this.endereco);
-            stmt.setInt(6, this.id); // ID do profissional para localização
+            stmt.setString(4, this.endereco);
+            stmt.setInt(5, this.getCod()); // Código do profissional para localização
 
             int rowsUpdated = stmt.executeUpdate(); // Executa a atualização
             return rowsUpdated > 0; // Retorna true se alguma linha foi atualizada

@@ -31,8 +31,6 @@ public class viewProfissional extends javax.swing.JFrame {
         lblid = new javax.swing.JLabel();
         jtextnome = new javax.swing.JTextField();
         lblnome = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textareaobs = new javax.swing.JTextArea();
         lblobservacao = new javax.swing.JLabel();
         textnascimento = new javax.swing.JTextField();
         lblnascimento = new javax.swing.JLabel();
@@ -78,16 +76,10 @@ public class viewProfissional extends javax.swing.JFrame {
         lblnome.setText("Nome");
         jPanel1.add(lblnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
 
-        textareaobs.setColumns(20);
-        textareaobs.setRows(5);
-        jScrollPane1.setViewportView(textareaobs);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 230, 130));
-
         lblobservacao.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblobservacao.setForeground(new java.awt.Color(204, 204, 204));
-        lblobservacao.setText("Observações:");
-        jPanel1.add(lblobservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, -1));
+        lblobservacao.setText("Especialidade:");
+        jPanel1.add(lblobservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
 
         textnascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,7 +164,7 @@ public class viewProfissional extends javax.swing.JFrame {
         jPanel1.add(lblpainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 730, 390));
 
         lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
-        jPanel1.add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 790, 520));
+        jPanel1.add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -254,7 +246,6 @@ public class viewProfissional extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnagendar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jtextcpf;
     private javax.swing.JTextField jtextemail;
@@ -272,7 +263,6 @@ public class viewProfissional extends javax.swing.JFrame {
     private javax.swing.JLabel lblpainel;
     private javax.swing.JLabel lbltelefone;
     private javax.swing.JTable tablecliente;
-    private javax.swing.JTextArea textareaobs;
     private javax.swing.JTextField textnascimento;
     // End of variables declaration//GEN-END:variables
 }

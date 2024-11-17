@@ -39,9 +39,6 @@ public class viewAgendamento extends javax.swing.JFrame {
         jtexthora = new javax.swing.JTextField();
         lblservico = new javax.swing.JLabel();
         jcomboservico = new javax.swing.JComboBox<>();
-        lblobservacao = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textareaobs = new javax.swing.JTextArea();
         btnagendar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableagendamento = new javax.swing.JTable();
@@ -128,22 +125,16 @@ public class viewAgendamento extends javax.swing.JFrame {
         });
         jpanelfundo.add(jcomboservico, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 192, -1));
 
-        lblobservacao.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblobservacao.setForeground(new java.awt.Color(204, 204, 204));
-        lblobservacao.setText("Observações:");
-        jpanelfundo.add(lblobservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, -1, -1));
-
-        textareaobs.setColumns(20);
-        textareaobs.setRows(5);
-        jScrollPane1.setViewportView(textareaobs);
-
-        jpanelfundo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 230, 160));
-
         btnagendar.setBackground(new java.awt.Color(44, 148, 82));
         btnagendar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnagendar.setForeground(new java.awt.Color(255, 255, 255));
         btnagendar.setText("Agendar");
-        jpanelfundo.add(btnagendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 230, 30));
+        btnagendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnagendarActionPerformed(evt);
+            }
+        });
+        jpanelfundo.add(btnagendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 230, 30));
 
         tableagendamento.setForeground(new java.awt.Color(204, 204, 204));
         tableagendamento.setModel(new javax.swing.table.DefaultTableModel(
@@ -159,47 +150,51 @@ public class viewAgendamento extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tableagendamento);
 
-        jpanelfundo.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 670, 90));
+        jpanelfundo.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 670, 90));
 
         lblagendamento.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
         lblagendamento.setForeground(new java.awt.Color(204, 204, 204));
         lblagendamento.setText("Agendamento");
-        jpanelfundo.add(lblagendamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, -1, -1));
+        jpanelfundo.add(lblagendamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, -1, -1));
 
         lblpainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/Painel.png"))); // NOI18N
-        jpanelfundo.add(lblpainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 710, 390));
+        jpanelfundo.add(lblpainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 710, 320));
 
         lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
-        jpanelfundo.add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 790, 520));
+        jpanelfundo.add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 470));
 
-        getContentPane().add(jpanelfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 430));
+        getContentPane().add(jpanelfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtextidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextidActionPerformed
+    private void btnagendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagendarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtextidActionPerformed
+    }//GEN-LAST:event_btnagendarActionPerformed
 
-    private void jtextnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextnomeActionPerformed
+    private void jcomboservicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboservicoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtextnomeActionPerformed
-
-    private void jtextdataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextdataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtextdataActionPerformed
-
-    private void jtextvalorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextvalorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtextvalorActionPerformed
+    }//GEN-LAST:event_jcomboservicoActionPerformed
 
     private void jtexthoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtexthoraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtexthoraActionPerformed
 
-    private void jcomboservicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomboservicoActionPerformed
+    private void jtextvalorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextvalorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jcomboservicoActionPerformed
+    }//GEN-LAST:event_jtextvalorActionPerformed
+
+    private void jtextdataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextdataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextdataActionPerformed
+
+    private void jtextnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextnomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextnomeActionPerformed
+
+    private void jtextidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextidActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,7 +233,6 @@ public class viewAgendamento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnagendar;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox<String> jcomboservico;
     private javax.swing.JPanel jpanelfundo;
@@ -253,11 +247,9 @@ public class viewAgendamento extends javax.swing.JFrame {
     private javax.swing.JLabel lblhora;
     private javax.swing.JLabel lblid;
     private javax.swing.JLabel lblnome;
-    private javax.swing.JLabel lblobservacao;
     private javax.swing.JLabel lblpainel;
     private javax.swing.JLabel lblservico;
     private javax.swing.JLabel lblvalor;
     private javax.swing.JTable tableagendamento;
-    private javax.swing.JTextArea textareaobs;
     // End of variables declaration//GEN-END:variables
 }

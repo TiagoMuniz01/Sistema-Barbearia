@@ -24,6 +24,10 @@ abstract public class Pessoa { //Classe pai para as classes filho profissional e
         this.email = email;
         this.telefone = telefone;
     }
+    
+    public Pessoa() {
+    
+    }
 
     public int getCod() {
         return cod;
