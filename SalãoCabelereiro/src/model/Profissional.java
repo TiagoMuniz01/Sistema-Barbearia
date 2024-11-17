@@ -7,8 +7,9 @@ import java.util.List;
 
 public class Profissional extends Pessoa {
     // Atributos
-    private String especialidade;
-    private String endereco;
+    private String desc_profissional;
+    private String telefone_profissional;
+    private String rg_profissional;
     private final Conexao conexao;
 
     // Construtores
@@ -17,41 +18,42 @@ public class Profissional extends Pessoa {
         this.conexao = new Conexao();
     }
 
-    public Profissional(int cod, String nome, String cpf, String email, String telefone, String especialidade, String endereco) {
-        super(cod, nome, cpf, email, telefone);
-        this.especialidade = especialidade;
-        this.endereco = endereco;
+    public Profissional(int cod_profissional, String nome_profissional, String cpf_profissional, String email_profissional, String telefone_profissional, String desc_profissional, String rg_profissional) {
+        super(cod_profissional, nome_profissional, cpf_profissional, email_profissional, telefone_profissional);
+        this.desc_profissional = desc_profissional;
+        this.telefone_profissional = telefone_profissional;
+        this.rg_profissional = rg_profissional;
         this.conexao = new Conexao();
     }
 
     // Métodos Getters e Setters
-    public String getEspecialidade() {
-        return especialidade;
+    public String getDesc_profissional() {
+        return desc_profissional;
     }
 
-    public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
+    public void setDesc_profissional(String desc_profissional) {
+        this.desc_profissional = desc_profissional;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getTelefone_profissional() {
+        return telefone_profissional;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setTelefone_profissional(String telefone_profissional) {
+        this.telefone_profissional = telefone_profissional;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getRg_profissional() {
+        return rg_profissional;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setRg_profissional(String rg_profissional) {
+        this.rg_profissional = rg_profissional;
     }
 
     // Método para inserir um profissional
     public boolean inserir() {
-        String sql = "INSERT INTO profissional (nome, especialidade, telefone, endereco) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO profissional (nome_profissional, cpf_profissional, email_profissional, telefone_profissional, desc_profissional, rg_profissional) VALUES (?, ?, ?, ?, ?, ?)";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -61,9 +63,11 @@ public class Profissional extends Pessoa {
         try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
             // Define os valores para a inserção
             stmt.setString(1, this.getNome());
-            stmt.setString(2, this.especialidade);
-            stmt.setString(3, this.telefone);
-            stmt.setString(4, this.endereco);
+            stmt.setString(2, this.getCpf());
+            stmt.setString(3, this.getEmail());
+            stmt.setString(4, this.telefone_profissional);
+            stmt.setString(5, this.desc_profissional);
+            stmt.setString(6, this.rg_profissional);
 
             int rowsInserted = stmt.executeUpdate(); // Executa a inserção
             return rowsInserted > 0; // Retorna true se alguma linha foi inserida
@@ -78,7 +82,7 @@ public class Profissional extends Pessoa {
     // Método para listar todos os profissionais
     public List<Profissional> listar() {
         List<Profissional> profissionais = new ArrayList<>();
-        String sql = "SELECT * FROM profissional"; 
+        String sql = "SELECT * FROM profissional"; // Consulta ajustada com o nome correto da tabela
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -91,11 +95,13 @@ public class Profissional extends Pessoa {
             while (resultSet.next()) {
                 // Criação do objeto Profissional a partir do resultado da consulta
                 Profissional profissional = new Profissional();
-                profissional.setCod(resultSet.getInt("código"));
-                profissional.setNome(resultSet.getString("nome"));
-                profissional.setEspecialidade(resultSet.getString("especialidade"));
-                profissional.setTelefone(resultSet.getString("telefone"));
-                profissional.setEndereco(resultSet.getString("endereco"));
+                profissional.setCod(resultSet.getInt("cod_profissional"));
+                profissional.setNome(resultSet.getString("nome_profissional"));
+                profissional.setCpf(resultSet.getString("cpf_profissional"));
+                profissional.setEmail(resultSet.getString("email_profissional"));
+                profissional.setTelefone_profissional(resultSet.getString("telefone_profissional"));
+                profissional.setDesc_profissional(resultSet.getString("desc_profissional"));
+                profissional.setRg_profissional(resultSet.getString("rg_profissional"));
                 profissionais.add(profissional); // Adiciona o profissional à lista
             }
         } catch (SQLException e) {
@@ -109,7 +115,7 @@ public class Profissional extends Pessoa {
 
     // Método para atualizar um profissional
     public boolean atualizar() {
-        String sql = "UPDATE profissional SET nome=?, especialidade=?, telefone=?, endereco=? WHERE id=?";
+        String sql = "UPDATE profissional SET nome_profissional=?, cpf_profissional=?, email_profissional=?, telefone_profissional=?, desc_profissional=?, rg_profissional=? WHERE cod_profissional=?";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -119,10 +125,12 @@ public class Profissional extends Pessoa {
         try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
             // Define os valores para a atualização
             stmt.setString(1, this.getNome());
-            stmt.setString(2, this.especialidade);
-            stmt.setString(3, this.telefone);
-            stmt.setString(4, this.endereco);
-            stmt.setInt(5, this.getCod()); // Código do profissional para localização
+            stmt.setString(2, this.getCpf());
+            stmt.setString(3, this.getEmail());
+            stmt.setString(4, this.telefone_profissional);
+            stmt.setString(5, this.desc_profissional);
+            stmt.setString(6, this.rg_profissional);
+            stmt.setInt(7, this.getCod()); // Código do profissional para localização
 
             int rowsUpdated = stmt.executeUpdate(); // Executa a atualização
             return rowsUpdated > 0; // Retorna true se alguma linha foi atualizada
@@ -135,8 +143,8 @@ public class Profissional extends Pessoa {
     }
 
     // Método para excluir um profissional
-    public boolean excluir(int id) {
-        String sql = "DELETE FROM profissional WHERE id=?";
+    public boolean excluir(int cod_profissional) {
+        String sql = "DELETE FROM profissional WHERE cod_profissional=?";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -144,7 +152,7 @@ public class Profissional extends Pessoa {
         }
 
         try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
-            stmt.setInt(1, id); // Define o ID do profissional a ser excluído
+            stmt.setInt(1, cod_profissional); // Define o ID do profissional a ser excluído
             int rowsDeleted = stmt.executeUpdate(); // Executa a exclusão
             return rowsDeleted > 0; // Retorna true se alguma linha foi excluída
         } catch (SQLException e) {
