@@ -162,4 +162,38 @@ public class Profissional extends Pessoa {
             conexao.desconecta(); // Fecha a conexão
         }
     }
+    
+    // Método para buscar um profissional pelo email
+    public Profissional buscarPorEmail(String email) {
+        String sql = "SELECT * FROM profissional WHERE email_profissional = ?";
+
+        if (!conexao.conecta()) {
+            System.out.println("Erro de conexão com o banco de dados");
+            return null;
+        }
+
+        try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                // Cria um objeto Profissional com os dados obtidos
+                Profissional profissional = new Profissional();
+                profissional.setCod(rs.getInt("cod_profissional"));
+                profissional.setNome(rs.getString("nome_profissional"));
+                profissional.setCpf(rs.getString("cpf_profissional"));
+                profissional.setEmail(rs.getString("email_profissional"));
+                profissional.setTelefone_profissional(rs.getString("telefone_profissional"));
+                profissional.setDesc_profissional(rs.getString("desc_profissional"));
+                profissional.setRg_profissional(rs.getString("rg_profissional"));
+                return profissional;  // Retorna o objeto Profissional
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar profissional: " + e.getMessage());
+        } finally {
+            conexao.desconecta(); // Fecha a conexão
+        }
+
+        return null; // Retorna null se o profissional não for encontrado
+    }
 }

@@ -43,9 +43,6 @@ public class viewServico extends javax.swing.JFrame {
         textareaobs1 = new javax.swing.JTextArea();
         lblid1 = new javax.swing.JLabel();
         lblfundo = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textareaobs = new javax.swing.JTextArea();
-        lblobservacao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,7 +106,7 @@ public class viewServico extends javax.swing.JFrame {
                 btnagendarActionPerformed(evt);
             }
         });
-        jpanelfundo.add(btnagendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 150, 20));
+        jpanelfundo.add(btnagendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 150, 20));
 
         tableagendamento.setForeground(new java.awt.Color(204, 204, 204));
         tableagendamento.setModel(new javax.swing.table.DefaultTableModel(
@@ -136,7 +133,7 @@ public class viewServico extends javax.swing.JFrame {
         textareaobs1.setRows(5);
         jScrollPane3.setViewportView(textareaobs1);
 
-        jpanelfundo.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 230, 120));
+        jpanelfundo.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 230, 120));
 
         lblid1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblid1.setForeground(new java.awt.Color(204, 204, 204));
@@ -146,41 +143,15 @@ public class viewServico extends javax.swing.JFrame {
         lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
         jpanelfundo.add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
 
-        textareaobs.setColumns(20);
-        textareaobs.setRows(5);
-        jScrollPane1.setViewportView(textareaobs);
-
-        lblobservacao.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblobservacao.setForeground(new java.awt.Color(204, 204, 204));
-        lblobservacao.setText("Observações:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(309, Short.MAX_VALUE)
-                .addComponent(lblobservacao)
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(192, 192, 192))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jpanelfundo, javax.swing.GroupLayout.PREFERRED_SIZE, 797, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 60, Short.MAX_VALUE)))
+            .addComponent(jpanelfundo, javax.swing.GroupLayout.PREFERRED_SIZE, 797, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblobservacao))
-                .addContainerGap(234, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jpanelfundo, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 48, Short.MAX_VALUE)))
+            .addComponent(jpanelfundo, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -244,7 +215,6 @@ public class viewServico extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnagendar;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel jpanelfundo;
@@ -258,10 +228,8 @@ public class viewServico extends javax.swing.JFrame {
     private javax.swing.JLabel lblid;
     private javax.swing.JLabel lblid1;
     private javax.swing.JLabel lblnome;
-    private javax.swing.JLabel lblobservacao;
     private javax.swing.JLabel lblvalor;
     private javax.swing.JTable tableagendamento;
-    private javax.swing.JTextArea textareaobs;
     private javax.swing.JTextArea textareaobs1;
     // End of variables declaration//GEN-END:variables
 }
