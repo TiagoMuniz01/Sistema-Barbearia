@@ -26,14 +26,10 @@ public class viewProfissional extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jtextid = new javax.swing.JTextField();
         lblid = new javax.swing.JLabel();
         jtextnome = new javax.swing.JTextField();
         lblnome = new javax.swing.JLabel();
-        lblobservacao = new javax.swing.JLabel();
-        textnascimento = new javax.swing.JTextField();
-        lblnascimento = new javax.swing.JLabel();
         jtextcpf = new javax.swing.JTextField();
         lblcpf = new javax.swing.JLabel();
         jtexttelefone = new javax.swing.JTextField();
@@ -43,111 +39,178 @@ public class viewProfissional extends javax.swing.JFrame {
         lblclientes = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablecliente = new javax.swing.JTable();
+        lbltelefone1 = new javax.swing.JLabel();
+        jtexttelefone1 = new javax.swing.JTextField();
+        btnnext = new javax.swing.JButton();
+        tras = new javax.swing.JButton();
+        frente = new javax.swing.JButton();
+        btnreturn = new javax.swing.JButton();
+        btndeletar = new javax.swing.JButton();
+        btnalterar = new javax.swing.JButton();
         btnagendar = new javax.swing.JButton();
         lblpainel = new javax.swing.JLabel();
         lblfundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(17, 17, 17));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jtextid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtextidActionPerformed(evt);
             }
         });
-        jPanel1.add(jtextid, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 40, -1));
+        getContentPane().add(jtextid, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 40, 22));
 
         lblid.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblid.setForeground(new java.awt.Color(204, 204, 204));
         lblid.setText("Id");
-        jPanel1.add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
+        getContentPane().add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, -1));
 
         jtextnome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtextnomeActionPerformed(evt);
             }
         });
-        jPanel1.add(jtextnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 192, -1));
+        getContentPane().add(jtextnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 175, 192, 22));
 
         lblnome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblnome.setForeground(new java.awt.Color(204, 204, 204));
         lblnome.setText("Nome");
-        jPanel1.add(lblnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
-
-        lblobservacao.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblobservacao.setForeground(new java.awt.Color(204, 204, 204));
-        lblobservacao.setText("Especialidade:");
-        jPanel1.add(lblobservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
-
-        textnascimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textnascimentoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(textnascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 190, -1));
-
-        lblnascimento.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblnascimento.setForeground(new java.awt.Color(204, 204, 204));
-        lblnascimento.setText("Nascimento");
-        jPanel1.add(lblnascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
+        getContentPane().add(lblnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 175, -1, -1));
 
         jtextcpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtextcpfActionPerformed(evt);
             }
         });
-        jPanel1.add(jtextcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 192, -1));
+        getContentPane().add(jtextcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 192, 22));
 
         lblcpf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblcpf.setForeground(new java.awt.Color(204, 204, 204));
         lblcpf.setText("CPF");
-        jPanel1.add(lblcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
+        getContentPane().add(lblcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, -1, -1));
 
         jtexttelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtexttelefoneActionPerformed(evt);
             }
         });
-        jPanel1.add(jtexttelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 192, -1));
+        getContentPane().add(jtexttelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 315, 192, 22));
 
         lbltelefone.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbltelefone.setForeground(new java.awt.Color(204, 204, 204));
-        lbltelefone.setText("Telefone");
-        jPanel1.add(lbltelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
+        lbltelefone.setText("Nascimento");
+        getContentPane().add(lbltelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 315, -1, -1));
 
         jtextemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtextemailActionPerformed(evt);
             }
         });
-        jPanel1.add(jtextemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 192, -1));
+        getContentPane().add(jtextemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 245, 192, 22));
 
         lblemail.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblemail.setForeground(new java.awt.Color(204, 204, 204));
         lblemail.setText("Email");
-        jPanel1.add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
+        getContentPane().add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
 
         lblclientes.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
         lblclientes.setForeground(new java.awt.Color(204, 204, 204));
         lblclientes.setText("Profissionais");
-        jPanel1.add(lblclientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
+        getContentPane().add(lblclientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
 
         tablecliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nome", "CPF", "Email", "Teefone", "Nascimento"
+                "Id", "Nome", "Valor", "Duração", "Descrição"
             }
         ));
         jScrollPane2.setViewportView(tablecliente);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 670, 120));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 670, 120));
+
+        lbltelefone1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbltelefone1.setForeground(new java.awt.Color(204, 204, 204));
+        lbltelefone1.setText("Telefone");
+        getContentPane().add(lbltelefone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, -1));
+
+        jtexttelefone1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtexttelefone1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jtexttelefone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 192, 22));
+
+        btnnext.setBackground(new java.awt.Color(44, 148, 82));
+        btnnext.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnnext.setForeground(new java.awt.Color(255, 255, 255));
+        btnnext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/icons/final.png"))); // NOI18N
+        btnnext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnextActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnnext, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, 30, 30));
+
+        tras.setBackground(new java.awt.Color(44, 148, 82));
+        tras.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        tras.setForeground(new java.awt.Color(255, 255, 255));
+        tras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/icons/anterior.png"))); // NOI18N
+        tras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tras, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 30, 30));
+
+        frente.setBackground(new java.awt.Color(44, 148, 82));
+        frente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        frente.setForeground(new java.awt.Color(255, 255, 255));
+        frente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/icons/proximo.png"))); // NOI18N
+        frente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                frenteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(frente, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 30, 30));
+
+        btnreturn.setBackground(new java.awt.Color(44, 148, 82));
+        btnreturn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnreturn.setForeground(new java.awt.Color(255, 255, 255));
+        btnreturn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/icons/inicio.png"))); // NOI18N
+        btnreturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnreturnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnreturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 30, 30));
+
+        btndeletar.setBackground(new java.awt.Color(44, 148, 82));
+        btndeletar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btndeletar.setForeground(new java.awt.Color(255, 255, 255));
+        btndeletar.setText("Deletar");
+        btndeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndeletarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btndeletar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 230, 30));
+
+        btnalterar.setBackground(new java.awt.Color(44, 148, 82));
+        btnalterar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnalterar.setForeground(new java.awt.Color(255, 255, 255));
+        btnalterar.setText("Alterar");
+        btnalterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnalterarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnalterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 230, 30));
 
         btnagendar.setBackground(new java.awt.Color(44, 148, 82));
         btnagendar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -158,24 +221,13 @@ public class viewProfissional extends javax.swing.JFrame {
                 btnagendarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnagendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 230, 30));
+        getContentPane().add(btnagendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 230, 30));
 
         lblpainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/Painel.png"))); // NOI18N
-        jPanel1.add(lblpainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 730, 390));
+        getContentPane().add(lblpainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 710, 390));
 
         lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
-        jPanel1.add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 520));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 790, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -183,14 +235,6 @@ public class viewProfissional extends javax.swing.JFrame {
     private void jtextidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextidActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtextidActionPerformed
-
-    private void jtexttelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtexttelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtexttelefoneActionPerformed
-
-    private void btnagendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagendarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnagendarActionPerformed
 
     private void jtextnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextnomeActionPerformed
         // TODO add your handling code here:
@@ -200,13 +244,45 @@ public class viewProfissional extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtextcpfActionPerformed
 
+    private void jtexttelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtexttelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtexttelefoneActionPerformed
+
     private void jtextemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextemailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtextemailActionPerformed
 
-    private void textnascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textnascimentoActionPerformed
+    private void btnnextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textnascimentoActionPerformed
+    }//GEN-LAST:event_btnnextActionPerformed
+
+    private void trasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_trasActionPerformed
+
+    private void frenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_frenteActionPerformed
+
+    private void btnreturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreturnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnreturnActionPerformed
+
+    private void btndeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeletarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btndeletarActionPerformed
+
+    private void btnalterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnalterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnalterarActionPerformed
+
+    private void btnagendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagendarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnagendarActionPerformed
+
+    private void jtexttelefone1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtexttelefone1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtexttelefone1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,24 +321,28 @@ public class viewProfissional extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnagendar;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton btnalterar;
+    private javax.swing.JButton btndeletar;
+    private javax.swing.JButton btnnext;
+    private javax.swing.JButton btnreturn;
+    private javax.swing.JButton frente;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jtextcpf;
     private javax.swing.JTextField jtextemail;
     private javax.swing.JTextField jtextid;
     private javax.swing.JTextField jtextnome;
     private javax.swing.JTextField jtexttelefone;
+    private javax.swing.JTextField jtexttelefone1;
     private javax.swing.JLabel lblclientes;
     private javax.swing.JLabel lblcpf;
     private javax.swing.JLabel lblemail;
     private javax.swing.JLabel lblfundo;
     private javax.swing.JLabel lblid;
-    private javax.swing.JLabel lblnascimento;
     private javax.swing.JLabel lblnome;
-    private javax.swing.JLabel lblobservacao;
     private javax.swing.JLabel lblpainel;
     private javax.swing.JLabel lbltelefone;
+    private javax.swing.JLabel lbltelefone1;
     private javax.swing.JTable tablecliente;
-    private javax.swing.JTextField textnascimento;
+    private javax.swing.JButton tras;
     // End of variables declaration//GEN-END:variables
 }
