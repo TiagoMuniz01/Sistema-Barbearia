@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.HomeController;
 import view.cadastro.viewAgendamento;
 import view.cadastro.viewCliente;
 import view.cadastro.viewProfissional;
@@ -15,11 +16,15 @@ import view.cadastro.viewServico;
  */
 public class viewHome extends javax.swing.JFrame {
 
+    private final HomeController controller;
+
     /**
      * Creates new form viewHome
      */
     public viewHome() {
         initComponents();
+        this.controller = new HomeController(this);
+        
     }
 
     /**

@@ -5,6 +5,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class Agendamento {
 
@@ -12,7 +13,7 @@ public class Agendamento {
     private Cliente cliente; // FK
     private Profissional profissional; // FK
     private Pagamento pagamento; // FK
-    private int cod_servico;
+    private Servico servico; // FK
     private LocalTime horario_agendamento;
     private LocalDate data_agendamento;
     private final Conexao conexao;
@@ -22,12 +23,12 @@ public class Agendamento {
         this.conexao = new Conexao();
     }
 
-    public Agendamento(int cod_agendamento, Cliente cliente, Profissional profissional, Pagamento pagamento, int cod_servico, String horario_agendamento, String data_agendamento) {
+    public Agendamento(int cod_agendamento, Cliente cliente, Profissional profissional, Pagamento pagamento, Servico servico, String horario_agendamento, String data_agendamento) {
         this.cod_agendamento = cod_agendamento;
         this.cliente = cliente;
         this.profissional = profissional;
         this.pagamento = pagamento;
-        this.cod_servico = cod_servico;
+        this.servico = servico;
 
         // Tenta converter a string horario_agendamento para LocalTime
         try {
@@ -81,12 +82,12 @@ public class Agendamento {
         this.pagamento = pagamento;
     }
 
-    public int getCod_servico() {
-        return cod_servico;
+    public Servico getServico() {
+        return servico;
     }
 
-    public void setCod_servico(int cod_servico) {
-        this.cod_servico = cod_servico;
+    public void setServico(Servico servico) {
+        this.servico = servico;
     }
 
     public LocalTime getHorario_agendamento() {
@@ -117,7 +118,7 @@ public class Agendamento {
 
     // Método para inserir um agendamento
     public boolean inserir() {
-        String sql = "INSERT INTO agendamento (horario_agendamento, data_agendamento, cod_cliente, cod_profissional, cod_servico, cod_pagamento) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tb_agendamento (horario_agendamento, data_agendamento, cod_cliente, cod_profissional, cod_servico, cod_pagamento) VALUES (?, ?, ?, ?, ?, ?)";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -129,7 +130,7 @@ public class Agendamento {
             stmt.setString(2, this.data_agendamento.toString()); // Formato yyyy-MM-dd
             stmt.setInt(3, this.cliente.getCod()); // Chave estrangeira para Cliente
             stmt.setInt(4, this.profissional.getCod()); // Chave estrangeira para Profissional
-            stmt.setInt(5, this.cod_servico); // Chave estrangeira para Serviço
+            stmt.setInt(5, this.servico.getCod_servico()); // Chave estrangeira para Serviço
             stmt.setInt(6, this.pagamento.getCod_pagamento()); // Chave estrangeira para Pagamento
 
             int rowsInserted = stmt.executeUpdate();
@@ -143,31 +144,43 @@ public class Agendamento {
     }
 
     // Método para listar todos os agendamentos
-    public void listar() {
-        String sql = "SELECT * FROM agendamento";
-        
-        if (!conexao.conecta()) {
+    public static ArrayList<Agendamento> listar() {
+        String sql = "SELECT * FROM tb_agendamento";
+        ArrayList<Agendamento> agendamentos = new ArrayList<>();
+
+        // Cria uma nova conexão local em vez de usar a variável de instância
+        Conexao conexaoLocal = new Conexao();
+
+        if (!conexaoLocal.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
-            return;
+            return agendamentos; // Retorna lista vazia em caso de falha de conexão
         }
 
-        try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
+        try (PreparedStatement stmt = conexaoLocal.getConexao().prepareStatement(sql)) {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                System.out.println("Agendamento: " + rs.getInt("cod_agendamento") + " - " +
-                                   rs.getString("horario_agendamento") + " - " +
-                                   rs.getString("data_agendamento"));
+                // Cria um objeto Agendamento e preenche com os dados do ResultSet
+                Agendamento agendamento = new Agendamento();
+                agendamento.setCod_agendamento(rs.getInt("cod_agendamento"));
+                agendamento.setHorario_agendamento(rs.getString("horario_agendamento"));
+                agendamento.setData_agendamento(rs.getString("data_agendamento"));
+                // Você pode adicionar a lógica para preencher os outros objetos aqui
+
+                // Adiciona o objeto Agendamento à lista
+                agendamentos.add(agendamento);
             }
         } catch (SQLException e) {
             System.out.println("Erro ao listar agendamentos: " + e.getMessage());
         } finally {
-            conexao.desconecta();
+            conexaoLocal.desconecta();
         }
+
+        return agendamentos; // Retorna a lista de agendamentos
     }
 
     // Método para atualizar um agendamento
     public boolean atualizar() {
-        String sql = "UPDATE agendamento SET horario_agendamento=?, data_agendamento=?, cod_cliente=?, cod_profissional=?, cod_servico=?, cod_pagamento=? WHERE cod_agendamento=?";
+        String sql = "UPDATE tb_agendamento SET horario_agendamento=?, data_agendamento=?, cod_cliente=?, cod_profissional=?, cod_servico=?, cod_pagamento=? WHERE cod_agendamento=?";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -179,7 +192,7 @@ public class Agendamento {
             stmt.setString(2, this.data_agendamento.toString()); // Formato yyyy-MM-dd
             stmt.setInt(3, this.cliente.getCod()); // Chave estrangeira para Cliente
             stmt.setInt(4, this.profissional.getCod()); // Chave estrangeira para Profissional
-            stmt.setInt(5, this.cod_servico); // Chave estrangeira para Serviço
+            stmt.setInt(5, this.servico.getCod_servico()); // Chave estrangeira para Serviço
             stmt.setInt(6, this.pagamento.getCod_pagamento()); // Chave estrangeira para Pagamento
             stmt.setInt(7, this.cod_agendamento); // Para identificar o agendamento a ser atualizado
 
@@ -195,7 +208,7 @@ public class Agendamento {
 
     // Método para excluir um agendamento
     public boolean excluir() {
-        String sql = "DELETE FROM agendamento WHERE cod_agendamento=?";
+        String sql = "DELETE FROM tb_agendamento WHERE cod_agendamento=?";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");

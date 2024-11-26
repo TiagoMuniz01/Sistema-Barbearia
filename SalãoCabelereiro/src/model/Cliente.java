@@ -69,7 +69,7 @@ public class Cliente extends Pessoa {
 
     // Método para inserir um cliente no banco de dados
     public boolean inserir() {
-        String sql = "INSERT INTO cliente (nome_cliente, cpf_cliente, email_cliente, telefone_cliente, data_nasc, senha_cliente) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tb_cliente (nome_cliente, cpf_cliente, email_cliente, telefone_cliente, data_nasc, senha_cliente) VALUES (?, ?, ?, ?, ?, ?)";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -97,7 +97,7 @@ public class Cliente extends Pessoa {
     // Método para listar todos os clientes
     public List<Cliente> listar() {
         List<Cliente> clientes = new ArrayList<>();
-        String sql = "SELECT * FROM cliente";
+        String sql = "SELECT * FROM tb_cliente";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -130,7 +130,7 @@ public class Cliente extends Pessoa {
 
     // Método para atualizar um cliente no banco de dados
     public boolean atualizar() {
-        String sql = "UPDATE cliente SET nome_cliente=?, cpf_cliente=?, email_cliente=?, telefone_cliente=?, data_nasc=?, senha_cliente=? WHERE cod_cliente=?";
+        String sql = "UPDATE tb_cliente SET nome_cliente=?, cpf_cliente=?, email_cliente=?, telefone_cliente=?, data_nasc=?, senha_cliente=? WHERE cod_cliente=?";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -158,7 +158,7 @@ public class Cliente extends Pessoa {
 
     // Método para excluir um cliente do banco de dados
     public boolean excluir(int cod_cliente) {
-        String sql = "DELETE FROM cliente WHERE cod_cliente=?";
+        String sql = "DELETE FROM tb_cliente WHERE cod_cliente=?";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");

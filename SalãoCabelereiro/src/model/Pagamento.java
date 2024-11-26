@@ -40,7 +40,7 @@ public class Pagamento {
 
     // Método para inserir um pagamento
     public boolean inserir() {
-        String sql = "INSERT INTO pagamento (forma_pagamento) VALUES (?)"; // Ajustando para o campo correto
+        String sql = "INSERT INTO tb_pagamento (forma_pagamento) VALUES (?)"; // Ajustando para o campo correto
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -63,7 +63,7 @@ public class Pagamento {
     // Método para listar todos os pagamentos
     public List<Pagamento> listar() {
         List<Pagamento> pagamentos = new ArrayList<>();
-        String sql = "SELECT * FROM pagamento"; // Consulta ajustada com o nome correto da tabela
+        String sql = "SELECT * FROM tb_pagamento"; // Consulta ajustada com o nome correto da tabela
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -114,7 +114,7 @@ public class Pagamento {
 
     // Método para excluir um pagamento
     public boolean excluir(int cod_pagamento) {
-        String sql = "DELETE FROM pagamento WHERE cod_pagamento=?"; // Ajustando a consulta
+        String sql = "DELETE FROM tb_pagamento WHERE cod_pagamento=?"; // Ajustando a consulta
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");

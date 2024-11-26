@@ -71,7 +71,7 @@ public class Servico {
 
     // Método para inserir um serviço
     public boolean inserir() {
-        String sql = "INSERT INTO servico (nome_servico, preco_servico, tempo_servico, desc_servico) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO tb_servico (nome_servico, preco_servico, tempo_servico, desc_servico) VALUES (?, ?, ?, ?)";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -97,7 +97,7 @@ public class Servico {
     // Método para listar todos os serviços
     public List<Servico> listar() {
         List<Servico> servicos = new ArrayList<>();
-        String sql = "SELECT * FROM servico"; // Consulta ajustada com o nome correto da tabela
+        String sql = "SELECT * FROM tb_servico"; // Consulta ajustada com o nome correto da tabela
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -128,7 +128,7 @@ public class Servico {
 
     // Método para atualizar um serviço
     public boolean atualizar() {
-        String sql = "UPDATE servico SET nome_servico=?, preco_servico=?, tempo_servico=?, desc_servico=? WHERE cod_servico=?";
+        String sql = "UPDATE tb_servico SET nome_servico=?, preco_servico=?, tempo_servico=?, desc_servico=? WHERE cod_servico=?";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -154,7 +154,7 @@ public class Servico {
 
     // Método para excluir um serviço
     public boolean excluir(int cod_servico) {
-        String sql = "DELETE FROM servico WHERE cod_servico=?";
+        String sql = "DELETE FROM tb_servico WHERE cod_servico=?";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");

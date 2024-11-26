@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 
 public class Conexao {
 
-    final private String driver = "com.mysql.cj.jdbc.Driver"; // Atualizado para o driver mais recente do MySQL
+    final private String driver = "com.mysql.jdbc.Driver"; // Atualizado para o driver mais recente do MySQL
     final private String url = "jdbc:mysql://localhost/db_barbearia_barbeleon"; // URL de conexão com o banco de dados
     final private String usuario = "root"; // Usuário do MySQL
     final private String senha = ""; // Senha do MySQL

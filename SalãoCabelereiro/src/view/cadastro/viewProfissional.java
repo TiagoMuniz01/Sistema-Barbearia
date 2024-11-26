@@ -121,13 +121,13 @@ public class viewProfissional extends javax.swing.JFrame {
 
         tablecliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nome", "Valor", "Duração", "Descrição"
+                "Id", "Nome", "CPF", "Email", "Telefone", "Nascimento"
             }
         ));
         jScrollPane2.setViewportView(tablecliente);

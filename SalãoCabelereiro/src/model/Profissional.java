@@ -53,7 +53,7 @@ public class Profissional extends Pessoa {
 
     // Método para inserir um profissional
     public boolean inserir() {
-        String sql = "INSERT INTO profissional (nome_profissional, cpf_profissional, email_profissional, telefone_profissional, desc_profissional, rg_profissional) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tb_profissional (nome_profissional, cpf_profissional, email_profissional, telefone_profissional, desc_profissional, rg_profissional) VALUES (?, ?, ?, ?, ?, ?)";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -82,7 +82,7 @@ public class Profissional extends Pessoa {
     // Método para listar todos os profissionais
     public List<Profissional> listar() {
         List<Profissional> profissionais = new ArrayList<>();
-        String sql = "SELECT * FROM profissional"; // Consulta ajustada com o nome correto da tabela
+        String sql = "SELECT * FROM tb_profissional"; // Consulta ajustada com o nome correto da tabela
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -115,7 +115,7 @@ public class Profissional extends Pessoa {
 
     // Método para atualizar um profissional
     public boolean atualizar() {
-        String sql = "UPDATE profissional SET nome_profissional=?, cpf_profissional=?, email_profissional=?, telefone_profissional=?, desc_profissional=?, rg_profissional=? WHERE cod_profissional=?";
+        String sql = "UPDATE tb_profissional SET nome_profissional=?, cpf_profissional=?, email_profissional=?, telefone_profissional=?, desc_profissional=?, rg_profissional=? WHERE cod_profissional=?";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -144,7 +144,7 @@ public class Profissional extends Pessoa {
 
     // Método para excluir um profissional
     public boolean excluir(int cod_profissional) {
-        String sql = "DELETE FROM profissional WHERE cod_profissional=?";
+        String sql = "DELETE FROM tb_profissional WHERE cod_profissional=?";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -165,7 +165,7 @@ public class Profissional extends Pessoa {
     
     // Método para buscar um profissional pelo email
     public Profissional buscarPorEmail(String email) {
-        String sql = "SELECT * FROM profissional WHERE email_profissional = ?";
+        String sql = "SELECT * FROM tb_profissional WHERE email_profissional = ?";
 
         if (!conexao.conecta()) {
             System.out.println("Erro de conexão com o banco de dados");

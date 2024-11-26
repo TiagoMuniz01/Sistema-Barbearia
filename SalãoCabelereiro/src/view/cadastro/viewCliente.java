@@ -32,8 +32,6 @@ public class viewCliente extends javax.swing.JFrame {
         lblnome = new javax.swing.JLabel();
         jtextcpf = new javax.swing.JTextField();
         lblcpf = new javax.swing.JLabel();
-        jtexttelefone = new javax.swing.JTextField();
-        lbltelefone = new javax.swing.JLabel();
         jtextemail = new javax.swing.JTextField();
         lblemail = new javax.swing.JLabel();
         lblclientes = new javax.swing.JLabel();
@@ -90,18 +88,6 @@ public class viewCliente extends javax.swing.JFrame {
         lblcpf.setText("CPF");
         getContentPane().add(lblcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 210, -1, -1));
 
-        jtexttelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtexttelefoneActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jtexttelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 315, 192, 22));
-
-        lbltelefone.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbltelefone.setForeground(new java.awt.Color(204, 204, 204));
-        lbltelefone.setText("Hora");
-        getContentPane().add(lbltelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 315, -1, -1));
-
         jtextemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtextemailActionPerformed(evt);
@@ -127,7 +113,7 @@ public class viewCliente extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nome", "Valor", "Duração", "Descrição"
+                "Id", "Nome", "CPF", "Telefone", "Nascimento"
             }
         ));
         jScrollPane2.setViewportView(tablecliente);
@@ -244,10 +230,6 @@ public class viewCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtextcpfActionPerformed
 
-    private void jtexttelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtexttelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtexttelefoneActionPerformed
-
     private void jtextemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextemailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtextemailActionPerformed
@@ -331,7 +313,6 @@ public class viewCliente extends javax.swing.JFrame {
     private javax.swing.JTextField jtextemail;
     private javax.swing.JTextField jtextid;
     private javax.swing.JTextField jtextnome;
-    private javax.swing.JTextField jtexttelefone;
     private javax.swing.JTextField jtexttelefone1;
     private javax.swing.JLabel lblclientes;
     private javax.swing.JLabel lblcpf;
@@ -340,7 +321,6 @@ public class viewCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblid;
     private javax.swing.JLabel lblnome;
     private javax.swing.JLabel lblpainel;
-    private javax.swing.JLabel lbltelefone;
     private javax.swing.JLabel lbltelefone1;
     private javax.swing.JTable tablecliente;
     private javax.swing.JButton tras;
