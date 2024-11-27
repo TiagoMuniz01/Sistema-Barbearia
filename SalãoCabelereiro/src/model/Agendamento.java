@@ -18,11 +18,18 @@ public class Agendamento {
     private LocalDate data_agendamento;
     private final Conexao conexao;
 
-    // Construtor com tratamento para a data e horário de agendamento
+    // Formatadores para data e hora (conversão do banco e exibição)
+    private static final DateTimeFormatter TIME_FORMATTER_BANCO = DateTimeFormatter.ofPattern("HH:mm:ss");
+    private static final DateTimeFormatter DATE_FORMATTER_BANCO = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter TIME_FORMATTER_EXIBICAO = DateTimeFormatter.ofPattern("HH:mm");
+    private static final DateTimeFormatter DATE_FORMATTER_EXIBICAO = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+    // Construtor vazio
     public Agendamento() {
         this.conexao = new Conexao();
     }
 
+    // Construtor completo
     public Agendamento(int cod_agendamento, Cliente cliente, Profissional profissional, Pagamento pagamento, Servico servico, String horario_agendamento, String data_agendamento) {
         this.cod_agendamento = cod_agendamento;
         this.cliente = cliente;
@@ -30,18 +37,14 @@ public class Agendamento {
         this.pagamento = pagamento;
         this.servico = servico;
 
-        // Tenta converter a string horario_agendamento para LocalTime
         try {
-            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-            this.horario_agendamento = LocalTime.parse(horario_agendamento, timeFormatter);
+            this.horario_agendamento = LocalTime.parse(horario_agendamento, TIME_FORMATTER_BANCO);
         } catch (Exception ex) {
             System.out.println("Erro ao converter horário: " + ex.getMessage());
         }
 
-        // Tenta converter a string data_agendamento para LocalDate
         try {
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            this.data_agendamento = LocalDate.parse(data_agendamento, dateFormatter);
+            this.data_agendamento = LocalDate.parse(data_agendamento, DATE_FORMATTER_BANCO);
         } catch (Exception ex) {
             System.out.println("Erro ao converter data: " + ex.getMessage());
         }
@@ -96,8 +99,7 @@ public class Agendamento {
 
     public void setHorario_agendamento(String horario_agendamento) {
         try {
-            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-            this.horario_agendamento = LocalTime.parse(horario_agendamento, timeFormatter);
+            this.horario_agendamento = LocalTime.parse(horario_agendamento, TIME_FORMATTER_BANCO);
         } catch (Exception ex) {
             System.out.println("Erro ao converter horário: " + ex.getMessage());
         }
@@ -109,8 +111,7 @@ public class Agendamento {
 
     public void setData_agendamento(String data_agendamento) {
         try {
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            this.data_agendamento = LocalDate.parse(data_agendamento, dateFormatter);
+            this.data_agendamento = LocalDate.parse(data_agendamento, DATE_FORMATTER_BANCO);
         } catch (Exception ex) {
             System.out.println("Erro ao converter data: " + ex.getMessage());
         }
@@ -126,12 +127,12 @@ public class Agendamento {
         }
 
         try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
-            stmt.setString(1, this.horario_agendamento.toString()); // Formato HH:mm
-            stmt.setString(2, this.data_agendamento.toString()); // Formato yyyy-MM-dd
-            stmt.setInt(3, this.cliente.getCod()); // Chave estrangeira para Cliente
-            stmt.setInt(4, this.profissional.getCod()); // Chave estrangeira para Profissional
-            stmt.setInt(5, this.servico.getCod_servico()); // Chave estrangeira para Serviço
-            stmt.setInt(6, this.pagamento.getCod_pagamento()); // Chave estrangeira para Pagamento
+            stmt.setString(1, this.horario_agendamento.format(TIME_FORMATTER_BANCO));
+            stmt.setString(2, this.data_agendamento.format(DATE_FORMATTER_BANCO));
+            stmt.setInt(3, this.cliente.getCod());
+            stmt.setInt(4, this.profissional.getCod());
+            stmt.setInt(5, this.servico.getCod_servico());
+            stmt.setInt(6, this.pagamento.getCod_pagamento());
 
             int rowsInserted = stmt.executeUpdate();
             return rowsInserted > 0;
@@ -147,26 +148,28 @@ public class Agendamento {
     public static ArrayList<Agendamento> listar() {
         String sql = "SELECT * FROM tb_agendamento";
         ArrayList<Agendamento> agendamentos = new ArrayList<>();
-
-        // Cria uma nova conexão local em vez de usar a variável de instância
         Conexao conexaoLocal = new Conexao();
 
         if (!conexaoLocal.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
-            return agendamentos; // Retorna lista vazia em caso de falha de conexão
+            return agendamentos;
         }
 
         try (PreparedStatement stmt = conexaoLocal.getConexao().prepareStatement(sql)) {
             ResultSet rs = stmt.executeQuery();
+
             while (rs.next()) {
-                // Cria um objeto Agendamento e preenche com os dados do ResultSet
                 Agendamento agendamento = new Agendamento();
                 agendamento.setCod_agendamento(rs.getInt("cod_agendamento"));
                 agendamento.setHorario_agendamento(rs.getString("horario_agendamento"));
                 agendamento.setData_agendamento(rs.getString("data_agendamento"));
-                // Você pode adicionar a lógica para preencher os outros objetos aqui
 
-                // Adiciona o objeto Agendamento à lista
+                // Popule objetos associados, se necessário
+                // Exemplo:
+                // Cliente cliente = new Cliente();
+                // cliente.setCod(rs.getInt("cod_cliente"));
+                // agendamento.setCliente(cliente);
+
                 agendamentos.add(agendamento);
             }
         } catch (SQLException e) {
@@ -175,7 +178,7 @@ public class Agendamento {
             conexaoLocal.desconecta();
         }
 
-        return agendamentos; // Retorna a lista de agendamentos
+        return agendamentos;
     }
 
     // Método para atualizar um agendamento
@@ -188,13 +191,13 @@ public class Agendamento {
         }
 
         try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
-            stmt.setString(1, this.horario_agendamento.toString()); // Formato HH:mm
-            stmt.setString(2, this.data_agendamento.toString()); // Formato yyyy-MM-dd
-            stmt.setInt(3, this.cliente.getCod()); // Chave estrangeira para Cliente
-            stmt.setInt(4, this.profissional.getCod()); // Chave estrangeira para Profissional
-            stmt.setInt(5, this.servico.getCod_servico()); // Chave estrangeira para Serviço
-            stmt.setInt(6, this.pagamento.getCod_pagamento()); // Chave estrangeira para Pagamento
-            stmt.setInt(7, this.cod_agendamento); // Para identificar o agendamento a ser atualizado
+            stmt.setString(1, this.horario_agendamento.format(TIME_FORMATTER_BANCO));
+            stmt.setString(2, this.data_agendamento.format(DATE_FORMATTER_BANCO));
+            stmt.setInt(3, this.cliente.getCod());
+            stmt.setInt(4, this.profissional.getCod());
+            stmt.setInt(5, this.servico.getCod_servico());
+            stmt.setInt(6, this.pagamento.getCod_pagamento());
+            stmt.setInt(7, this.cod_agendamento);
 
             int rowsUpdated = stmt.executeUpdate();
             return rowsUpdated > 0;
@@ -216,7 +219,7 @@ public class Agendamento {
         }
 
         try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
-            stmt.setInt(1, this.cod_agendamento); // Usa o código para excluir o agendamento
+            stmt.setInt(1, this.cod_agendamento);
 
             int rowsDeleted = stmt.executeUpdate();
             return rowsDeleted > 0;
@@ -228,3 +231,4 @@ public class Agendamento {
         }
     }
 }
+
