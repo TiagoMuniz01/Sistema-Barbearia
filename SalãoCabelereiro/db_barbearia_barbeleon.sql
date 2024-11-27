@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22/10/2024 às 04:30
+-- Tempo de geração: 27/11/2024 às 03:00
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -37,6 +37,14 @@ CREATE TABLE `tb_agendamento` (
   `cod_pagamento` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `tb_agendamento`
+--
+
+INSERT INTO `tb_agendamento` (`cod_agendamento`, `horario_agendamento`, `data_agendamento`, `cod_cliente`, `cod_profissional`, `cod_servico`, `cod_pagamento`) VALUES
+(1, '12:30:41', '2024-11-06', 1, 1, 1, 1),
+(2, '17:30:41', '2024-11-01', 1, 1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -53,6 +61,13 @@ CREATE TABLE `tb_cliente` (
   `telefone_cliente` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `tb_cliente`
+--
+
+INSERT INTO `tb_cliente` (`cod_cliente`, `nome_cliente`, `cpf_cliente`, `email_cliente`, `data_nasc`, `senha_cliente`, `telefone_cliente`) VALUES
+(1, 'Diogo', '123456789', 'teste@gmail.com', '2014-11-04', '1234', '119865425');
+
 -- --------------------------------------------------------
 
 --
@@ -63,6 +78,13 @@ CREATE TABLE `tb_pagamento` (
   `cod_pagamento` int(11) NOT NULL,
   `forma_pagamento` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `tb_pagamento`
+--
+
+INSERT INTO `tb_pagamento` (`cod_pagamento`, `forma_pagamento`) VALUES
+(1, 'Crédito');
 
 -- --------------------------------------------------------
 
@@ -79,6 +101,13 @@ CREATE TABLE `tb_profissional` (
   `email_profissional` varchar(100) NOT NULL,
   `desc_profissional` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `tb_profissional`
+--
+
+INSERT INTO `tb_profissional` (`cod_profissional`, `nome_profissional`, `cpf_profissional`, `rg_profissional`, `telefone_profissional`, `email_profissional`, `desc_profissional`) VALUES
+(1, 'Tiago Pimentel Muniz', '43983050840', '553531141', '11911429039', 'tiagopimentel.tp@gmail.com', 'Teste');
 
 -- --------------------------------------------------------
 
@@ -104,6 +133,13 @@ CREATE TABLE `tb_servico` (
   `tempo_servico` time NOT NULL,
   `desc_servico` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `tb_servico`
+--
+
+INSERT INTO `tb_servico` (`cod_servico`, `nome_servico`, `preco_servico`, `tempo_servico`, `desc_servico`) VALUES
+(1, 'Corte', 35, '00:30:00', 'Nada a dizer');
 
 --
 -- Índices para tabelas despejadas
@@ -164,31 +200,31 @@ ALTER TABLE `tb_servico`
 -- AUTO_INCREMENT de tabela `tb_agendamento`
 --
 ALTER TABLE `tb_agendamento`
-  MODIFY `cod_agendamento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_agendamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `tb_cliente`
 --
 ALTER TABLE `tb_cliente`
-  MODIFY `cod_cliente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `tb_pagamento`
 --
 ALTER TABLE `tb_pagamento`
-  MODIFY `cod_pagamento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_pagamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `tb_profissional`
 --
 ALTER TABLE `tb_profissional`
-  MODIFY `cod_profissional` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_profissional` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `tb_servico`
 --
 ALTER TABLE `tb_servico`
-  MODIFY `cod_servico` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_servico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para tabelas despejadas
