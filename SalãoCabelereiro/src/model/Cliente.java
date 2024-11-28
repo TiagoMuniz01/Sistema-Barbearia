@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente extends Pessoa {
-
     private LocalDate data_nasc;
     private String senha_cliente;
     private String telefone_cliente; // Variável mantida conforme seu nome anterior
@@ -178,7 +177,7 @@ public class Cliente extends Pessoa {
             conexao.desconecta();
         }
     }
-
+    
     //Método para carregar o cliente em outras classes que precisem dessas informações do objeto cliente. Conseqência de não usar o iner join no banco
     public void carregar() {
         String sql = "SELECT * FROM tb_cliente WHERE cod_cliente = ?";
@@ -197,22 +196,7 @@ public class Cliente extends Pessoa {
                 this.setCpf(resultSet.getString("cpf_cliente"));
                 this.setEmail(resultSet.getString("email_cliente"));
                 this.setTelefone_cliente(resultSet.getString("telefone_cliente"));
-
-                // Tratamento para a data de nascimento
-                String dataBanco = resultSet.getString("data_nasc");
-                try {
-                    if (dataBanco != null && !dataBanco.isEmpty()) {
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                        LocalDate data = LocalDate.parse(dataBanco, formatter); // Converte para LocalDate
-                        this.setData_nasc(data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))); // Formata para exibição
-                    } else {
-                        this.setData_nasc(""); // Define como vazio se for nulo
-                    }
-                } catch (Exception e) {
-                    System.out.println("Erro ao parsear data_nasc: " + dataBanco);
-                    this.setData_nasc(""); // Define como vazio para evitar interrupção
-                }
-
+                this.setData_nasc(resultSet.getString("data_nasc"));
                 this.setSenha_cliente(resultSet.getString("senha_cliente"));
             } else {
                 System.out.println("Cliente não encontrado no banco de dados.");
