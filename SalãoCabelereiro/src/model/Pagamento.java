@@ -133,5 +133,29 @@ public class Pagamento {
             conexao.desconecta(); // Fecha a conexão
         }
     }
+    
+     public void carregar() {
+        String sql = "SELECT * FROM tb_pagamento WHERE cod_pagamento = ?";
+
+        if (!conexao.conecta()) {
+            System.out.println("Não foi possível conectar ao banco de dados");
+            return;
+        }
+
+        try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
+            stmt.setInt(1, this.getCod_pagamento()); // Usa o código do pagamento para buscar
+            ResultSet resultSet = stmt.executeQuery();
+
+            if (resultSet.next()) {
+                this.setForma_pagamento(resultSet.getString("forma_pagamento"));   
+            } else {
+                System.out.println("Cliente não encontrado no banco de dados.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao carregar cliente: " + e.getMessage());
+        } finally {
+            conexao.desconecta();
+        }
+    }
 }
 

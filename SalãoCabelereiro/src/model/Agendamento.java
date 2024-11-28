@@ -2,6 +2,7 @@ package model;
 
 import conexao.Conexao;
 import java.sql.*;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -146,39 +147,112 @@ public class Agendamento {
 
     // Método para listar todos os agendamentos
     public static ArrayList<Agendamento> listar() {
-        String sql = "SELECT * FROM tb_agendamento";
+        String sql = "SELECT * FROM tb_agendamento"; // Consulta para listar todos os agendamentos
         ArrayList<Agendamento> agendamentos = new ArrayList<>();
         Conexao conexaoLocal = new Conexao();
 
         if (!conexaoLocal.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
-            return agendamentos;
+            return agendamentos; // Retorna uma lista vazia em caso de erro
         }
 
-        try (PreparedStatement stmt = conexaoLocal.getConexao().prepareStatement(sql)) {
-            ResultSet rs = stmt.executeQuery();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
 
+        try {
+            stmt = conexaoLocal.getConexao().prepareStatement(sql); // Prepara a consulta
+            rs = stmt.executeQuery(); // Executa a consulta e obtém os resultados
+
+            // Itera sobre os resultados retornados pelo banco de dados
             while (rs.next()) {
                 Agendamento agendamento = new Agendamento();
                 agendamento.setCod_agendamento(rs.getInt("cod_agendamento"));
                 agendamento.setHorario_agendamento(rs.getString("horario_agendamento"));
                 agendamento.setData_agendamento(rs.getString("data_agendamento"));
 
-                // Popule objetos associados, se necessário
-                // Exemplo:
-                // Cliente cliente = new Cliente();
-                // cliente.setCod(rs.getInt("cod_cliente"));
-                // agendamento.setCliente(cliente);
+                // Popula o cliente associado ao agendamento
+                // Popula o cliente associado ao agendamento
+                int codCliente = rs.getInt("cod_cliente");
+                if (!rs.wasNull() && codCliente > 0) {
+                    Cliente cliente = new Cliente();
+                    cliente.setCod(codCliente);
+                    cliente.carregar(); // Método carregar preenche os dados do cliente
 
+                    // Verifica se a data de nascimento do cliente é válida
+                    LocalDate dataNascimento = cliente.getData_nasc();  // Aqui já é um LocalDate
+
+                    if (dataNascimento != null) {
+                        // Caso queira exibir a data no formato desejado
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                        cliente.setData_nasc(dataNascimento.format(formatter)); // Formata para exibição
+                    } else {
+                        cliente.setData_nasc(""); // Define como vazio se a data for nula
+                    }
+
+                    agendamento.setCliente(cliente);
+                }
+
+                // Popula o serviço associado ao agendamento
+                int codServico = rs.getInt("cod_servico");
+                if (!rs.wasNull() && codServico > 0) {
+                    Servico servico = new Servico();
+                    servico.setCod_servico(codServico);
+
+                    // Valida e converte o tempo_servico
+                    try {
+                        String tempo = rs.getString("tempo_servico");
+                        if (tempo != null && !tempo.isEmpty()) {
+                            servico.setTempo_servico(Duration.parse(tempo)); // Converte a string para Duration
+                        } else {
+                            servico.setTempo_servico(Duration.ZERO); // Define como 0 se nulo ou vazio
+                        }
+                    } catch (SQLException e) {
+                        System.out.println("Erro ao processar tempo_servico: " + e.getMessage());
+                        servico.setTempo_servico(Duration.ZERO); // Define um valor padrão em caso de erro
+                    }
+
+                    servico.carregar(); // Método carregar preenche os dados do serviço
+                    agendamento.setServico(servico);
+                }
+
+                // Popula o profissional associado ao agendamento, se aplicável
+                int codProfissional = rs.getInt("cod_profissional");
+                if (!rs.wasNull() && codProfissional > 0) {
+                    Profissional profissional = new Profissional();
+                    profissional.setCod(codProfissional);
+                    profissional.carregar(); // Método carregar preenche os dados do profissional
+                    agendamento.setProfissional(profissional);
+                }
+                
+                int codPagamento = rs.getInt("cod_pagamento");
+                if (!rs.wasNull() && codPagamento > 0) {
+                    Pagamento pagamento = new Pagamento();
+                    pagamento.setCod_pagamento(codPagamento);
+                    pagamento.carregar(); // Método carregar preenche os dados do profissional
+                    agendamento.setPagamento(pagamento);
+                }
+
+                // Adiciona o agendamento à lista
                 agendamentos.add(agendamento);
             }
         } catch (SQLException e) {
             System.out.println("Erro ao listar agendamentos: " + e.getMessage());
         } finally {
-            conexaoLocal.desconecta();
+            // Fecha o ResultSet e PreparedStatement, além da conexão
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Erro ao fechar recursos: " + e.getMessage());
+            }
+            conexaoLocal.desconecta(); // Fecha a conexão
         }
 
-        return agendamentos;
+        return agendamentos; // Retorna a lista de agendamentos
     }
 
     // Método para atualizar um agendamento
@@ -231,4 +305,3 @@ public class Agendamento {
         }
     }
 }
-

@@ -3,10 +3,12 @@ package model;
 import conexao.Conexao;
 import java.sql.*;
 import java.time.Duration;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Servico {
+
     private int cod_servico;
     private String nome_servico;
     private String descricao_servico;
@@ -173,4 +175,47 @@ public class Servico {
             conexao.desconecta(); // Fecha a conexão
         }
     }
+
+    // Método para carregar os dados de um serviço com base no cod_servico
+    public void carregar() {
+        String sql = "SELECT * FROM tb_servico WHERE cod_servico = ?";
+
+        if (!conexao.conecta()) {
+            System.out.println("Não foi possível conectar ao banco de dados");
+            return;
+        }
+
+        try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
+            stmt.setInt(1, this.cod_servico); // Define o código do serviço a ser carregado
+            ResultSet resultSet = stmt.executeQuery();
+
+            if (resultSet.next()) {
+                // Preenche os atributos do serviço a partir do resultado da consulta
+                this.nome_servico = resultSet.getString("nome_servico");
+                this.descricao_servico = resultSet.getString("desc_servico");
+                this.preco_servico = resultSet.getFloat("preco_servico");
+
+                // Tenta pegar o tempo_servico
+                String tempoBanco = resultSet.getString("tempo_servico");
+
+                if (tempoBanco != null && !tempoBanco.isEmpty()) {
+                    try {
+                        this.tempo_servico = Duration.parse(tempoBanco); // Converte se estiver no formato correto
+                    } catch (DateTimeParseException e) {
+                        System.out.println("Erro ao parsear tempo_servico (formato inválido): " + e.getMessage());
+                        this.tempo_servico = Duration.ZERO; // Define um valor padrão em caso de erro de formato
+                    }
+                } else {
+                    this.tempo_servico = Duration.ZERO; // Define como 0 se for nulo ou vazio
+                }
+            } else {
+                System.out.println("Serviço não encontrado no banco de dados.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao carregar serviço: " + e.getMessage());
+        } finally {
+            conexao.desconecta(); // Fecha a conexão
+        }
+    }
+
 }

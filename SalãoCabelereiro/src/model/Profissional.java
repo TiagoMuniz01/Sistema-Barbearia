@@ -196,4 +196,33 @@ public class Profissional extends Pessoa {
 
         return null; // Retorna null se o profissional não for encontrado
     }
+    
+    public void carregar() {
+        String sql = "SELECT * FROM tb_cliente WHERE cod_cliente = ?";
+
+        if (!conexao.conecta()) {
+            System.out.println("Não foi possível conectar ao banco de dados");
+            return;
+        }
+
+        try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
+            stmt.setInt(1, this.getCod()); // Usa o código do profissional para buscar
+            ResultSet resultSet = stmt.executeQuery();
+
+            if (resultSet.next()) {
+                this.setNome(resultSet.getString("nome_profissional"));
+                this.setCpf(resultSet.getString("cpf_profissional"));
+                this.setEmail(resultSet.getString("email_profissional"));
+                this.setDesc_profissional(resultSet.getString("desc_profissional"));
+                this.setRg_profissional(resultSet.getString("telefone_profissional"));
+                this.setRg_profissional(resultSet.getString("rg_profissional"));
+            } else {
+                System.out.println("Cliente não encontrado no banco de dados.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao carregar cliente: " + e.getMessage());
+        } finally {
+            conexao.desconecta();
+        }
+    }
 }
