@@ -13,7 +13,10 @@ public class Cliente extends Pessoa {
     private String senha_cliente;
     private String telefone_cliente; // Variável mantida conforme seu nome anterior
     private final Conexao conexao; // Objeto para manipulação da conexão com o banco de dados
-
+    
+    private static final DateTimeFormatter DATE_FORMATTER_EXIBICAO = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static final DateTimeFormatter DATE_FORMATTER_BANCO = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    
     // Construtor vazio
     public Cliente() {
         this.conexao = new Conexao();
@@ -25,13 +28,9 @@ public class Cliente extends Pessoa {
         this.conexao = new Conexao();
 
         try {
-            // Definindo o formato esperado da data (dd/MM/yyyy)
-            DateTimeFormatter formatado = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-            // Convertendo a string data_nasc para LocalDate
-            this.data_nasc = LocalDate.parse(data_nasc, formatado);
-        } catch (DateTimeParseException ex) {
-            System.out.println("Erro: Data no formato inválido. Use o formato dd/MM/yyyy.");
+            this.data_nasc = LocalDate.parse(data_nasc, DATE_FORMATTER_BANCO);
+        } catch (Exception ex) {
+            System.out.println("Erro ao converter data: " + ex.getMessage());
         }
 
         this.senha_cliente = senha_cliente;
@@ -41,13 +40,16 @@ public class Cliente extends Pessoa {
     public LocalDate getData_nasc() {
         return data_nasc;
     }
+    
+    public String getData_nascFormatada(){
+        return data_nasc.format(DATE_FORMATTER_EXIBICAO);
+    }
 
     public void setData_nasc(String data_nasc) {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            this.data_nasc = LocalDate.parse(data_nasc, formatter);
-        } catch (DateTimeParseException ex) {
-            System.out.println("Erro: Data no formato inválido. Use o formato dd/MM/yyyy.");
+            this.data_nasc = LocalDate.parse(data_nasc, DATE_FORMATTER_BANCO);
+        } catch (Exception ex) {
+            System.out.println("Erro ao converter data: " + ex.getMessage());
         }
     }
 

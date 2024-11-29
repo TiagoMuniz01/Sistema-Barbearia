@@ -30,21 +30,13 @@ public class AgendamentoHelper {
         // Percorrer a lista preenchendo a tabela model
         for (Agendamento agendamento : agendamentos) {
 
-            String dataFormatada = agendamento.getData_agendamento() != null 
-                    ? agendamento.getData_agendamento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) 
-                    : "N/A";
-
-            String horarioFormatado = agendamento.getHorario_agendamento() != null 
-                    ? agendamento.getHorario_agendamento().format(DateTimeFormatter.ofPattern("HH:mm")) 
-                    : "N/A";
-
             tabelaModelo.addRow(new Object[]{
                 agendamento.getCod_agendamento(),
                 agendamento.getCliente() != null ? agendamento.getCliente().getNome() : "N/A",
                 agendamento.getServico() != null ? agendamento.getServico().getNome_servico() : "N/A",
                 agendamento.getPagamento() != null ? agendamento.getPagamento().getForma_pagamento() : "N/A",
-                agendamento.getData_agendamento() != null ? agendamento.getData_agendamento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) : "N/A",
-                agendamento.getHorario_agendamento() != null ? agendamento.getHorario_agendamento().format(DateTimeFormatter.ofPattern("HH:mm")) : "N/A"
+                agendamento.getData_agendamento() != null ? agendamento.getDataFormatada_agendamento(): "N/A",
+                agendamento.getHorario_agendamento() != null ? agendamento.getHorarioFormatado_agendamento(): "N/A"
             });
         }   
     }

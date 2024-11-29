@@ -97,6 +97,10 @@ public class Agendamento {
     public LocalTime getHorario_agendamento() {
         return horario_agendamento;
     }
+    
+    public String getHorarioFormatado_agendamento() {
+        return horario_agendamento.format(TIME_FORMATTER_EXIBICAO);
+    }
 
     public void setHorario_agendamento(String horario_agendamento) {
         try {
@@ -108,6 +112,10 @@ public class Agendamento {
 
     public LocalDate getData_agendamento() {
         return data_agendamento;
+    }
+    
+    public String getDataFormatada_agendamento() {
+        return data_agendamento.format(DATE_FORMATTER_EXIBICAO);
     }
 
     public void setData_agendamento(String data_agendamento) {
@@ -171,23 +179,14 @@ public class Agendamento {
                 agendamento.setData_agendamento(rs.getString("data_agendamento"));
 
                 // Popula o cliente associado ao agendamento
-                // Popula o cliente associado ao agendamento
                 int codCliente = rs.getInt("cod_cliente");
                 if (!rs.wasNull() && codCliente > 0) {
                     Cliente cliente = new Cliente();
                     cliente.setCod(codCliente);
                     cliente.carregar(); // Método carregar preenche os dados do cliente
-
-                    // Verifica se a data de nascimento do cliente é válida
-                    LocalDate dataNascimento = cliente.getData_nasc();  // Aqui já é um LocalDate
-
-                    if (dataNascimento != null) {
-                        // Caso queira exibir a data no formato desejado
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                        cliente.setData_nasc(dataNascimento.format(formatter)); // Formata para exibição
-                    } else {
-                        cliente.setData_nasc(""); // Define como vazio se a data for nula
-                    }
+                        
+                    // Fromata a data de nasc para exibição
+                    cliente.setData_nasc(cliente.getData_nascFormatada()); // Formata para exibição
 
                     agendamento.setCliente(cliente);
                 }
@@ -197,21 +196,13 @@ public class Agendamento {
                 if (!rs.wasNull() && codServico > 0) {
                     Servico servico = new Servico();
                     servico.setCod_servico(codServico);
-
-                    // Valida e converte o tempo_servico
-                    try {
-                        String tempo = rs.getString("tempo_servico");
-                        if (tempo != null && !tempo.isEmpty()) {
-                            servico.setTempo_servico(Duration.parse(tempo)); // Converte a string para Duration
-                        } else {
-                            servico.setTempo_servico(Duration.ZERO); // Define como 0 se nulo ou vazio
-                        }
-                    } catch (SQLException e) {
-                        System.out.println("Erro ao processar tempo_servico: " + e.getMessage());
-                        servico.setTempo_servico(Duration.ZERO); // Define um valor padrão em caso de erro
+                    servico.carregar(); // Método carregar preenche os dados do serviço 
+                    
+                    Duration tempo = servico.getTempo_servico();
+                    if (tempo == null) {             
+                        servico.setTempo_servico(Duration.ZERO); // Define como 0 se nulo ou vazio
                     }
-
-                    servico.carregar(); // Método carregar preenche os dados do serviço
+                    
                     agendamento.setServico(servico);
                 }
 
