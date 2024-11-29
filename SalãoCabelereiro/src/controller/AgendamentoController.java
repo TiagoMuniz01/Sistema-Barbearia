@@ -4,6 +4,9 @@ package controller;
 import controller.helper.AgendamentoHelper;
 import java.util.ArrayList;
 import model.Agendamento;
+import model.Cliente;
+import model.Pagamento;
+import model.Servico;
 import view.cadastro.viewAgendamento;
 
 public class AgendamentoController{
@@ -18,14 +21,40 @@ public class AgendamentoController{
     }
     
     
-    public void atualizar(){
+    public void atualizarTabela(){
         
         //Buscar lista com agendaemntos no banco de dados
         Agendamento agendamento = new Agendamento();
-        ArrayList<Agendamento> agendamentos = Agendamento.listar();
+        ArrayList<Agendamento> agendamentos = agendamento.listar();
         
         //Exibir esta lista na view
         helper.prencerTabela(agendamentos);
         
-    }     
+    }   
+    
+    public void atualizarCliente(){
+            
+            //Buscar Clientes do banco de dados
+            Cliente cliente = new Cliente();
+            ArrayList<Cliente> clientes = cliente.listar();
+            
+            //Exibir clientes no Combobox Cliente
+            helper.preencherClientes(clientes);
+    }
+    
+    public void atualizarServico(){
+        
+        Servico servico = new Servico();
+        ArrayList<Servico> servicos = servico.listar();
+        
+        helper.preencherServico(servicos);
+    }
+    
+    public void atualizarPagamento(){
+        
+        Pagamento pagamento = new Pagamento();
+        ArrayList<Pagamento> pagamentos = pagamento.listar();
+        
+        helper.preencherPagamento(pagamentos);
+    }
 }

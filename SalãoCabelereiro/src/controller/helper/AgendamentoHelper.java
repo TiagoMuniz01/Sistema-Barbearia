@@ -6,8 +6,12 @@ package controller.helper;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import model.Agendamento;
+import model.Cliente;
+import model.Pagamento;
+import model.Servico;
 import view.cadastro.viewAgendamento;
 
 /**
@@ -39,6 +43,39 @@ public class AgendamentoHelper {
                 agendamento.getHorario_agendamento() != null ? agendamento.getHorarioFormatado_agendamento(): "N/A"
             });
         }   
+    }
+
+    public void preencherClientes(ArrayList<Cliente> clientes) {
+        
+        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCBCliente().getModel();
+        
+        for (Cliente cliente : clientes) { //Acesso a cada um dos objetos cliente dentro da lista clientes
+            
+            comboBoxModel.addElement(cliente);
+            
+        }
+    }
+    
+    public void preencherServico(ArrayList<Servico> servicos){
+        
+        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCBServico().getModel();
+        
+        for (Servico servico : servicos) { //Acesso a cada um dos objetos cliente dentro da lista clientes
+            
+            comboBoxModel.addElement(servico);
+            
+        }
+    }
+    
+    public void preencherPagamento(ArrayList<Pagamento> pagamentos){
+        
+        DefaultComboBoxModel comboBoxModel = (DefaultComboBoxModel) view.getCBPagamento().getModel();
+        
+        for (Pagamento pagamento : pagamentos) { //Acesso a cada um dos objetos cliente dentro da lista clientes
+            
+            comboBoxModel.addElement(pagamento);
+            
+        }
     }
   
 }

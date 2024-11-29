@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pagamento {
+
     private int cod_pagamento;
     private String forma_pagamento;
     private final Conexao conexao;
@@ -60,18 +61,23 @@ public class Pagamento {
         }
     }
 
-    // Método para listar todos os pagamentos
-    public List<Pagamento> listar() {
-        List<Pagamento> pagamentos = new ArrayList<>();
+    public static ArrayList<Pagamento> listar() {
+        ArrayList<Pagamento> pagamentos = new ArrayList<>();
         String sql = "SELECT * FROM tb_pagamento"; // Consulta ajustada com o nome correto da tabela
 
-        if (!conexao.conecta()) {
+        Conexao conexaoLocal = new Conexao();
+
+        if (!conexaoLocal.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
             return pagamentos; // Retorna lista vazia em caso de erro
         }
 
-        try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
-            ResultSet resultSet = stmt.executeQuery(); // Executa a consulta
+        PreparedStatement stmt = null;
+        ResultSet resultSet = null;
+
+        try {
+            stmt = conexaoLocal.getConexao().prepareStatement(sql);
+            resultSet = stmt.executeQuery(); // Executa a consulta
 
             while (resultSet.next()) {
                 // Criação do objeto Pagamento a partir do resultado da consulta
@@ -83,7 +89,17 @@ public class Pagamento {
         } catch (SQLException e) {
             System.out.println("Erro ao listar pagamentos: " + e.getMessage());
         } finally {
-            conexao.desconecta(); // Fecha a conexão
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Erro ao fechar recursos: " + e.getMessage());
+            }
+            conexaoLocal.desconecta(); // Fecha a conexão
         }
 
         return pagamentos; // Retorna a lista de pagamentos
@@ -133,8 +149,8 @@ public class Pagamento {
             conexao.desconecta(); // Fecha a conexão
         }
     }
-    
-     public void carregar() {
+
+    public void carregar() {
         String sql = "SELECT * FROM tb_pagamento WHERE cod_pagamento = ?";
 
         if (!conexao.conecta()) {
@@ -147,7 +163,7 @@ public class Pagamento {
             ResultSet resultSet = stmt.executeQuery();
 
             if (resultSet.next()) {
-                this.setForma_pagamento(resultSet.getString("forma_pagamento"));   
+                this.setForma_pagamento(resultSet.getString("forma_pagamento"));
             } else {
                 System.out.println("Cliente não encontrado no banco de dados.");
             }
@@ -157,5 +173,9 @@ public class Pagamento {
             conexao.desconecta();
         }
     }
+    
+    @Override
+    public String toString(){
+        return getForma_pagamento();
+    }
 }
-

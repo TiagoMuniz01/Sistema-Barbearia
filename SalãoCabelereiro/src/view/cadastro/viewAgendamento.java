@@ -5,6 +5,7 @@
 package view.cadastro;
 
 import controller.AgendamentoController;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 
 /**
@@ -38,10 +39,9 @@ public class viewAgendamento extends javax.swing.JFrame {
         lblclientes = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaAgendamento = new javax.swing.JTable();
-        CBHora = new javax.swing.JComboBox<>();
-        CBClien = new javax.swing.JComboBox<>();
-        CBSer = new javax.swing.JComboBox<>();
-        CBPag = new javax.swing.JComboBox<>();
+        CBCliente = new javax.swing.JComboBox<>();
+        CBServico = new javax.swing.JComboBox<>();
+        CBPagamento = new javax.swing.JComboBox<>();
         lbltelefone1 = new javax.swing.JLabel();
         BtnUltimo = new javax.swing.JButton();
         BtnAnterior = new javax.swing.JButton();
@@ -50,9 +50,10 @@ public class viewAgendamento extends javax.swing.JFrame {
         BtnDeletar = new javax.swing.JButton();
         BtnAlterar = new javax.swing.JButton();
         BtnCadastrar = new javax.swing.JButton();
+        TextId1 = new javax.swing.JTextField();
+        TextData1 = new javax.swing.JTextField();
         lblpainel = new javax.swing.JLabel();
         lblfundo = new javax.swing.JLabel();
-        TextId1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -62,7 +63,7 @@ public class viewAgendamento extends javax.swing.JFrame {
                 TextDataActionPerformed(evt);
             }
         });
-        getContentPane().add(TextData, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 292, 190, 30));
+        getContentPane().add(TextData, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 190, 30));
 
         lblid.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblid.setForeground(new java.awt.Color(204, 204, 204));
@@ -106,32 +107,21 @@ public class viewAgendamento extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 670, 120));
 
-        CBHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CBHora.addActionListener(new java.awt.event.ActionListener() {
+        getContentPane().add(CBCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 190, 30));
+
+        CBServico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBHoraActionPerformed(evt);
+                CBServicoActionPerformed(evt);
             }
         });
-        getContentPane().add(CBHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 190, 30));
+        getContentPane().add(CBServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 190, 30));
 
-        CBClien.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(CBClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 190, 30));
-
-        CBSer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CBSer.addActionListener(new java.awt.event.ActionListener() {
+        CBPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBSerActionPerformed(evt);
+                CBPagamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(CBSer, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 190, 30));
-
-        CBPag.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CBPag.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBPagActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CBPag, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 190, 30));
+        getContentPane().add(CBPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 190, 30));
 
         lbltelefone1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbltelefone1.setForeground(new java.awt.Color(204, 204, 204));
@@ -215,18 +205,25 @@ public class viewAgendamento extends javax.swing.JFrame {
         });
         getContentPane().add(BtnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 230, 30));
 
-        lblpainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/Painel.png"))); // NOI18N
-        getContentPane().add(lblpainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 710, 390));
-
-        lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
-        getContentPane().add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 790, 530));
-
         TextId1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextId1ActionPerformed(evt);
             }
         });
         getContentPane().add(TextId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 40, 22));
+
+        TextData1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextData1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TextData1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 190, 30));
+
+        lblpainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/Painel.png"))); // NOI18N
+        getContentPane().add(lblpainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 710, 390));
+
+        lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
+        getContentPane().add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 790, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -263,21 +260,21 @@ public class viewAgendamento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnCadastrar
 
-    private void CBHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBHoraActionPerformed
+    private void CBServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBServicoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CBHoraActionPerformed
+    }//GEN-LAST:event_CBServicoActionPerformed
 
-    private void CBSerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBSerActionPerformed
+    private void CBPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBPagamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CBSerActionPerformed
-
-    private void CBPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBPagActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CBPagActionPerformed
+    }//GEN-LAST:event_CBPagamentoActionPerformed
 
     private void TextId1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextId1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextId1ActionPerformed
+
+    private void TextData1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextData1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextData1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,11 +319,11 @@ public class viewAgendamento extends javax.swing.JFrame {
     private javax.swing.JButton BtnPrimeiro;
     private javax.swing.JButton BtnProximo;
     private javax.swing.JButton BtnUltimo;
-    private javax.swing.JComboBox<String> CBClien;
-    private javax.swing.JComboBox<String> CBHora;
-    private javax.swing.JComboBox<String> CBPag;
-    private javax.swing.JComboBox<String> CBSer;
+    private javax.swing.JComboBox<String> CBCliente;
+    private javax.swing.JComboBox<String> CBPagamento;
+    private javax.swing.JComboBox<String> CBServico;
     private javax.swing.JTextField TextData;
+    private javax.swing.JTextField TextData1;
     private javax.swing.JTextField TextId1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblclientes;
@@ -342,15 +339,44 @@ public class viewAgendamento extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void inciar() {
-        controller.atualizar();
+        this.controller.atualizarTabela();
+        this.controller.atualizarCliente();
+        this.controller.atualizarServico();
+        this.controller.atualizarPagamento();
     }
 
     public JTable getTabelaAgendamento() {
         return tabelaAgendamento;
     }
-
+    
     public void setTabelaAgendamento(JTable tabelaAgendamento) {
         this.tabelaAgendamento = tabelaAgendamento;
     }
+
+    public JComboBox<String> getCBCliente() {
+        return CBCliente;
+    }
+
+    public void setCBCliente(JComboBox<String> CBCliente) {
+        this.CBCliente = CBCliente;
+    }
+
+    public JComboBox<String> getCBPagamento() {
+        return CBPagamento;
+    }
+
+    public void setCBPagamento(JComboBox<String> CBPagamento) {
+        this.CBPagamento = CBPagamento;
+    }
+
+    public JComboBox<String> getCBServico() {
+        return CBServico;
+    }
+
+    public void setCBServico(JComboBox<String> CBServico) {
+        this.CBServico = CBServico;
+    }
+    
+    
     
 }

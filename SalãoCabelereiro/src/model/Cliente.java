@@ -9,14 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente extends Pessoa {
+
     private LocalDate data_nasc;
     private String senha_cliente;
     private String telefone_cliente; // Variável mantida conforme seu nome anterior
     private final Conexao conexao; // Objeto para manipulação da conexão com o banco de dados
-    
+
     private static final DateTimeFormatter DATE_FORMATTER_EXIBICAO = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private static final DateTimeFormatter DATE_FORMATTER_BANCO = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    
+
     // Construtor vazio
     public Cliente() {
         this.conexao = new Conexao();
@@ -40,8 +41,8 @@ public class Cliente extends Pessoa {
     public LocalDate getData_nasc() {
         return data_nasc;
     }
-    
-    public String getData_nascFormatada(){
+
+    public String getData_nascFormatada() {
         return data_nasc.format(DATE_FORMATTER_EXIBICAO);
     }
 
@@ -96,18 +97,23 @@ public class Cliente extends Pessoa {
         }
     }
 
-    // Método para listar todos os clientes
-    public List<Cliente> listar() {
-        List<Cliente> clientes = new ArrayList<>();
+    public static ArrayList<Cliente> listar() {
+        ArrayList<Cliente> clientes = new ArrayList<>();
         String sql = "SELECT * FROM tb_cliente";
 
-        if (!conexao.conecta()) {
+        Conexao conexaoLocal = new Conexao();
+
+        if (!conexaoLocal.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
             return clientes;
         }
 
-        try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
-            ResultSet resultSet = stmt.executeQuery();
+        PreparedStatement stmt = null;
+        ResultSet resultSet = null;
+
+        try {
+            stmt = conexaoLocal.getConexao().prepareStatement(sql);
+            resultSet = stmt.executeQuery();
 
             while (resultSet.next()) {
                 Cliente cliente = new Cliente();
@@ -124,7 +130,17 @@ public class Cliente extends Pessoa {
         } catch (SQLException e) {
             System.out.println("Erro ao listar clientes: " + e.getMessage());
         } finally {
-            conexao.desconecta();
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Erro ao fechar recursos: " + e.getMessage());
+            }
+            conexaoLocal.desconecta();
         }
 
         return clientes;
@@ -179,7 +195,7 @@ public class Cliente extends Pessoa {
             conexao.desconecta();
         }
     }
-    
+
     //Método para carregar o cliente em outras classes que precisem dessas informações do objeto cliente. Conseqência de não usar o iner join no banco
     public void carregar() {
         String sql = "SELECT * FROM tb_cliente WHERE cod_cliente = ?";
@@ -208,6 +224,11 @@ public class Cliente extends Pessoa {
         } finally {
             conexao.desconecta();
         }
+    }
+    
+    @Override
+    public String toString(){
+        return getNome();
     }
 
 }
