@@ -7,6 +7,7 @@ package view.cadastro;
 import controller.AgendamentoController;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -30,17 +31,22 @@ public class viewAgendamento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TextData = new javax.swing.JTextField();
+        TextValor = new javax.swing.JTextField();
         lblid = new javax.swing.JLabel();
         lblnome = new javax.swing.JLabel();
         lblcpf = new javax.swing.JLabel();
         lbltelefone = new javax.swing.JLabel();
-        lblemail = new javax.swing.JLabel();
+        lblProfissional = new javax.swing.JLabel();
         lblclientes = new javax.swing.JLabel();
+        lblemail1 = new javax.swing.JLabel();
+        lbltelefone2 = new javax.swing.JLabel();
+        lbltelefone3 = new javax.swing.JLabel();
+        TextPesquisar = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaAgendamento = new javax.swing.JTable();
         CBCliente = new javax.swing.JComboBox<>();
         CBServico = new javax.swing.JComboBox<>();
+        CBProfissional = new javax.swing.JComboBox<>();
         CBPagamento = new javax.swing.JComboBox<>();
         lbltelefone1 = new javax.swing.JLabel();
         BtnUltimo = new javax.swing.JButton();
@@ -50,83 +56,118 @@ public class viewAgendamento extends javax.swing.JFrame {
         BtnDeletar = new javax.swing.JButton();
         BtnAlterar = new javax.swing.JButton();
         BtnCadastrar = new javax.swing.JButton();
-        TextId1 = new javax.swing.JTextField();
-        TextData1 = new javax.swing.JTextField();
+        TextId = new javax.swing.JTextField();
+        TextData = new javax.swing.JTextField();
+        TextHora1 = new javax.swing.JTextField();
         lblpainel = new javax.swing.JLabel();
         lblfundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TextData.addActionListener(new java.awt.event.ActionListener() {
+        TextValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextDataActionPerformed(evt);
+                TextValorActionPerformed(evt);
             }
         });
-        getContentPane().add(TextData, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 190, 30));
+        getContentPane().add(TextValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 130, 30));
 
         lblid.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblid.setForeground(new java.awt.Color(204, 204, 204));
         lblid.setText("Id");
-        getContentPane().add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 20, 10));
+        getContentPane().add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 20, 20));
 
         lblnome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblnome.setForeground(new java.awt.Color(204, 204, 204));
         lblnome.setText("Cliente");
-        getContentPane().add(lblnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 60, 10));
+        getContentPane().add(lblnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 50, 30));
 
         lblcpf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblcpf.setForeground(new java.awt.Color(204, 204, 204));
         lblcpf.setText("Serviço");
-        getContentPane().add(lblcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 60, 10));
+        getContentPane().add(lblcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 60, 30));
 
         lbltelefone.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbltelefone.setForeground(new java.awt.Color(204, 204, 204));
-        lbltelefone.setText("Hora");
-        getContentPane().add(lbltelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, 10));
+        lbltelefone.setText("Valor");
+        getContentPane().add(lbltelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, -1, 10));
 
-        lblemail.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblemail.setForeground(new java.awt.Color(204, 204, 204));
-        lblemail.setText("Pagamento");
-        getContentPane().add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 80, -1));
+        lblProfissional.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblProfissional.setForeground(new java.awt.Color(204, 204, 204));
+        lblProfissional.setText("Profissional");
+        getContentPane().add(lblProfissional, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, 30));
 
         lblclientes.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
         lblclientes.setForeground(new java.awt.Color(204, 204, 204));
         lblclientes.setText("Agendamento");
         getContentPane().add(lblclientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
 
+        lblemail1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblemail1.setForeground(new java.awt.Color(204, 204, 204));
+        lblemail1.setText("Pagamento");
+        getContentPane().add(lblemail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 80, 30));
+
+        lbltelefone2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbltelefone2.setForeground(new java.awt.Color(204, 204, 204));
+        lbltelefone2.setText("Pesquisar Cliente:");
+        getContentPane().add(lbltelefone2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, 30));
+
+        lbltelefone3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbltelefone3.setForeground(new java.awt.Color(204, 204, 204));
+        lbltelefone3.setText("Hora");
+        getContentPane().add(lbltelefone3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, -1, 10));
+
+        TextPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextPesquisarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TextPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 350, 30));
+
         tabelaAgendamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "Nome", "Serviço", "Pagamento", "Data", "Hora"
+                "Id", "Nome", "Serviço", "Valor", "Profissional", "Data", "Hora", "Pagamento"
             }
         ));
         jScrollPane2.setViewportView(tabelaAgendamento);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 670, 120));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 700, 120));
 
-        getContentPane().add(CBCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 190, 30));
+        getContentPane().add(CBCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 190, 30));
 
+        CBServico.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CBServicoItemStateChanged(evt);
+            }
+        });
         CBServico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CBServicoActionPerformed(evt);
             }
         });
-        getContentPane().add(CBServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 190, 30));
+        getContentPane().add(CBServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 190, 30));
+
+        CBProfissional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBProfissionalActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CBProfissional, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 190, 30));
 
         CBPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CBPagamentoActionPerformed(evt);
             }
         });
-        getContentPane().add(CBPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 190, 30));
+        getContentPane().add(CBPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 190, 30));
 
         lbltelefone1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbltelefone1.setForeground(new java.awt.Color(204, 204, 204));
         lbltelefone1.setText("Data");
-        getContentPane().add(lbltelefone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, -1, 10));
+        getContentPane().add(lbltelefone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, 10));
 
         BtnUltimo.setBackground(new java.awt.Color(44, 148, 82));
         BtnUltimo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -137,7 +178,7 @@ public class viewAgendamento extends javax.swing.JFrame {
                 BtnUltimoActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnUltimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, 30, 30));
+        getContentPane().add(BtnUltimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, 30, 30));
 
         BtnAnterior.setBackground(new java.awt.Color(44, 148, 82));
         BtnAnterior.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -148,7 +189,7 @@ public class viewAgendamento extends javax.swing.JFrame {
                 BtnAnteriorActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 30, 30));
+        getContentPane().add(BtnAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, 30, 30));
 
         BtnProximo.setBackground(new java.awt.Color(44, 148, 82));
         BtnProximo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -159,7 +200,7 @@ public class viewAgendamento extends javax.swing.JFrame {
                 BtnProximoActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnProximo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 30, 30));
+        getContentPane().add(BtnProximo, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 340, 30, 30));
 
         BtnPrimeiro.setBackground(new java.awt.Color(44, 148, 82));
         BtnPrimeiro.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -170,7 +211,7 @@ public class viewAgendamento extends javax.swing.JFrame {
                 BtnPrimeiroActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnPrimeiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 30, 30));
+        getContentPane().add(BtnPrimeiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 30, 30));
 
         BtnDeletar.setBackground(new java.awt.Color(44, 148, 82));
         BtnDeletar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -181,7 +222,7 @@ public class viewAgendamento extends javax.swing.JFrame {
                 BtnDeletarActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnDeletar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 230, 30));
+        getContentPane().add(BtnDeletar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, 90, 30));
 
         BtnAlterar.setBackground(new java.awt.Color(44, 148, 82));
         BtnAlterar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -192,35 +233,42 @@ public class viewAgendamento extends javax.swing.JFrame {
                 BtnAlterarActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 230, 30));
+        getContentPane().add(BtnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 90, 30));
 
         BtnCadastrar.setBackground(new java.awt.Color(44, 148, 82));
         BtnCadastrar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         BtnCadastrar.setForeground(new java.awt.Color(255, 255, 255));
-        BtnCadastrar.setText("Cadastrar");
+        BtnCadastrar.setText("Agendar");
         BtnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCadastrar(evt);
             }
         });
-        getContentPane().add(BtnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 230, 30));
+        getContentPane().add(BtnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 190, 40));
 
-        TextId1.addActionListener(new java.awt.event.ActionListener() {
+        TextId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextId1ActionPerformed(evt);
+                TextIdActionPerformed(evt);
             }
         });
-        getContentPane().add(TextId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 40, 22));
+        getContentPane().add(TextId, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 40, 22));
 
-        TextData1.addActionListener(new java.awt.event.ActionListener() {
+        TextData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextData1ActionPerformed(evt);
+                TextDataActionPerformed(evt);
             }
         });
-        getContentPane().add(TextData1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 190, 30));
+        getContentPane().add(TextData, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 130, 30));
+
+        TextHora1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextHora1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TextHora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 130, 30));
 
         lblpainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/Painel.png"))); // NOI18N
-        getContentPane().add(lblpainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 710, 390));
+        getContentPane().add(lblpainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 740, 410));
 
         lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
         getContentPane().add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 790, 530));
@@ -228,9 +276,9 @@ public class viewAgendamento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TextDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextDataActionPerformed
+    private void TextValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextValorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextDataActionPerformed
+    }//GEN-LAST:event_TextValorActionPerformed
 
     private void BtnUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUltimoActionPerformed
         // TODO add your handling code here:
@@ -257,24 +305,42 @@ public class viewAgendamento extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnAlterarActionPerformed
 
     private void BtnCadastrar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrar
-        // TODO add your handling code here:
+        this.controller.agendar();
     }//GEN-LAST:event_BtnCadastrar
 
     private void CBServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBServicoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CBServicoActionPerformed
 
+    private void CBProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBProfissionalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBProfissionalActionPerformed
+
+    private void TextIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextIdActionPerformed
+
+    private void TextDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextDataActionPerformed
+
+    private void TextPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextPesquisarActionPerformed
+
     private void CBPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBPagamentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CBPagamentoActionPerformed
 
-    private void TextId1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextId1ActionPerformed
+    private void TextHora1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextHora1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextId1ActionPerformed
+    }//GEN-LAST:event_TextHora1ActionPerformed
 
-    private void TextData1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextData1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextData1ActionPerformed
+    private void CBServicoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBServicoItemStateChanged
+        
+        this.controller.atualizarValor();
+        
+    }//GEN-LAST:event_CBServicoItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -321,28 +387,37 @@ public class viewAgendamento extends javax.swing.JFrame {
     private javax.swing.JButton BtnUltimo;
     private javax.swing.JComboBox<String> CBCliente;
     private javax.swing.JComboBox<String> CBPagamento;
+    private javax.swing.JComboBox<String> CBProfissional;
     private javax.swing.JComboBox<String> CBServico;
     private javax.swing.JTextField TextData;
-    private javax.swing.JTextField TextData1;
-    private javax.swing.JTextField TextId1;
+    private javax.swing.JTextField TextHora1;
+    private javax.swing.JTextField TextId;
+    private javax.swing.JTextField TextPesquisar;
+    private javax.swing.JTextField TextValor;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblProfissional;
     private javax.swing.JLabel lblclientes;
     private javax.swing.JLabel lblcpf;
-    private javax.swing.JLabel lblemail;
+    private javax.swing.JLabel lblemail1;
     private javax.swing.JLabel lblfundo;
     private javax.swing.JLabel lblid;
     private javax.swing.JLabel lblnome;
     private javax.swing.JLabel lblpainel;
     private javax.swing.JLabel lbltelefone;
     private javax.swing.JLabel lbltelefone1;
+    private javax.swing.JLabel lbltelefone2;
+    private javax.swing.JLabel lbltelefone3;
     private javax.swing.JTable tabelaAgendamento;
     // End of variables declaration//GEN-END:variables
 
+    
     private void inciar() {
         this.controller.atualizarTabela();
         this.controller.atualizarCliente();
         this.controller.atualizarServico();
         this.controller.atualizarPagamento();
+        this.controller.atualizarProfissional();
+        this.controller.atualizarValor();
     }
 
     public JTable getTabelaAgendamento() {
@@ -375,6 +450,22 @@ public class viewAgendamento extends javax.swing.JFrame {
 
     public void setCBServico(JComboBox<String> CBServico) {
         this.CBServico = CBServico;
+    }
+    
+    public JComboBox<String> getCBProfissional() {
+        return CBProfissional;
+    }
+
+    public void setCBProfissional(JComboBox<String> CBProfissional) {
+        this.CBProfissional = CBProfissional;
+    }
+
+    public JTextField getTextValor() {
+        return TextValor;
+    }
+
+    public void setTextValor(JTextField TextValor) {
+        this.TextValor = TextValor;
     }
     
     

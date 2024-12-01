@@ -2,7 +2,6 @@ package model;
 
 import conexao.Conexao;
 import java.sql.*;
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -97,7 +96,7 @@ public class Agendamento {
     public LocalTime getHorario_agendamento() {
         return horario_agendamento;
     }
-    
+
     public String getHorarioFormatado_agendamento() {
         return horario_agendamento.format(TIME_FORMATTER_EXIBICAO);
     }
@@ -113,7 +112,7 @@ public class Agendamento {
     public LocalDate getData_agendamento() {
         return data_agendamento;
     }
-    
+
     public String getDataFormatada_agendamento() {
         return data_agendamento.format(DATE_FORMATTER_EXIBICAO);
     }
@@ -184,7 +183,7 @@ public class Agendamento {
                     Cliente cliente = new Cliente();
                     cliente.setCod(codCliente);
                     cliente.carregar(); // Método carregar preenche os dados do cliente
-                        
+
                     // Fromata a data de nasc para exibição
                     cliente.setData_nasc(cliente.getData_nascFormatada()); // Formata para exibição
 
@@ -196,13 +195,13 @@ public class Agendamento {
                 if (!rs.wasNull() && codServico > 0) {
                     Servico servico = new Servico();
                     servico.setCod_servico(codServico);
-                    servico.carregar(); // Método carregar preenche os dados do serviço 
-                    
-                    Duration tempo = servico.getTempo_servico();
-                    if (tempo == null) {             
-                        servico.setTempo_servico(Duration.ZERO); // Define como 0 se nulo ou vazio
+                    servico.carregar(); // Método carregar preenche os dados do serviço
+
+                    // Certifica-se de que os dados do tempo de serviço sejam válidos
+                    if (servico.getTempo_servico() == null) {
+                        servico.setTempo_servico(LocalTime.MIDNIGHT); // Define como meia-noite (00:00:00) se nulo
                     }
-                    
+
                     agendamento.setServico(servico);
                 }
 
@@ -214,7 +213,7 @@ public class Agendamento {
                     profissional.carregar(); // Método carregar preenche os dados do profissional
                     agendamento.setProfissional(profissional);
                 }
-                
+
                 int codPagamento = rs.getInt("cod_pagamento");
                 if (!rs.wasNull() && codPagamento > 0) {
                     Pagamento pagamento = new Pagamento();

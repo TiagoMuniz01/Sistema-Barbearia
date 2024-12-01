@@ -6,18 +6,20 @@ package view;
 
 import controller.LoginController;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 /**
  *
  * @author Tiago e Diogo
  */
 public class viewLogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form viewLogin
-     */
+    private final LoginController controller;
+    
     public viewLogin() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
+        controller = new LoginController(this);
     }
 
     /**
@@ -31,12 +33,12 @@ public class viewLogin extends javax.swing.JFrame {
 
         lbllogin = new javax.swing.JLabel();
         lbllogo = new javax.swing.JLabel();
-        jtextusuario = new javax.swing.JTextField();
+        TextUsuario = new javax.swing.JTextField();
         lblusuario = new javax.swing.JLabel();
         lblbarbeleon = new javax.swing.JLabel();
         lblsenha = new javax.swing.JLabel();
         btnentrar = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        TextSenha = new javax.swing.JPasswordField();
         lblfundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,8 +53,8 @@ public class viewLogin extends javax.swing.JFrame {
         lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/logo.png"))); // NOI18N
         getContentPane().add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 310, 280));
 
-        jtextusuario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        getContentPane().add(jtextusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 210, 30));
+        TextUsuario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        getContentPane().add(TextUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 210, 30));
 
         lblusuario.setBackground(new java.awt.Color(153, 153, 153));
         lblusuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -83,8 +85,8 @@ public class viewLogin extends javax.swing.JFrame {
         });
         getContentPane().add(btnentrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 90, 30));
 
-        jPasswordField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 322, 210, 30));
+        TextSenha.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        getContentPane().add(TextSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 322, 210, 30));
 
         lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
         getContentPane().add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 788, 553));
@@ -93,29 +95,7 @@ public class viewLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnentrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnentrarActionPerformed
-        String email = jtextusuario.getText();
-        String cpf = new String(jPasswordField1.getPassword());
-
-        if (email.isEmpty() || cpf.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos.", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        // Criar uma instância do LoginController
-        LoginController controller = new LoginController();
-
-        // Verificar se o login é válido
-        if (controller.autenticar(email, cpf)) {
-            JOptionPane.showMessageDialog(this, "Login realizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            // Fechar a tela de login
-            this.setVisible(false);
-
-            // Criar e exibir a tela Home
-            viewHome home = new viewHome(); // Assumindo que você tenha a classe viewHome
-            home.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Credenciais inválidas.", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
+        controller.autenticar();
     }//GEN-LAST:event_btnentrarActionPerformed
 
     public static void main(String args[]) {
@@ -151,9 +131,9 @@ public class viewLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField TextSenha;
+    private javax.swing.JTextField TextUsuario;
     private javax.swing.JButton btnentrar;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jtextusuario;
     private javax.swing.JLabel lblbarbeleon;
     private javax.swing.JLabel lblfundo;
     private javax.swing.JLabel lbllogin;
@@ -161,4 +141,20 @@ public class viewLogin extends javax.swing.JFrame {
     private javax.swing.JLabel lblsenha;
     private javax.swing.JLabel lblusuario;
     // End of variables declaration//GEN-END:variables
+
+    public JPasswordField getTextSenha() {
+        return TextSenha;
+    }
+
+    public void setTextSenha(JPasswordField TextSenha) {
+        this.TextSenha = TextSenha;
+    }
+
+    public JTextField getTextUsuario() {
+        return TextUsuario;
+    }
+
+    public void setTextUsuario(JTextField TextUsuario) {
+        this.TextUsuario = TextUsuario;
+    }
 }

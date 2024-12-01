@@ -23,6 +23,7 @@ public class viewHome extends javax.swing.JFrame {
      */
     public viewHome() {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.controller = new HomeController(this);
         
     }

@@ -3,9 +3,11 @@ package controller;
 
 import controller.helper.AgendamentoHelper;
 import java.util.ArrayList;
+import java.util.List;
 import model.Agendamento;
 import model.Cliente;
 import model.Pagamento;
+import model.Profissional;
 import model.Servico;
 import view.cadastro.viewAgendamento;
 
@@ -56,5 +58,25 @@ public class AgendamentoController{
         ArrayList<Pagamento> pagamentos = pagamento.listar();
         
         helper.preencherPagamento(pagamentos);
+    }
+    
+    public void atualizarProfissional(){
+        Profissional profissional = new Profissional();
+        ArrayList<Profissional> profissionais = profissional.listar();
+        
+        helper.preencherProfissional(profissionais);
+        
+    }
+    
+    public void atualizarValor(){
+        Servico servico = helper.obterServico();
+        helper.setValor(servico.getPreco_servico());
+    }
+    
+    public void agendar(){
+        
+        //Buscar objeto agendaemnto da tela
+        
+        //Salva objeto no banco de dados
     }
 }

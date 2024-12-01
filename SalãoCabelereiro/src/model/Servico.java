@@ -2,10 +2,9 @@ package model;
 
 import conexao.Conexao;
 import java.sql.*;
-import java.time.Duration;
-import java.time.format.DateTimeParseException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Servico {
 
@@ -13,21 +12,31 @@ public class Servico {
     private String nome_servico;
     private String descricao_servico;
     private float preco_servico;
-    private Duration tempo_servico;
+    private LocalTime tempo_servico;
     private final Conexao conexao;
+
+    private static final DateTimeFormatter TIME_FORMATTER_BANCO = DateTimeFormatter.ofPattern("HH:mm:ss");
+    private static final DateTimeFormatter TIME_FORMATTER_EXIBICAO = DateTimeFormatter.ofPattern("HH:mm");
 
     // Construtores
     public Servico() {
         this.conexao = new Conexao();
     }
 
-    public Servico(int cod_servico, String nome_servico, String descricao_servico, float preco_servico, Duration tempo_servico) {
+    public Servico(int cod_servico, String nome_servico, String descricao_servico, float preco_servico, String tempo_servico) {
         this.cod_servico = cod_servico;
         this.nome_servico = nome_servico;
         this.descricao_servico = descricao_servico;
         this.preco_servico = preco_servico;
-        this.tempo_servico = tempo_servico;
+
+        try {
+            this.tempo_servico = LocalTime.parse(tempo_servico, TIME_FORMATTER_BANCO);
+        } catch (Exception ex) {
+            System.out.println("Erro ao converter horário: " + ex.getMessage());
+        }
+
         this.conexao = new Conexao();
+
     }
 
     // Métodos Getters e Setters
@@ -63,11 +72,23 @@ public class Servico {
         this.preco_servico = preco_servico;
     }
 
-    public Duration getTempo_servico() {
+    public String getHorarioFormatado_agendamento() {
+        return tempo_servico.format(TIME_FORMATTER_EXIBICAO);
+    }
+
+    public void setHorario_agendamento(String horario_agendamento) {
+        try {
+            this.tempo_servico = LocalTime.parse(horario_agendamento, TIME_FORMATTER_BANCO);
+        } catch (Exception ex) {
+            System.out.println("Erro ao converter horário: " + ex.getMessage());
+        }
+    }
+
+    public LocalTime getTempo_servico() {
         return tempo_servico;
     }
 
-    public void setTempo_servico(Duration tempo_servico) {
+    public void setTempo_servico(LocalTime tempo_servico) {
         this.tempo_servico = tempo_servico;
     }
 
@@ -77,130 +98,111 @@ public class Servico {
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
-            return false; // Retorna false em caso de erro
+            return false;
         }
 
         try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
-            stmt.setString(1, this.nome_servico); // Define o nome do serviço
-            stmt.setFloat(2, this.preco_servico); // Define o preço do serviço
-            stmt.setString(3, this.tempo_servico.toString()); // Converte o tempo para string
-            stmt.setString(4, this.descricao_servico); // Define a descrição do serviço
+            stmt.setString(1, this.nome_servico);
+            stmt.setFloat(2, this.preco_servico);
+            stmt.setString(3, this.tempo_servico.format(TIME_FORMATTER_BANCO));
+            stmt.setString(4, this.descricao_servico);
 
-            int rowsInserted = stmt.executeUpdate(); // Executa a inserção
-            return rowsInserted > 0; // Retorna true se alguma linha foi inserida
+            int rowsInserted = stmt.executeUpdate();
+            return rowsInserted > 0;
         } catch (SQLException e) {
             System.out.println("Erro ao inserir serviço: " + e.getMessage());
-            return false; // Retorna false em caso de erro
+            return false;
         } finally {
-            conexao.desconecta(); // Fecha a conexão
+            conexao.desconecta();
         }
     }
 
-    // Método para listar todos os serviços
+// Método para listar todos os serviços
     public static ArrayList<Servico> listar() {
         ArrayList<Servico> servicos = new ArrayList<>();
-        String sql = "SELECT * FROM tb_servico"; // Consulta ajustada com o nome correto da tabela
+        String sql = "SELECT * FROM tb_servico";
 
         Conexao conexaoLocal = new Conexao();
 
         if (!conexaoLocal.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
-            return servicos; // Retorna lista vazia em caso de erro
+            return servicos;
         }
 
-        PreparedStatement stmt = null;
-        ResultSet resultSet = null;
-
-        try {
-            stmt = conexaoLocal.getConexao().prepareStatement(sql);
-            resultSet = stmt.executeQuery(); // Executa a consulta
+        try (PreparedStatement stmt = conexaoLocal.getConexao().prepareStatement(sql); ResultSet resultSet = stmt.executeQuery()) {
 
             while (resultSet.next()) {
-                // Criação do objeto Servico a partir do resultado da consulta
                 Servico servico = new Servico();
                 servico.setCod_servico(resultSet.getInt("cod_servico"));
                 servico.setNome_servico(resultSet.getString("nome_servico"));
                 servico.setPreco_servico(resultSet.getFloat("preco_servico"));
+                servico.setDescricao_servico(resultSet.getString("desc_servico"));
 
-                /*/ Trata o tempo do serviço como Duration, verificando se o valor não é nulo
                 String tempoServicoStr = resultSet.getString("tempo_servico");
                 if (tempoServicoStr != null && !tempoServicoStr.isEmpty()) {
-                    servico.setTempo_servico(Duration.parse(tempoServicoStr));
-                } else {
-                    servico.setTempo_servico(Duration.ZERO); // Define como zero se não houver valor
-                }*/
+                    servico.setTempo_servico(LocalTime.parse(tempoServicoStr, TIME_FORMATTER_BANCO));
+                }
 
-                servico.setDescricao_servico(resultSet.getString("desc_servico"));
-                servicos.add(servico); // Adiciona o serviço à lista
+                servicos.add(servico);
             }
         } catch (SQLException e) {
             System.out.println("Erro ao listar serviços: " + e.getMessage());
         } finally {
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Erro ao fechar recursos: " + e.getMessage());
-            }
-            conexaoLocal.desconecta(); // Fecha a conexão
+            conexaoLocal.desconecta();
         }
 
-        return servicos; // Retorna a lista de serviços
+        return servicos;
     }
 
-    // Método para atualizar um serviço
+// Método para atualizar um serviço
     public boolean atualizar() {
         String sql = "UPDATE tb_servico SET nome_servico=?, preco_servico=?, tempo_servico=?, desc_servico=? WHERE cod_servico=?";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
-            return false; // Retorna false em caso de erro
+            return false;
         }
 
         try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
-            stmt.setString(1, this.nome_servico); // Define o nome do serviço
-            stmt.setFloat(2, this.preco_servico); // Define o preço do serviço
-            stmt.setString(3, this.tempo_servico.toString()); // Converte o tempo para string
-            stmt.setString(4, this.descricao_servico); // Define a descrição do serviço
-            stmt.setInt(5, this.cod_servico); // Define o código do serviço a ser atualizado
+            stmt.setString(1, this.nome_servico);
+            stmt.setFloat(2, this.preco_servico);
+            stmt.setString(3, this.tempo_servico.format(TIME_FORMATTER_BANCO));
+            stmt.setString(4, this.descricao_servico);
+            stmt.setInt(5, this.cod_servico);
 
-            int rowsUpdated = stmt.executeUpdate(); // Executa a atualização
-            return rowsUpdated > 0; // Retorna true se alguma linha foi atualizada
+            int rowsUpdated = stmt.executeUpdate();
+            return rowsUpdated > 0;
         } catch (SQLException e) {
             System.out.println("Erro ao atualizar serviço: " + e.getMessage());
-            return false; // Retorna false em caso de erro
+            return false;
         } finally {
-            conexao.desconecta(); // Fecha a conexão
+            conexao.desconecta();
         }
     }
 
-    // Método para excluir um serviço
+// Método para excluir um serviço
     public boolean excluir(int cod_servico) {
         String sql = "DELETE FROM tb_servico WHERE cod_servico=?";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
-            return false; // Retorna false em caso de erro
+            return false;
         }
 
         try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
-            stmt.setInt(1, cod_servico); // Define o código do serviço a ser excluído
+            stmt.setInt(1, cod_servico);
 
-            int rowsDeleted = stmt.executeUpdate(); // Executa a exclusão
-            return rowsDeleted > 0; // Retorna true se alguma linha foi excluída
+            int rowsDeleted = stmt.executeUpdate();
+            return rowsDeleted > 0;
         } catch (SQLException e) {
             System.out.println("Erro ao excluir serviço: " + e.getMessage());
-            return false; // Retorna false em caso de erro
+            return false;
         } finally {
-            conexao.desconecta(); // Fecha a conexão
+            conexao.desconecta();
         }
     }
 
-    // Método para carregar os dados de um serviço com base no cod_servico
+// Método para carregar os dados de um serviço com base no cod_servico
     public void carregar() {
         String sql = "SELECT * FROM tb_servico WHERE cod_servico = ?";
 
@@ -210,38 +212,28 @@ public class Servico {
         }
 
         try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
-            stmt.setInt(1, this.cod_servico); // Define o código do serviço a ser carregado
+            stmt.setInt(1, this.cod_servico);
             ResultSet resultSet = stmt.executeQuery();
 
             if (resultSet.next()) {
-                // Preenche os atributos do serviço a partir do resultado da consulta
                 this.nome_servico = resultSet.getString("nome_servico");
                 this.descricao_servico = resultSet.getString("desc_servico");
                 this.preco_servico = resultSet.getFloat("preco_servico");
 
-               /* // Tenta pegar o tempo_servico
                 String tempoBanco = resultSet.getString("tempo_servico");
-
                 if (tempoBanco != null && !tempoBanco.isEmpty()) {
-                    try {
-                        this.tempo_servico = Duration.parse(tempoBanco); // Converte se estiver no formato correto
-                    } catch (DateTimeParseException e) {
-                        System.out.println("Erro ao parsear tempo_servico (formato inválido): " + e.getMessage());
-                        this.tempo_servico = Duration.ZERO; // Define um valor padrão em caso de erro de formato
-                    }
-                } else {
-                    this.tempo_servico = Duration.ZERO; // Define como 0 se for nulo ou vazio
-                }*/
+                    this.tempo_servico = LocalTime.parse(tempoBanco, TIME_FORMATTER_BANCO);
+                }
             } else {
                 System.out.println("Serviço não encontrado no banco de dados.");
             }
         } catch (SQLException e) {
             System.out.println("Erro ao carregar serviço: " + e.getMessage());
         } finally {
-            conexao.desconecta(); // Fecha a conexão
+            conexao.desconecta();
         }
     }
-
+    
     @Override
     public String toString(){
         return getNome_servico();

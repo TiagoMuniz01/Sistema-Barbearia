@@ -43,14 +43,21 @@ public class Cliente extends Pessoa {
     }
 
     public String getData_nascFormatada() {
-        return data_nasc.format(DATE_FORMATTER_EXIBICAO);
+        if (data_nasc != null) {
+            return data_nasc.format(DATE_FORMATTER_EXIBICAO);
+        } else {
+            System.out.println("Data de nascimento não está definida.");
+            return "";  // Ou outro valor que indique que a data não foi definida
+        }
     }
 
     public void setData_nasc(String data_nasc) {
         try {
+            // Converte a data para LocalDate usando o formato de banco (yyyy-MM-dd)
             this.data_nasc = LocalDate.parse(data_nasc, DATE_FORMATTER_BANCO);
-        } catch (Exception ex) {
+        } catch (DateTimeParseException ex) {
             System.out.println("Erro ao converter data: " + ex.getMessage());
+            this.data_nasc = null; // Para garantir que data_nasc não fique com valor inválido
         }
     }
 
@@ -160,7 +167,8 @@ public class Cliente extends Pessoa {
             stmt.setString(2, this.getCpf());
             stmt.setString(3, this.getEmail());
             stmt.setString(4, this.telefone_cliente);
-            stmt.setString(5, this.data_nasc.toString()); // Convertendo LocalDate para String
+            stmt.setString(5, this.data_nasc.format(DATE_FORMATTER_BANCO)); // Convertendo LocalDate para String no formato de banco
+
             stmt.setString(6, this.senha_cliente);
             stmt.setInt(7, this.getCod()); // Ajuste para o campo `cod_cliente`
 
@@ -212,6 +220,7 @@ public class Cliente extends Pessoa {
             if (resultSet.next()) {
                 this.setNome(resultSet.getString("nome_cliente"));
                 this.setCpf(resultSet.getString("cpf_cliente"));
+                
                 this.setEmail(resultSet.getString("email_cliente"));
                 this.setTelefone_cliente(resultSet.getString("telefone_cliente"));
                 this.setData_nasc(resultSet.getString("data_nasc"));
@@ -225,9 +234,9 @@ public class Cliente extends Pessoa {
             conexao.desconecta();
         }
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return getNome();
     }
 

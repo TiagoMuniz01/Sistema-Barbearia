@@ -24,6 +24,12 @@ abstract public class Pessoa { //Classe pai para as classes filho profissional e
         this.email = email;
         this.telefone = telefone;
     }
+
+    public Pessoa(int cod, String email, String cpf) {
+        this.cod = cod;
+        this.email = email;
+        this.cpf = cpf;
+    }
     
     public Pessoa() {
     

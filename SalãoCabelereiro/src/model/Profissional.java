@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Profissional extends Pessoa {
+
     // Atributos
     private String desc_profissional;
     private String telefone_profissional;
@@ -15,6 +16,11 @@ public class Profissional extends Pessoa {
     // Construtores
     public Profissional() {
         // Construtor vazio para permitir a criação de objetos sem inicialização imediata
+        this.conexao = new Conexao();
+    }
+
+    public Profissional(int cod, String email, String cpf) {
+        super(cod, email, cpf);
         this.conexao = new Conexao();
     }
 
@@ -80,9 +86,9 @@ public class Profissional extends Pessoa {
     }
 
     // Método para listar todos os profissionais
-    public List<Profissional> listar() {
-        List<Profissional> profissionais = new ArrayList<>();
-        String sql = "SELECT * FROM tb_profissional"; // Consulta ajustada com o nome correto da tabela
+    public ArrayList<Profissional> listar() {
+        ArrayList<Profissional> profissionais = new ArrayList<>(); // Mudança para ArrayList
+        String sql = "SELECT * FROM tb_profissional"; // Consulta SQL
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -162,10 +168,10 @@ public class Profissional extends Pessoa {
             conexao.desconecta(); // Fecha a conexão
         }
     }
-    
-    // Método para buscar um profissional pelo email
-    public Profissional buscarPorEmail(String email) {
-        String sql = "SELECT * FROM tb_profissional WHERE email_profissional = ?";
+
+    // Método para autenticar um profissional pelo email(login) e CPF (senha)
+    public Profissional autenticar(Profissional profissional) {
+        String sql = "SELECT * FROM tb_profissional WHERE email_profissional = ? AND cpf_profissional = ?";
 
         if (!conexao.conecta()) {
             System.out.println("Erro de conexão com o banco de dados");
@@ -173,32 +179,36 @@ public class Profissional extends Pessoa {
         }
 
         try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
-            stmt.setString(1, email);
+            // Define os parâmetros da consulta
+            stmt.setString(1, profissional.getEmail()); // Email fornecido pelo usuário
+            stmt.setString(2, profissional.getCpf());   // CPF fornecido como senha
+
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                // Cria um objeto Profissional com os dados obtidos
-                Profissional profissional = new Profissional();
-                profissional.setCod(rs.getInt("cod_profissional"));
-                profissional.setNome(rs.getString("nome_profissional"));
-                profissional.setCpf(rs.getString("cpf_profissional"));
-                profissional.setEmail(rs.getString("email_profissional"));
-                profissional.setTelefone_profissional(rs.getString("telefone_profissional"));
-                profissional.setDesc_profissional(rs.getString("desc_profissional"));
-                profissional.setRg_profissional(rs.getString("rg_profissional"));
-                return profissional;  // Retorna o objeto Profissional
+                // Preenche o objeto Profissional com os dados obtidos
+                Profissional profissionalEncontrado = new Profissional();
+                profissionalEncontrado.setCod(rs.getInt("cod_profissional"));
+                profissionalEncontrado.setNome(rs.getString("nome_profissional"));
+                profissionalEncontrado.setCpf(rs.getString("cpf_profissional"));
+                profissionalEncontrado.setEmail(rs.getString("email_profissional"));
+                profissionalEncontrado.setTelefone_profissional(rs.getString("telefone_profissional"));
+                profissionalEncontrado.setDesc_profissional(rs.getString("desc_profissional"));
+                profissionalEncontrado.setRg_profissional(rs.getString("rg_profissional"));
+
+                return profissionalEncontrado; // Retorna o objeto preenchido
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao buscar profissional: " + e.getMessage());
+            System.out.println("Erro ao autenticar profissional: " + e.getMessage());
         } finally {
             conexao.desconecta(); // Fecha a conexão
         }
 
-        return null; // Retorna null se o profissional não for encontrado
+        return null; // Retorna null se o profissional não for encontrado ou se a autenticação falhar
     }
-    
+
     public void carregar() {
-        String sql = "SELECT * FROM tb_cliente WHERE cod_cliente = ?";
+        String sql = "SELECT * FROM tb_profissional WHERE cod_profissional = ?";
 
         if (!conexao.conecta()) {
             System.out.println("Não foi possível conectar ao banco de dados");
@@ -217,12 +227,17 @@ public class Profissional extends Pessoa {
                 this.setRg_profissional(resultSet.getString("telefone_profissional"));
                 this.setRg_profissional(resultSet.getString("rg_profissional"));
             } else {
-                System.out.println("Cliente não encontrado no banco de dados.");
+                System.out.println("Profissional não encontrado no banco de dados.");
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao carregar cliente: " + e.getMessage());
+            System.out.println("Erro ao carregar profissional: " + e.getMessage());
         } finally {
             conexao.desconecta();
         }
+    }
+
+    @Override
+    public String toString() {
+        return getNome();
     }
 }
