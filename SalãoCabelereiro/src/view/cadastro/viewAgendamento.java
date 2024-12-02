@@ -8,6 +8,7 @@ import controller.AgendamentoController;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import model.Cliente;
 
 /**
  *
@@ -16,6 +17,7 @@ import javax.swing.JTextField;
 public class viewAgendamento extends javax.swing.JFrame {
 
     private final AgendamentoController controller;
+
     public viewAgendamento() {
         initComponents();
         controller = new AgendamentoController(this);
@@ -56,9 +58,9 @@ public class viewAgendamento extends javax.swing.JFrame {
         BtnDeletar = new javax.swing.JButton();
         BtnAlterar = new javax.swing.JButton();
         BtnCadastrar = new javax.swing.JButton();
-        TextId = new javax.swing.JTextField();
+        TexCod = new javax.swing.JTextField();
         TextData = new javax.swing.JTextField();
-        TextHora1 = new javax.swing.JTextField();
+        TextHora = new javax.swing.JTextField();
         lblpainel = new javax.swing.JLabel();
         lblfundo = new javax.swing.JLabel();
 
@@ -74,8 +76,8 @@ public class viewAgendamento extends javax.swing.JFrame {
 
         lblid.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblid.setForeground(new java.awt.Color(204, 204, 204));
-        lblid.setText("Id");
-        getContentPane().add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 20, 20));
+        lblid.setText("Cod");
+        getContentPane().add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 30, 20));
 
         lblnome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblnome.setForeground(new java.awt.Color(204, 204, 204));
@@ -246,12 +248,12 @@ public class viewAgendamento extends javax.swing.JFrame {
         });
         getContentPane().add(BtnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 190, 40));
 
-        TextId.addActionListener(new java.awt.event.ActionListener() {
+        TexCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextIdActionPerformed(evt);
+                TexCodActionPerformed(evt);
             }
         });
-        getContentPane().add(TextId, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 40, 22));
+        getContentPane().add(TexCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 40, 22));
 
         TextData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,12 +262,12 @@ public class viewAgendamento extends javax.swing.JFrame {
         });
         getContentPane().add(TextData, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 130, 30));
 
-        TextHora1.addActionListener(new java.awt.event.ActionListener() {
+        TextHora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextHora1ActionPerformed(evt);
+                TextHoraActionPerformed(evt);
             }
         });
-        getContentPane().add(TextHora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 130, 30));
+        getContentPane().add(TextHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 130, 30));
 
         lblpainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/Painel.png"))); // NOI18N
         getContentPane().add(lblpainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 740, 410));
@@ -316,9 +318,9 @@ public class viewAgendamento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CBProfissionalActionPerformed
 
-    private void TextIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextIdActionPerformed
+    private void TexCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TexCodActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextIdActionPerformed
+    }//GEN-LAST:event_TexCodActionPerformed
 
     private void TextDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextDataActionPerformed
         // TODO add your handling code here:
@@ -332,14 +334,14 @@ public class viewAgendamento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CBPagamentoActionPerformed
 
-    private void TextHora1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextHora1ActionPerformed
+    private void TextHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextHoraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextHora1ActionPerformed
+    }//GEN-LAST:event_TextHoraActionPerformed
 
     private void CBServicoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBServicoItemStateChanged
-        
+
         this.controller.atualizarValor();
-        
+
     }//GEN-LAST:event_CBServicoItemStateChanged
 
     /**
@@ -385,13 +387,13 @@ public class viewAgendamento extends javax.swing.JFrame {
     private javax.swing.JButton BtnPrimeiro;
     private javax.swing.JButton BtnProximo;
     private javax.swing.JButton BtnUltimo;
-    private javax.swing.JComboBox<String> CBCliente;
+    private javax.swing.JComboBox<Cliente> CBCliente;
     private javax.swing.JComboBox<String> CBPagamento;
     private javax.swing.JComboBox<String> CBProfissional;
     private javax.swing.JComboBox<String> CBServico;
+    private javax.swing.JTextField TexCod;
     private javax.swing.JTextField TextData;
-    private javax.swing.JTextField TextHora1;
-    private javax.swing.JTextField TextId;
+    private javax.swing.JTextField TextHora;
     private javax.swing.JTextField TextPesquisar;
     private javax.swing.JTextField TextValor;
     private javax.swing.JScrollPane jScrollPane2;
@@ -410,7 +412,6 @@ public class viewAgendamento extends javax.swing.JFrame {
     private javax.swing.JTable tabelaAgendamento;
     // End of variables declaration//GEN-END:variables
 
-    
     private void inciar() {
         this.controller.atualizarTabela();
         this.controller.atualizarCliente();
@@ -423,16 +424,16 @@ public class viewAgendamento extends javax.swing.JFrame {
     public JTable getTabelaAgendamento() {
         return tabelaAgendamento;
     }
-    
+
     public void setTabelaAgendamento(JTable tabelaAgendamento) {
         this.tabelaAgendamento = tabelaAgendamento;
     }
 
-    public JComboBox<String> getCBCliente() {
+    public JComboBox<Cliente> getCBCliente() {
         return CBCliente;
     }
 
-    public void setCBCliente(JComboBox<String> CBCliente) {
+    public void setCBCliente(JComboBox<Cliente> CBCliente) {
         this.CBCliente = CBCliente;
     }
 
@@ -451,7 +452,7 @@ public class viewAgendamento extends javax.swing.JFrame {
     public void setCBServico(JComboBox<String> CBServico) {
         this.CBServico = CBServico;
     }
-    
+
     public JComboBox<String> getCBProfissional() {
         return CBProfissional;
     }
@@ -467,7 +468,29 @@ public class viewAgendamento extends javax.swing.JFrame {
     public void setTextValor(JTextField TextValor) {
         this.TextValor = TextValor;
     }
-    
-    
-    
+
+    public JTextField getTexCod() {
+        return TexCod;
+    }
+
+    public void setTextCod(int codigo) {
+        this.TexCod.setText(String.valueOf(codigo));
+    }
+
+    public JTextField getTextData() {
+        return TextData;
+    }
+
+    public void setTextData(JTextField TextData) {
+        this.TextData = TextData;
+    }
+
+    public JTextField getTextHora() {
+        return TextHora;
+    }
+
+    public void setTextHora(JTextField TextHora) {
+        this.TextHora = TextHora;
+    }
+
 }

@@ -19,6 +19,7 @@ public class LoginHelper implements IHelper{
         this.view = view;
     }
     
+    @Override
     public Profissional obterModelo(){
         String email = view.getTextUsuario().getText();
         String senha = view.getTextSenha().getText();
@@ -34,6 +35,7 @@ public class LoginHelper implements IHelper{
         view.getTextSenha().setText(senha);
     }
     
+    @Override
     public void limparTela(){
         view.getTextUsuario().setText("");
         view.getTextSenha().setText("");

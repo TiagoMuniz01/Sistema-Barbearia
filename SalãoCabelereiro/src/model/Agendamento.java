@@ -126,7 +126,7 @@ public class Agendamento {
     }
 
     // Método para inserir um agendamento
-    public boolean inserir() {
+    public boolean inserir(Agendamento agendamento) {
         String sql = "INSERT INTO tb_agendamento (horario_agendamento, data_agendamento, cod_cliente, cod_profissional, cod_servico, cod_pagamento) VALUES (?, ?, ?, ?, ?, ?)";
 
         if (!conexao.conecta()) {
@@ -135,13 +135,15 @@ public class Agendamento {
         }
 
         try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
-            stmt.setString(1, this.horario_agendamento.format(TIME_FORMATTER_BANCO));
-            stmt.setString(2, this.data_agendamento.format(DATE_FORMATTER_BANCO));
-            stmt.setInt(3, this.cliente.getCod());
-            stmt.setInt(4, this.profissional.getCod());
-            stmt.setInt(5, this.servico.getCod_servico());
-            stmt.setInt(6, this.pagamento.getCod_pagamento());
+            // Define os parâmetros com base no objeto Agendamento recebido
+            stmt.setString(1, agendamento.getHorario_agendamento().format(TIME_FORMATTER_BANCO));
+            stmt.setString(2, agendamento.getData_agendamento().format(DATE_FORMATTER_BANCO));
+            stmt.setInt(3, agendamento.getCliente().getCod());
+            stmt.setInt(4, agendamento.getProfissional().getCod());
+            stmt.setInt(5, agendamento.getServico().getCod_servico());
+            stmt.setInt(6, agendamento.getPagamento().getCod_pagamento());
 
+            // Executa a inserção e verifica se teve sucesso
             int rowsInserted = stmt.executeUpdate();
             return rowsInserted > 0;
         } catch (SQLException e) {
@@ -293,5 +295,24 @@ public class Agendamento {
         } finally {
             conexao.desconecta();
         }
+    }
+
+    public int getProximoCodigo() {
+        String sql = "SELECT MAX(cod_agendamento) AS max_codigo FROM tb_agendamento";
+        if (!conexao.conecta()) {
+            System.out.println("Não foi possível conectar ao banco de dados");
+            return -1;
+        }
+
+        try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt("max_codigo") + 1; // Incrementa o maior código encontrado
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar o próximo código: " + e.getMessage());
+        } finally {
+            conexao.desconecta();
+        }
+        return 1; // Retorna 1 se a tabela estiver vazia
     }
 }
