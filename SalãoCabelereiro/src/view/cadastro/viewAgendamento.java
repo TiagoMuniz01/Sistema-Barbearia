@@ -5,9 +5,14 @@
 package view.cadastro;
 
 import controller.AgendamentoController;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 import model.Cliente;
 
 /**
@@ -17,8 +22,27 @@ import model.Cliente;
 public class viewAgendamento extends javax.swing.JFrame {
 
     private final AgendamentoController controller;
-
+    MaskFormatter mfData;
+    MaskFormatter mfHora;
+    
     public viewAgendamento() {
+        
+         //Tratamento de erro para erro na criação da Mascará
+        try {
+            mfData = new MaskFormatter("##/##/####");
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(viewAgendamento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //Tratamento de erro para erro na criação da Mascará
+        try {
+            mfHora = new MaskFormatter("##:##");
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(viewAgendamento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         initComponents();
         controller = new AgendamentoController(this);
         inciar();
@@ -59,14 +83,17 @@ public class viewAgendamento extends javax.swing.JFrame {
         BtnAlterar = new javax.swing.JButton();
         BtnCadastrar = new javax.swing.JButton();
         TexCod = new javax.swing.JTextField();
-        TextData = new javax.swing.JTextField();
-        TextHora = new javax.swing.JTextField();
+        TextHora = new javax.swing.JFormattedTextField(mfHora);
+        TextData = new javax.swing.JFormattedTextField(mfData);
         lblpainel = new javax.swing.JLabel();
         lblfundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        TextValor.setEditable(false);
+        TextValor.setEnabled(false);
+        TextValor.setFocusable(false);
         TextValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextValorActionPerformed(evt);
@@ -248,12 +275,17 @@ public class viewAgendamento extends javax.swing.JFrame {
         });
         getContentPane().add(BtnCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 190, 40));
 
+        TexCod.setEditable(false);
+        TexCod.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        TexCod.setEnabled(false);
+        TexCod.setFocusable(false);
         TexCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TexCodActionPerformed(evt);
             }
         });
         getContentPane().add(TexCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 40, 22));
+        getContentPane().add(TextHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 130, 30));
 
         TextData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,13 +293,6 @@ public class viewAgendamento extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TextData, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 130, 30));
-
-        TextHora.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextHoraActionPerformed(evt);
-            }
-        });
-        getContentPane().add(TextHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 130, 30));
 
         lblpainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/Painel.png"))); // NOI18N
         getContentPane().add(lblpainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 740, 410));
@@ -322,10 +347,6 @@ public class viewAgendamento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TexCodActionPerformed
 
-    private void TextDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextDataActionPerformed
-
     private void TextPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextPesquisarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextPesquisarActionPerformed
@@ -334,15 +355,15 @@ public class viewAgendamento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CBPagamentoActionPerformed
 
-    private void TextHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextHoraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextHoraActionPerformed
-
     private void CBServicoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBServicoItemStateChanged
 
         this.controller.atualizarValor();
 
     }//GEN-LAST:event_CBServicoItemStateChanged
+
+    private void TextDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextDataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -392,8 +413,8 @@ public class viewAgendamento extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CBProfissional;
     private javax.swing.JComboBox<String> CBServico;
     private javax.swing.JTextField TexCod;
-    private javax.swing.JTextField TextData;
-    private javax.swing.JTextField TextHora;
+    private javax.swing.JFormattedTextField TextData;
+    private javax.swing.JFormattedTextField TextHora;
     private javax.swing.JTextField TextPesquisar;
     private javax.swing.JTextField TextValor;
     private javax.swing.JScrollPane jScrollPane2;
@@ -477,19 +498,19 @@ public class viewAgendamento extends javax.swing.JFrame {
         this.TexCod.setText(String.valueOf(codigo));
     }
 
-    public JTextField getTextData() {
+    public JFormattedTextField getTextData() {
         return TextData;
     }
 
-    public void setTextData(JTextField TextData) {
+    public void setTextData(JFormattedTextField TextData) {
         this.TextData = TextData;
     }
 
-    public JTextField getTextHora() {
+    public JFormattedTextField getTextHora() {
         return TextHora;
     }
 
-    public void setTextHora(JTextField TextHora) {
+    public void setTextHora(JFormattedTextField TextHora) {
         this.TextHora = TextHora;
     }
 
