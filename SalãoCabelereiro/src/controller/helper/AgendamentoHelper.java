@@ -155,6 +155,7 @@ public class AgendamentoHelper implements IHelper {
 
     @Override
     public Agendamento obterModelo() {
+        String buscaTexto = view.getTextPesquisar().getText();
         String dataTexto = view.getTextData().getText();
         String horaTexto = view.getTextHora().getText();
 
@@ -168,6 +169,8 @@ public class AgendamentoHelper implements IHelper {
         return new Agendamento(0, obterCliente(), obterProfissional(), obterPagamento(), obterServico(),
                 hora.format(TIME_FORMATTER_BANCO), data.format(DATE_FORMATTER_BANCO));
     }
+    
+    
 
     @Override
     public void limparTela() {

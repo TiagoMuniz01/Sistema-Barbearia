@@ -22,7 +22,7 @@ public class Cliente extends Pessoa {
     public Cliente() {
         this.conexao = new Conexao();
     }
-
+    
     // Construtor parametrizado
     public Cliente(int cod_cliente, String nome_cliente, String cpf_cliente, String email_cliente, String telefone_cliente, String data_nasc, String senha_cliente) {
         super(cod_cliente, nome_cliente, cpf_cliente, email_cliente, telefone_cliente); // Chama o construtor da classe Pessoa
@@ -38,6 +38,16 @@ public class Cliente extends Pessoa {
     }
 
     // Getters e Setters
+
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
+    }
+    
+    
     public LocalDate getData_nasc() {
         return data_nasc;
     }

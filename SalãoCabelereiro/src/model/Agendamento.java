@@ -275,7 +275,7 @@ public class Agendamento {
         }
     }
 
-    // Método para excluir um agendamento
+    /*// Método para excluir um agendamento
     public boolean excluir() {
         String sql = "DELETE FROM tb_agendamento WHERE cod_agendamento=?";
 
@@ -295,6 +295,125 @@ public class Agendamento {
         } finally {
             conexao.desconecta();
         }
+    }*/
+
+    // Método no AgendamentoModel para excluir um agendamento do banco de dados
+    public boolean excluir(int codAgendamento) {
+        String sql = "DELETE FROM tb_agendamento WHERE cod_agendamento = ?";
+
+        if (!conexao.conecta()) {
+            System.out.println("Não foi possível conectar ao banco de dados");
+            return false;
+        }
+
+        try (PreparedStatement stmt = conexao.getConexao().prepareStatement(sql)) {
+            stmt.setInt(1, codAgendamento);  // Define o código do agendamento para exclusão
+
+            // Executa a exclusão no banco
+            int rowsDeleted = stmt.executeUpdate();
+
+            return rowsDeleted > 0;  // Retorna 'true' se um registro foi excluído
+        } catch (SQLException e) {
+            System.out.println("Erro ao excluir agendamento: " + e.getMessage());
+            return false;
+        } finally {
+            conexao.desconecta();  // Garante que a conexão seja fechada
+        }
+    }
+
+    public static ArrayList<Agendamento> buscarPorNomeCliente(String nomeCliente) {
+        String sql = "SELECT a.* "
+                + "FROM tb_agendamento a "
+                + "INNER JOIN tb_cliente c ON a.cod_cliente = c.cod_cliente "
+                + "WHERE c.nome_cliente LIKE ?"; // Consulta com filtro pelo nome do cliente
+        ArrayList<Agendamento> agendamentos = new ArrayList<>();
+        Conexao conexaoLocal = new Conexao();
+
+        if (!conexaoLocal.conecta()) {
+            System.out.println("Não foi possível conectar ao banco de dados");
+            return agendamentos; // Retorna uma lista vazia em caso de erro
+        }
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = conexaoLocal.getConexao().prepareStatement(sql); // Prepara a consulta
+            stmt.setString(1, "%" + nomeCliente + "%"); // Define o parâmetro para a busca
+            rs = stmt.executeQuery(); // Executa a consulta
+
+            // Itera sobre os resultados retornados pelo banco de dados
+            while (rs.next()) {
+                Agendamento agendamento = new Agendamento();
+                agendamento.setCod_agendamento(rs.getInt("cod_agendamento"));
+                agendamento.setHorario_agendamento(rs.getString("horario_agendamento"));
+                agendamento.setData_agendamento(rs.getString("data_agendamento"));
+
+                // Popula o cliente associado ao agendamento
+                int codCliente = rs.getInt("cod_cliente");
+                if (!rs.wasNull() && codCliente > 0) {
+                    Cliente cliente = new Cliente();
+                    cliente.setCod(codCliente);
+                    cliente.carregar(); // Método carregar preenche os dados do cliente
+
+                    // Formata a data de nascimento para exibição
+                    cliente.setData_nasc(cliente.getData_nascFormatada());
+                    agendamento.setCliente(cliente);
+                }
+
+                // Popula o serviço associado ao agendamento
+                int codServico = rs.getInt("cod_servico");
+                if (!rs.wasNull() && codServico > 0) {
+                    Servico servico = new Servico();
+                    servico.setCod_servico(codServico);
+                    servico.carregar(); // Método carregar preenche os dados do serviço
+
+                    // Certifica-se de que os dados do tempo de serviço sejam válidos
+                    if (servico.getTempo_servico() == null) {
+                        servico.setTempo_servico(LocalTime.MIDNIGHT); // Define como meia-noite (00:00:00) se nulo
+                    }
+                    agendamento.setServico(servico);
+                }
+
+                // Popula o profissional associado ao agendamento, se aplicável
+                int codProfissional = rs.getInt("cod_profissional");
+                if (!rs.wasNull() && codProfissional > 0) {
+                    Profissional profissional = new Profissional();
+                    profissional.setCod(codProfissional);
+                    profissional.carregar(); // Método carregar preenche os dados do profissional
+                    agendamento.setProfissional(profissional);
+                }
+
+                // Popula o pagamento associado ao agendamento, se aplicável
+                int codPagamento = rs.getInt("cod_pagamento");
+                if (!rs.wasNull() && codPagamento > 0) {
+                    Pagamento pagamento = new Pagamento();
+                    pagamento.setCod_pagamento(codPagamento);
+                    pagamento.carregar(); // Método carregar preenche os dados do pagamento
+                    agendamento.setPagamento(pagamento);
+                }
+
+                // Adiciona o agendamento à lista
+                agendamentos.add(agendamento);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar agendamentos por nome do cliente: " + e.getMessage());
+        } finally {
+            // Fecha o ResultSet e PreparedStatement, além da conexão
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Erro ao fechar recursos: " + e.getMessage());
+            }
+            conexaoLocal.desconecta(); // Fecha a conexão
+        }
+
+        return agendamentos; // Retorna a lista de agendamentos encontrados
     }
 
     public int getProximoCodigo() {

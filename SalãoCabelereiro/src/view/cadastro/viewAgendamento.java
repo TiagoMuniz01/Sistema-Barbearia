@@ -10,10 +10,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 import model.Cliente;
+import model.Pagamento;
+import model.Profissional;
+import model.Servico;
 
 /**
  *
@@ -24,26 +28,27 @@ public class viewAgendamento extends javax.swing.JFrame {
     private final AgendamentoController controller;
     MaskFormatter mfData;
     MaskFormatter mfHora;
-    
+
     public viewAgendamento() {
-        
-         //Tratamento de erro para erro na criação da Mascará
+
+        //Tratamento de erro para erro na criação da Mascará
         try {
             mfData = new MaskFormatter("##/##/####");
-            
+
         } catch (ParseException ex) {
             Logger.getLogger(viewAgendamento.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         //Tratamento de erro para erro na criação da Mascará
         try {
             mfHora = new MaskFormatter("##:##");
-            
+
         } catch (ParseException ex) {
             Logger.getLogger(viewAgendamento.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         initComponents();
+        this.setLocationRelativeTo(null);
         controller = new AgendamentoController(this);
         inciar();
     }
@@ -94,11 +99,6 @@ public class viewAgendamento extends javax.swing.JFrame {
         TextValor.setEditable(false);
         TextValor.setEnabled(false);
         TextValor.setFocusable(false);
-        TextValor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextValorActionPerformed(evt);
-            }
-        });
         getContentPane().add(TextValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 130, 30));
 
         lblid.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -146,9 +146,9 @@ public class viewAgendamento extends javax.swing.JFrame {
         lbltelefone3.setText("Hora");
         getContentPane().add(lbltelefone3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, -1, 10));
 
-        TextPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextPesquisarActionPerformed(evt);
+        TextPesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextPesquisarKeyReleased(evt);
             }
         });
         getContentPane().add(TextPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 350, 30));
@@ -161,6 +161,11 @@ public class viewAgendamento extends javax.swing.JFrame {
                 "Id", "Nome", "Serviço", "Valor", "Profissional", "Data", "Hora", "Pagamento"
             }
         ));
+        tabelaAgendamento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaAgendamentoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabelaAgendamento);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 700, 120));
@@ -172,25 +177,10 @@ public class viewAgendamento extends javax.swing.JFrame {
                 CBServicoItemStateChanged(evt);
             }
         });
-        CBServico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBServicoActionPerformed(evt);
-            }
-        });
         getContentPane().add(CBServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 190, 30));
 
-        CBProfissional.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBProfissionalActionPerformed(evt);
-            }
-        });
         getContentPane().add(CBProfissional, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 190, 30));
 
-        CBPagamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CBPagamentoActionPerformed(evt);
-            }
-        });
         getContentPane().add(CBPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 190, 30));
 
         lbltelefone1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -279,19 +269,8 @@ public class viewAgendamento extends javax.swing.JFrame {
         TexCod.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         TexCod.setEnabled(false);
         TexCod.setFocusable(false);
-        TexCod.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TexCodActionPerformed(evt);
-            }
-        });
         getContentPane().add(TexCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 40, 22));
         getContentPane().add(TextHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 130, 30));
-
-        TextData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextDataActionPerformed(evt);
-            }
-        });
         getContentPane().add(TextData, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 130, 30));
 
         lblpainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/Painel.png"))); // NOI18N
@@ -303,57 +282,69 @@ public class viewAgendamento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TextValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextValorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextValorActionPerformed
-
     private void BtnUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUltimoActionPerformed
-        // TODO add your handling code here:
+        int lastRow = tabelaAgendamento.getRowCount() - 1;
+        if (lastRow >= 0) {
+            tabelaAgendamento.setRowSelectionInterval(lastRow, lastRow);
+            carregarRegistro(); // Reutiliza o método para carregar os dados
+        }
     }//GEN-LAST:event_BtnUltimoActionPerformed
 
-    private void BtnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnteriorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAnteriorActionPerformed
-
-    private void BtnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProximoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnProximoActionPerformed
-
     private void BtnPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrimeiroActionPerformed
-        // TODO add your handling code here:
+        tabelaAgendamento.setRowSelectionInterval(0, 0);
+        carregarRegistro(); // Reutiliza o método para carregar os dados
     }//GEN-LAST:event_BtnPrimeiroActionPerformed
 
     private void BtnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeletarActionPerformed
-        // TODO add your handling code here:
+        this.controller.excluir();  // Chama o método de exclusão do controller
     }//GEN-LAST:event_BtnDeletarActionPerformed
 
     private void BtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAlterarActionPerformed
-        // TODO add your handling code here:
+        int confirm = JOptionPane.showConfirmDialog(this, "Deseja realmente atualizar o registro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                // Obtém o código do agendamento
+                int id = Integer.parseInt(TexCod.getText());
+
+                // Obtém o cliente selecionado e seu código
+                Cliente cliente = (Cliente) CBCliente.getSelectedItem();
+                int codCliente = cliente.getCod(); // Método para obter o código do cliente
+
+                // Obtém o serviço selecionado e seu código
+                Servico servico = (Servico) CBServico.getSelectedItem();
+                int codServico = servico.getCod_servico(); // Método para obter o código do serviço
+
+                // Obtém o profissional selecionado e seu código
+                Profissional profissional = (Profissional) CBProfissional.getSelectedItem();
+                int codProfissional = profissional.getCod(); // Método para obter o código do profissional
+
+                // Obtém o pagamento selecionado e seu código
+                Pagamento pagamento = (Pagamento) CBPagamento.getSelectedItem();
+                int codPagamento = pagamento.getCod_pagamento(); // Método para obter o código do pagamento
+
+                // Obtém a data e a hora
+                String data = TextData.getText();
+                String hora = TextHora.getText();
+
+                // Chama o método do controller para atualizar o agendamento
+                controller.atualizarAgendamento(id, codCliente, codServico, codProfissional, codPagamento, data, hora);
+
+                // Atualiza a tabela e exibe mensagem de sucesso
+                controller.atualizarTabela();
+                JOptionPane.showMessageDialog(this, "Registro atualizado com sucesso!");
+
+            } catch (Exception e) {
+                // Trata exceções e exibe mensagem de erro
+                JOptionPane.showMessageDialog(this, "Erro ao atualizar o registro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
     }//GEN-LAST:event_BtnAlterarActionPerformed
 
     private void BtnCadastrar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCadastrar
         this.controller.agendar();
     }//GEN-LAST:event_BtnCadastrar
-
-    private void CBServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBServicoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CBServicoActionPerformed
-
-    private void CBProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBProfissionalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CBProfissionalActionPerformed
-
-    private void TexCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TexCodActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TexCodActionPerformed
-
-    private void TextPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextPesquisarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextPesquisarActionPerformed
-
-    private void CBPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBPagamentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CBPagamentoActionPerformed
 
     private void CBServicoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBServicoItemStateChanged
 
@@ -361,9 +352,40 @@ public class viewAgendamento extends javax.swing.JFrame {
 
     }//GEN-LAST:event_CBServicoItemStateChanged
 
-    private void TextDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextDataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextDataActionPerformed
+    private void TextPesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextPesquisarKeyReleased
+        // Captura o texto digitado pelo usuário
+        String nomeCliente = TextPesquisar.getText().trim();
+
+        // Atualiza a tabela na view chamando o método do controller
+        if (!nomeCliente.isEmpty()) {
+            controller.buscarAgendamentosPorNome(nomeCliente); // Busca os registros correspondentes
+        } else {
+            controller.atualizarTabela(); // Se o campo estiver vazio, carrega todos os registros
+        }
+    }//GEN-LAST:event_TextPesquisarKeyReleased
+
+    private void tabelaAgendamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaAgendamentoMouseClicked
+        carregarRegistro();
+    }//GEN-LAST:event_tabelaAgendamentoMouseClicked
+
+    private void BtnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProximoActionPerformed
+        int selectedRow = tabelaAgendamento.getSelectedRow(); // Obtém a linha selecionada atualmente
+        int totalRows = tabelaAgendamento.getRowCount(); // Número total de linhas na tabela
+
+        if (selectedRow < totalRows - 1) { // Verifica se há uma próxima linha
+            tabelaAgendamento.setRowSelectionInterval(selectedRow + 1, selectedRow + 1); // Move a seleção para a próxima linha
+            carregarRegistro(); // Reutiliza o método para carregar os dados nos campos
+        }
+    }//GEN-LAST:event_BtnProximoActionPerformed
+
+    private void BtnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnteriorActionPerformed
+        int selectedRow = tabelaAgendamento.getSelectedRow(); // Obtém a linha selecionada atualmente
+
+        if (selectedRow > 0) { // Verifica se há uma linha anterior
+            tabelaAgendamento.setRowSelectionInterval(selectedRow - 1, selectedRow - 1); // Move a seleção para a linha anterior
+            carregarRegistro(); // Reutiliza o método para carregar os dados nos campos
+        }
+    }//GEN-LAST:event_BtnAnteriorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -409,9 +431,9 @@ public class viewAgendamento extends javax.swing.JFrame {
     private javax.swing.JButton BtnProximo;
     private javax.swing.JButton BtnUltimo;
     private javax.swing.JComboBox<Cliente> CBCliente;
-    private javax.swing.JComboBox<String> CBPagamento;
-    private javax.swing.JComboBox<String> CBProfissional;
-    private javax.swing.JComboBox<String> CBServico;
+    private javax.swing.JComboBox<Pagamento> CBPagamento;
+    private javax.swing.JComboBox<Profissional> CBProfissional;
+    private javax.swing.JComboBox<Servico> CBServico;
     private javax.swing.JTextField TexCod;
     private javax.swing.JFormattedTextField TextData;
     private javax.swing.JFormattedTextField TextHora;
@@ -440,6 +462,44 @@ public class viewAgendamento extends javax.swing.JFrame {
         this.controller.atualizarPagamento();
         this.controller.atualizarProfissional();
         this.controller.atualizarValor();
+        this.controller.atualizarNovoCodigo();
+    }
+
+    private void carregarRegistro() {
+        int selectedRow = tabelaAgendamento.getSelectedRow();
+        if (selectedRow >= 0) {
+            // Preenche os campos de texto diretamente
+            TexCod.setText(tabelaAgendamento.getValueAt(selectedRow, 0).toString());
+            TextValor.setText(tabelaAgendamento.getValueAt(selectedRow, 3).toString());
+            TextData.setText(tabelaAgendamento.getValueAt(selectedRow, 5).toString());
+            TextHora.setText(tabelaAgendamento.getValueAt(selectedRow, 6).toString());
+
+            // Obter os valores das colunas da tabela
+            String clienteNome = tabelaAgendamento.getValueAt(selectedRow, 1).toString();
+            String servicoNome = tabelaAgendamento.getValueAt(selectedRow, 2).toString();
+            String profissionalNome = tabelaAgendamento.getValueAt(selectedRow, 4).toString();
+            String pagamentoTipo = tabelaAgendamento.getValueAt(selectedRow, 7).toString();
+
+            // Definir os valores nos ComboBoxes
+            setComboBoxSelection(CBCliente, clienteNome);
+            setComboBoxSelection(CBServico, servicoNome);
+            setComboBoxSelection(CBProfissional, profissionalNome);
+            setComboBoxSelection(CBPagamento, pagamentoTipo);
+        }
+    }
+
+// Método genérico para selecionar um item em um JComboBox baseado no nome/descrição
+    private <T> void setComboBoxSelection(javax.swing.JComboBox<T> comboBox, String value) {
+        for (int i = 0; i < comboBox.getItemCount(); i++) {
+            T item = comboBox.getItemAt(i);
+            // Supondo que o método toString dos objetos retorne a descrição/nome esperados
+            if (item != null && item.toString().equals(value)) {
+                comboBox.setSelectedItem(item);
+                return;
+            }
+        }
+        // Caso não encontre correspondência, nenhuma seleção será feita
+        System.out.println("Item não encontrado no ComboBox: " + value);
     }
 
     public JTable getTabelaAgendamento() {
@@ -450,6 +510,7 @@ public class viewAgendamento extends javax.swing.JFrame {
         this.tabelaAgendamento = tabelaAgendamento;
     }
 
+    // Getter e Setter para CBCliente
     public JComboBox<Cliente> getCBCliente() {
         return CBCliente;
     }
@@ -458,27 +519,30 @@ public class viewAgendamento extends javax.swing.JFrame {
         this.CBCliente = CBCliente;
     }
 
-    public JComboBox<String> getCBPagamento() {
+    // Getter e Setter para CBPagamento
+    public JComboBox<Pagamento> getCBPagamento() {
         return CBPagamento;
     }
 
-    public void setCBPagamento(JComboBox<String> CBPagamento) {
+    public void setCBPagamento(JComboBox<Pagamento> CBPagamento) {
         this.CBPagamento = CBPagamento;
     }
 
-    public JComboBox<String> getCBServico() {
+// Getter e Setter para CBServico
+    public JComboBox<Servico> getCBServico() {
         return CBServico;
     }
 
-    public void setCBServico(JComboBox<String> CBServico) {
+    public void setCBServico(JComboBox<Servico> CBServico) {
         this.CBServico = CBServico;
     }
 
-    public JComboBox<String> getCBProfissional() {
+// Getter e Setter para CBProfissional
+    public JComboBox<Profissional> getCBProfissional() {
         return CBProfissional;
     }
 
-    public void setCBProfissional(JComboBox<String> CBProfissional) {
+    public void setCBProfissional(JComboBox<Profissional> CBProfissional) {
         this.CBProfissional = CBProfissional;
     }
 
@@ -514,4 +578,11 @@ public class viewAgendamento extends javax.swing.JFrame {
         this.TextHora = TextHora;
     }
 
+    public JTextField getTextPesquisar() {
+        return TextPesquisar;
+    }
+
+    public void setTextPesquisar(JTextField TextPesquisar) {
+        this.TextPesquisar = TextPesquisar;
+    }
 }
