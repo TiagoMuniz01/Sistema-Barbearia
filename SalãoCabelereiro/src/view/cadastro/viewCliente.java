@@ -26,19 +26,23 @@ public class viewCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jtextid = new javax.swing.JTextField();
+        TextCod = new javax.swing.JTextField();
         lblid = new javax.swing.JLabel();
-        jtextnome = new javax.swing.JTextField();
+        textNome = new javax.swing.JTextField();
         lblnome = new javax.swing.JLabel();
-        jtextcpf = new javax.swing.JTextField();
+        TextCpf = new javax.swing.JTextField();
         lblcpf = new javax.swing.JLabel();
-        jtextemail = new javax.swing.JTextField();
+        TextTelefone = new javax.swing.JTextField();
         lblemail = new javax.swing.JLabel();
         lblclientes = new javax.swing.JLabel();
+        lbltelefone2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablecliente = new javax.swing.JTable();
         lbltelefone1 = new javax.swing.JLabel();
-        jtexttelefone1 = new javax.swing.JTextField();
+        lbltelefone3 = new javax.swing.JLabel();
+        TextPesquisar = new javax.swing.JTextField();
+        TextEmail = new javax.swing.JTextField();
+        TextNascimento1 = new javax.swing.JTextField();
         btnnext = new javax.swing.JButton();
         tras = new javax.swing.JButton();
         frente = new javax.swing.JButton();
@@ -52,85 +56,106 @@ public class viewCliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jtextid.addActionListener(new java.awt.event.ActionListener() {
+        TextCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextidActionPerformed(evt);
+                TextCodActionPerformed(evt);
             }
         });
-        getContentPane().add(jtextid, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 40, 22));
+        getContentPane().add(TextCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 40, 22));
 
         lblid.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblid.setForeground(new java.awt.Color(204, 204, 204));
-        lblid.setText("Id");
-        getContentPane().add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 140, -1, -1));
+        lblid.setText("Cod");
+        getContentPane().add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
 
-        jtextnome.addActionListener(new java.awt.event.ActionListener() {
+        textNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextnomeActionPerformed(evt);
+                textNomeActionPerformed(evt);
             }
         });
-        getContentPane().add(jtextnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 175, 192, 22));
+        getContentPane().add(textNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 192, 22));
 
         lblnome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblnome.setForeground(new java.awt.Color(204, 204, 204));
         lblnome.setText("Nome");
-        getContentPane().add(lblnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 175, -1, -1));
+        getContentPane().add(lblnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
-        jtextcpf.addActionListener(new java.awt.event.ActionListener() {
+        TextCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextcpfActionPerformed(evt);
+                TextCpfActionPerformed(evt);
             }
         });
-        getContentPane().add(jtextcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 192, 22));
+        getContentPane().add(TextCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 192, 22));
 
         lblcpf.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblcpf.setForeground(new java.awt.Color(204, 204, 204));
         lblcpf.setText("CPF");
-        getContentPane().add(lblcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 210, -1, -1));
+        getContentPane().add(lblcpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, 20));
 
-        jtextemail.addActionListener(new java.awt.event.ActionListener() {
+        TextTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextemailActionPerformed(evt);
+                TextTelefoneActionPerformed(evt);
             }
         });
-        getContentPane().add(jtextemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 245, 192, 22));
+        getContentPane().add(TextTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 192, 22));
 
         lblemail.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblemail.setForeground(new java.awt.Color(204, 204, 204));
         lblemail.setText("Telefone");
-        getContentPane().add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 250, -1, -1));
+        getContentPane().add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
 
         lblclientes.setFont(new java.awt.Font("Arial", 1, 28)); // NOI18N
         lblclientes.setForeground(new java.awt.Color(204, 204, 204));
         lblclientes.setText("Clientes");
         getContentPane().add(lblclientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, -1, -1));
 
+        lbltelefone2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbltelefone2.setForeground(new java.awt.Color(204, 204, 204));
+        lbltelefone2.setText("Pesquisar Cliente:");
+        getContentPane().add(lbltelefone2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, -1, 20));
+
         tablecliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Id", "Nome", "CPF", "Telefone", "Nascimento"
+                "Id", "Nome", "CPF", "Nascimento", "Telefone", "Email"
             }
         ));
         jScrollPane2.setViewportView(tablecliente);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 670, 120));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 670, 120));
 
         lbltelefone1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbltelefone1.setForeground(new java.awt.Color(204, 204, 204));
-        lbltelefone1.setText("Nascimento");
-        getContentPane().add(lbltelefone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 285, -1, -1));
+        lbltelefone1.setText("Email");
+        getContentPane().add(lbltelefone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, -1));
 
-        jtexttelefone1.addActionListener(new java.awt.event.ActionListener() {
+        lbltelefone3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbltelefone3.setForeground(new java.awt.Color(204, 204, 204));
+        lbltelefone3.setText("Nascimento");
+        getContentPane().add(lbltelefone3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
+
+        TextPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtexttelefone1ActionPerformed(evt);
+                TextPesquisarActionPerformed(evt);
             }
         });
-        getContentPane().add(jtexttelefone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 192, 22));
+        getContentPane().add(TextPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 270, 22));
+
+        TextEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextEmailActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TextEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 192, 22));
+
+        TextNascimento1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextNascimento1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TextNascimento1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 192, 22));
 
         btnnext.setBackground(new java.awt.Color(44, 148, 82));
         btnnext.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -141,7 +166,7 @@ public class viewCliente extends javax.swing.JFrame {
                 btnnextActionPerformed(evt);
             }
         });
-        getContentPane().add(btnnext, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, 30, 30));
+        getContentPane().add(btnnext, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 310, 30, 30));
 
         tras.setBackground(new java.awt.Color(44, 148, 82));
         tras.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -152,7 +177,7 @@ public class viewCliente extends javax.swing.JFrame {
                 trasActionPerformed(evt);
             }
         });
-        getContentPane().add(tras, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 30, 30));
+        getContentPane().add(tras, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 310, 30, 30));
 
         frente.setBackground(new java.awt.Color(44, 148, 82));
         frente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -163,7 +188,7 @@ public class viewCliente extends javax.swing.JFrame {
                 frenteActionPerformed(evt);
             }
         });
-        getContentPane().add(frente, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 300, 30, 30));
+        getContentPane().add(frente, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 310, 30, 30));
 
         btnreturn.setBackground(new java.awt.Color(44, 148, 82));
         btnreturn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -174,7 +199,7 @@ public class viewCliente extends javax.swing.JFrame {
                 btnreturnActionPerformed(evt);
             }
         });
-        getContentPane().add(btnreturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 30, 30));
+        getContentPane().add(btnreturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 30, 30));
 
         btndeletar.setBackground(new java.awt.Color(44, 148, 82));
         btndeletar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -185,7 +210,7 @@ public class viewCliente extends javax.swing.JFrame {
                 btndeletarActionPerformed(evt);
             }
         });
-        getContentPane().add(btndeletar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 230, 30));
+        getContentPane().add(btndeletar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 230, 30));
 
         btnalterar.setBackground(new java.awt.Color(44, 148, 82));
         btnalterar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -196,7 +221,7 @@ public class viewCliente extends javax.swing.JFrame {
                 btnalterarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnalterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 230, 30));
+        getContentPane().add(btnalterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 230, 30));
 
         btnagendar.setBackground(new java.awt.Color(44, 148, 82));
         btnagendar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -207,10 +232,10 @@ public class viewCliente extends javax.swing.JFrame {
                 btnagendarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnagendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 230, 30));
+        getContentPane().add(btnagendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, 230, 30));
 
         lblpainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/Painel.png"))); // NOI18N
-        getContentPane().add(lblpainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 710, 390));
+        getContentPane().add(lblpainel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 710, 410));
 
         lblfundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/imgBarb/imagens/fundo.jpg"))); // NOI18N
         getContentPane().add(lblfundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 790, 530));
@@ -218,25 +243,25 @@ public class viewCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtextidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextidActionPerformed
+    private void TextCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextCodActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtextidActionPerformed
+    }//GEN-LAST:event_TextCodActionPerformed
 
-    private void jtextnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextnomeActionPerformed
+    private void textNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtextnomeActionPerformed
+    }//GEN-LAST:event_textNomeActionPerformed
 
-    private void jtextcpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextcpfActionPerformed
+    private void TextCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextCpfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtextcpfActionPerformed
+    }//GEN-LAST:event_TextCpfActionPerformed
 
-    private void jtextemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextemailActionPerformed
+    private void TextTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextTelefoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtextemailActionPerformed
+    }//GEN-LAST:event_TextTelefoneActionPerformed
 
-    private void jtexttelefone1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtexttelefone1ActionPerformed
+    private void TextPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextPesquisarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtexttelefone1ActionPerformed
+    }//GEN-LAST:event_TextPesquisarActionPerformed
 
     private void btnnextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnextActionPerformed
         // TODO add your handling code here:
@@ -265,6 +290,14 @@ public class viewCliente extends javax.swing.JFrame {
     private void btnagendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagendarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnagendarActionPerformed
+
+    private void TextEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextEmailActionPerformed
+
+    private void TextNascimento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextNascimento1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextNascimento1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,6 +335,12 @@ public class viewCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TextCod;
+    private javax.swing.JTextField TextCpf;
+    private javax.swing.JTextField TextEmail;
+    private javax.swing.JTextField TextNascimento1;
+    private javax.swing.JTextField TextPesquisar;
+    private javax.swing.JTextField TextTelefone;
     private javax.swing.JButton btnagendar;
     private javax.swing.JButton btnalterar;
     private javax.swing.JButton btndeletar;
@@ -309,11 +348,6 @@ public class viewCliente extends javax.swing.JFrame {
     private javax.swing.JButton btnreturn;
     private javax.swing.JButton frente;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jtextcpf;
-    private javax.swing.JTextField jtextemail;
-    private javax.swing.JTextField jtextid;
-    private javax.swing.JTextField jtextnome;
-    private javax.swing.JTextField jtexttelefone1;
     private javax.swing.JLabel lblclientes;
     private javax.swing.JLabel lblcpf;
     private javax.swing.JLabel lblemail;
@@ -322,7 +356,10 @@ public class viewCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblnome;
     private javax.swing.JLabel lblpainel;
     private javax.swing.JLabel lbltelefone1;
+    private javax.swing.JLabel lbltelefone2;
+    private javax.swing.JLabel lbltelefone3;
     private javax.swing.JTable tablecliente;
+    private javax.swing.JTextField textNome;
     private javax.swing.JButton tras;
     // End of variables declaration//GEN-END:variables
 }

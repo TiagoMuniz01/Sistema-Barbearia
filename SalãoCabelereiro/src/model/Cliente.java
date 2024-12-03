@@ -12,7 +12,7 @@ public class Cliente extends Pessoa {
 
     private LocalDate data_nasc;
     private String senha_cliente;
-    private String telefone_cliente; // Variável mantida conforme seu nome anterior
+    private String telefone_cliente; 
     private final Conexao conexao; // Objeto para manipulação da conexão com o banco de dados
 
     private static final DateTimeFormatter DATE_FORMATTER_EXIBICAO = DateTimeFormatter.ofPattern("dd/MM/yyyy");

@@ -138,7 +138,7 @@ public class viewAgendamento extends javax.swing.JFrame {
 
         lbltelefone2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbltelefone2.setForeground(new java.awt.Color(204, 204, 204));
-        lbltelefone2.setText("Pesquisar Cliente:");
+        lbltelefone2.setText("Pesquisar Agendamento:");
         getContentPane().add(lbltelefone2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, 30));
 
         lbltelefone3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -151,7 +151,7 @@ public class viewAgendamento extends javax.swing.JFrame {
                 TextPesquisarKeyReleased(evt);
             }
         });
-        getContentPane().add(TextPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 350, 30));
+        getContentPane().add(TextPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 300, 30));
 
         tabelaAgendamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -26,15 +26,15 @@ public class viewServico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jtextid = new javax.swing.JTextField();
+        TextId = new javax.swing.JTextField();
         lblid = new javax.swing.JLabel();
-        jtextnome = new javax.swing.JTextField();
+        TextNome = new javax.swing.JTextField();
         lblnome = new javax.swing.JLabel();
-        txtvalor = new javax.swing.JTextField();
+        TextValor = new javax.swing.JTextField();
         lblvalor = new javax.swing.JLabel();
-        txtdescricao = new javax.swing.JTextField();
+        TextDescricao = new javax.swing.JTextField();
         lbldescricao = new javax.swing.JLabel();
-        txtduracao = new javax.swing.JTextField();
+        TextDuracao = new javax.swing.JTextField();
         lblduracao = new javax.swing.JLabel();
         lbltitulo = new javax.swing.JLabel();
         tblservicos = new javax.swing.JScrollPane();
@@ -52,60 +52,60 @@ public class viewServico extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jtextid.addActionListener(new java.awt.event.ActionListener() {
+        TextId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextidActionPerformed(evt);
+                TextIdActionPerformed(evt);
             }
         });
-        getContentPane().add(jtextid, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 40, 22));
+        getContentPane().add(TextId, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 40, 22));
 
         lblid.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblid.setForeground(new java.awt.Color(204, 204, 204));
         lblid.setText("Id");
         getContentPane().add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, -1, -1));
 
-        jtextnome.addActionListener(new java.awt.event.ActionListener() {
+        TextNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextnomeActionPerformed(evt);
+                TextNomeActionPerformed(evt);
             }
         });
-        getContentPane().add(jtextnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 175, 192, 22));
+        getContentPane().add(TextNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 175, 192, 22));
 
         lblnome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblnome.setForeground(new java.awt.Color(204, 204, 204));
         lblnome.setText("Nome");
         getContentPane().add(lblnome, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 175, -1, -1));
 
-        txtvalor.addActionListener(new java.awt.event.ActionListener() {
+        TextValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtvalorActionPerformed(evt);
+                TextValorActionPerformed(evt);
             }
         });
-        getContentPane().add(txtvalor, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 192, 22));
+        getContentPane().add(TextValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 192, 22));
 
         lblvalor.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblvalor.setForeground(new java.awt.Color(204, 204, 204));
         lblvalor.setText("Valor");
         getContentPane().add(lblvalor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
 
-        txtdescricao.addActionListener(new java.awt.event.ActionListener() {
+        TextDescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtdescricaoActionPerformed(evt);
+                TextDescricaoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtdescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 192, 50));
+        getContentPane().add(TextDescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 192, 50));
 
         lbldescricao.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbldescricao.setForeground(new java.awt.Color(204, 204, 204));
         lbldescricao.setText("Descrição");
         getContentPane().add(lbldescricao, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, -1, -1));
 
-        txtduracao.addActionListener(new java.awt.event.ActionListener() {
+        TextDuracao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtduracaoActionPerformed(evt);
+                TextDuracaoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtduracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 245, 192, 22));
+        getContentPane().add(TextDuracao, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 245, 192, 22));
 
         lblduracao.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblduracao.setForeground(new java.awt.Color(204, 204, 204));
@@ -119,10 +119,7 @@ public class viewServico extends javax.swing.JFrame {
 
         tablecliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Id", "Nome", "Valor", "Duração", "Descrição"
@@ -218,25 +215,25 @@ public class viewServico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtextidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextidActionPerformed
+    private void TextIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtextidActionPerformed
+    }//GEN-LAST:event_TextIdActionPerformed
 
-    private void jtextnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextnomeActionPerformed
+    private void TextNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtextnomeActionPerformed
+    }//GEN-LAST:event_TextNomeActionPerformed
 
-    private void txtvalorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtvalorActionPerformed
+    private void TextValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextValorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtvalorActionPerformed
+    }//GEN-LAST:event_TextValorActionPerformed
 
-    private void txtdescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdescricaoActionPerformed
+    private void TextDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextDescricaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtdescricaoActionPerformed
+    }//GEN-LAST:event_TextDescricaoActionPerformed
 
-    private void txtduracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtduracaoActionPerformed
+    private void TextDuracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextDuracaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtduracaoActionPerformed
+    }//GEN-LAST:event_TextDuracaoActionPerformed
 
     private void btnagendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagendarActionPerformed
         // TODO add your handling code here:
@@ -303,14 +300,17 @@ public class viewServico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TextDescricao;
+    private javax.swing.JTextField TextDuracao;
+    private javax.swing.JTextField TextId;
+    private javax.swing.JTextField TextNome;
+    private javax.swing.JTextField TextValor;
     private javax.swing.JButton btnagendar;
     private javax.swing.JButton btnalterar;
     private javax.swing.JButton btndeletar;
     private javax.swing.JButton btnnext;
     private javax.swing.JButton btnreturn;
     private javax.swing.JButton frente;
-    private javax.swing.JTextField jtextid;
-    private javax.swing.JTextField jtextnome;
     private javax.swing.JLabel lbldescricao;
     private javax.swing.JLabel lblduracao;
     private javax.swing.JLabel lblfundo;
@@ -322,8 +322,5 @@ public class viewServico extends javax.swing.JFrame {
     private javax.swing.JTable tablecliente;
     private javax.swing.JScrollPane tblservicos;
     private javax.swing.JButton tras;
-    private javax.swing.JTextField txtdescricao;
-    private javax.swing.JTextField txtduracao;
-    private javax.swing.JTextField txtvalor;
     // End of variables declaration//GEN-END:variables
 }
